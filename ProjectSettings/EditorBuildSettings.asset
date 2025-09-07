@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Epilogue.unity
+    guid: 49bbfb70c09488e4297842eba7c5cc56
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 4f7f079ec8ed7a7468d4872de253c746
+  - enabled: 1
+    path: Assets/Scenes/Bar_Undertaker.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/CharacterSelection.unity
+    guid: 602339f45818bc44bab55294cd6a7445
+  - enabled: 1
+    path: Assets/Scenes/empty.unity
+    guid: 61eef4847a61e834695235a6ce8b2a0c
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_UseUCBPForAssetBundles: 0
