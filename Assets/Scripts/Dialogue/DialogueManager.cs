@@ -72,7 +72,6 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
 
     private void Awake()
     {
-
         if (instance != null)
     {
         Debug.LogWarning("Found more than one Dialogue Manager in the Scene!");
@@ -196,7 +195,7 @@ public static DialogueManager GetInstance()
         yield return new WaitForSeconds(0.2f);
 
         dialogueVariables.StopListening(currentStory);
-        inkExternalFunctions.Unbind(currentStory) ;
+        inkExternalFunctions.Unbind(currentStory);
 
         dialogueIsPlaying= false;
         dialoguePanel.SetActive(false);

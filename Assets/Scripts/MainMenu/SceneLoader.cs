@@ -6,25 +6,68 @@ using Ink.Runtime;
 
 public class SceneLoader : MonoBehaviour
 {
-    public string nextScene = "";
-    public float sceneTransitionTimer = 5f;
 
 
-    public void LoadScene()
+    public static SceneLoader instance;
+    [SerializeField] Animator transitionAnim;
+    
+    public float transitionTimer = 5f;
+    
+    private void Awake()
     {
-        SceneManager.LoadScene(nextScene);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    private void Update()
+    private void Start()
     {
-        bool goToMainMenu = ((Ink.Runtime.BoolValue) DialogueManager
-        .GetInstance()
-        .GetVariableState("goToMainMenu")).value;
-
-        if(goToMainMenu)
+        if (transitionAnim != null)
         {
-            Invoke("LoadScene", sceneTransitionTimer);
-
+            transitionAnim.SetTrigger("Start");
         }
+    }
+
+    // Called by Ink external functions
+    public void LoadSceneWithTransition(string sceneName)
+    {
+        StartCoroutine(LoadSceneCoroutine(sceneName));
+    }
+    
+    private IEnumerator LoadSceneCoroutine(string sceneName)
+    {
+        // Start transition animation
+        if (transitionAnim != null)
+        {
+            transitionAnim.SetTrigger("End");
+        }
+        
+        // Wait for transition
+        yield return new WaitForSeconds(transitionTimer);
+        
+        // Save current game state
+        if (DataPersistenceManager.instance != null)
+        {
+            DataPersistenceManager.instance.SaveGame();
+        }
+        
+        // Load the scene
+        SceneManager.LoadScene(sceneName);
+    }
+    
+    // Immediate scene load without transition
+    public void LoadSceneImmediate(string sceneName)
+    {
+        if (DataPersistenceManager.instance != null)
+        {
+            DataPersistenceManager.instance.SaveGame();
+        }
+        SceneManager.LoadScene(sceneName);
     }
 }

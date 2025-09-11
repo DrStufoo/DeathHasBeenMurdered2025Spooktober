@@ -111,7 +111,7 @@ public class DataPersistenceManager : MonoBehaviour
             return;
         }
         
-        //load any saved dara from a file using the data handler
+        //load any saved data from a file using the data handler
         this.gameData = dataHandler.Load(selectedProfileId);
 
         //start a new game if the data is null and we're configured to initialize data for debugging purposes
@@ -123,7 +123,7 @@ public class DataPersistenceManager : MonoBehaviour
         //if no data can be loaded, initialize to a new game
         if (this.gameData == null)
         {
-             Debug.Log("No data was found. A New Game needs to be started before data can be loaded.");
+            Debug.Log("No data was found. A New Game needs to be started before data can be loaded.");
             return;
         }
 
@@ -155,13 +155,13 @@ public class DataPersistenceManager : MonoBehaviour
         //timestamp the data so we know when it was last saved
         gameData.lastUpdated = System.DateTime.Now.ToBinary();
 
-        //update the current scene in our data
-        Scene scene = SceneManager.GetActiveScene();
-        // DON'T save this for certain scenes, like our main menu ^^
-        if (!scene.name.Equals("MainMenu") && this.gameData == null)
-        {
-            gameData.currentSceneName = scene.name;
-        }
+            //update the current scene in our data
+            Scene scene = SceneManager.GetActiveScene();
+            // DON'T save this for certain scenes, like our main menu ^^
+            if (!scene.name.Equals("MainMenu") && this.gameData != null)
+            {
+                gameData.currentSceneName = scene.name;
+            }
 
         //save that data to a file using the data handler
         dataHandler.Save(gameData, selectedProfileId);

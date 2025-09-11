@@ -28,7 +28,7 @@ public class SaveSlotsMenu : Menu
     {
         DataPersistenceManager.instance.SaveGame();
 
-        SceneManager.LoadSceneAsync("Bar_Undertaker");
+        SceneManager.LoadSceneAsync("CharacterSelection");
         Debug.Log("There were no loaded scenes, so the default was loaded");
     }
 
