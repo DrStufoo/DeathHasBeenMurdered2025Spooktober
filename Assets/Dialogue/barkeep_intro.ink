@@ -22,7 +22,6 @@ Today is different.
 ~playEmote("fadeIntoBarkeepApproaching")
 A stranger approaches...
 ...
-~goToUndertakerBar = true
 
 
 ->END

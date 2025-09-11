@@ -13,42 +13,41 @@ public class InkExternalFunctions
             }
             else
             {
-                Debug.LogWarning("Tried to play emote, but emote animator was" + 
-                "not initialized when entering dialogue mode.");
+                Debug.LogWarning("Tried to play emote, but emote animator was not initialized when entering dialogue mode.");
             }
             Debug.Log("Playing emote: " + emoteName);
         });
 
-        // New scene loading functions
+        // Scene loading functions using the new manager
         story.BindExternalFunction("loadScene", (string sceneName) => {
-            if (SceneLoader.instance != null)
+            Debug.Log("loadScene called from Ink with scene: " + sceneName);
+            if (SceneTransitionManager.instance != null)
             {
-                Debug.Log("Loading scene: " + sceneName);
-                SceneLoader.instance.LoadSceneWithTransition(sceneName);
+                SceneTransitionManager.instance.LoadSceneWithTransition(sceneName);
             }
             else
             {
-                Debug.LogError("SceneLoader instance not found!");
+                Debug.LogError("SceneTransitionManager instance not found!");
             }
         });
 
         story.BindExternalFunction("loadSceneImmediate", (string sceneName) => {
-            if (SceneLoader.instance != null)
+            Debug.Log("loadSceneImmediate called from Ink with scene: " + sceneName);
+            if (SceneTransitionManager.instance != null)
             {
-                Debug.Log("Loading scene immediately: " + sceneName);
-                SceneLoader.instance.LoadSceneImmediate(sceneName);
+                SceneTransitionManager.instance.LoadSceneImmediate(sceneName);
             }
             else
             {
-                Debug.LogError("SceneLoader instance not found!");
+                Debug.LogError("SceneTransitionManager instance not found!");
             }
         });
 
-        // Optional: Add a save game function too
+        // Save game function
         story.BindExternalFunction("saveGame", () => {
+            Debug.Log("saveGame called from Ink");
             if (DataPersistenceManager.instance != null)
             {
-                Debug.Log("Saving game from Ink dialogue");
                 DataPersistenceManager.instance.SaveGame();
             }
             else
@@ -60,7 +59,6 @@ public class InkExternalFunctions
 
     public void Unbind(Story story)
     {
-        // Unbind all functions
         story.UnbindExternalFunction("playEmote");
         story.UnbindExternalFunction("loadScene");
         story.UnbindExternalFunction("loadSceneImmediate");

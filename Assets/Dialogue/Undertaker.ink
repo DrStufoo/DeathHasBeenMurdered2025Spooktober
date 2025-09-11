@@ -73,7 +73,6 @@ Heh...
     (Yeah, I'll just banish you.)
     (Enjoy purgatory, dipshit.)
     ...
-    ~goToMainMenu = true
     ->END
 
 === OneForTheRoad ===
@@ -454,5 +453,4 @@ What do I owe ya? #sprite:undertaker_neutral
             ***[Bye]
             ->nextScene
 === nextScene ===
-    ~goToUndertakerEnding = true
     ->END

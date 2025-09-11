@@ -24,64 +24,95 @@ public class SaveSlotsMenu : Menu
         saveSlots = this.GetComponentsInChildren<SaveSlot>();
     }
 
-    private void SaveGameAndLoadSceneNewGame()
+    
+    private void LoadSceneNewGame()
     {
-        DataPersistenceManager.instance.SaveGame();
-
-        SceneManager.LoadSceneAsync("CharacterSelection");
-        Debug.Log("There were no loaded scenes, so the default was loaded");
+        // Use SceneTransitionManager instead of direct SceneManager calls
+        if (SceneTransitionManager.instance != null)
+        {
+            SceneTransitionManager.instance.LoadSceneWithTransition("CharacterSelection");
+            Debug.Log("Starting new game with transition - loading character selection");
+        }
+        else
+        {
+            // Fallback to direct loading if no transition manager
+            SceneManager.LoadSceneAsync("CharacterSelection");
+            Debug.LogWarning("SceneTransitionManager not found, loading directly");
+        }
     }
 
-    private void SaveGameAndLoadSceneLoadGame()
+    private void LoadSceneLoadGame()
     {
-        DataPersistenceManager.instance.SaveGame();
-        SceneManager.LoadSceneAsync(DataPersistenceManager.instance.GetSavedSceneName());
-        Debug.Log("There was a loaded scene: ");
-    
+        string savedScene = DataPersistenceManager.instance.GetSavedSceneName();
+        if (!string.IsNullOrEmpty(savedScene))
+        {
+            if (SceneTransitionManager.instance != null)
+            {
+                SceneTransitionManager.instance.LoadSceneWithTransition(savedScene);
+                Debug.Log("Loading saved scene with transition: " + savedScene);
+            }
+            else
+            {
+                SceneManager.LoadSceneAsync(savedScene);
+                Debug.LogWarning("SceneTransitionManager not found, loading directly");
+            }
+        }
+        else
+        {
+            // Fallback to character selection if no saved scene
+            if (SceneTransitionManager.instance != null)
+            {
+                SceneTransitionManager.instance.LoadSceneWithTransition("CharacterSelection");
+            }
+            else
+            {
+                SceneManager.LoadSceneAsync("CharacterSelection");
+            }
+            Debug.Log("No saved scene found, loading character selection");
+        }
     }
 
 
     public void OnSaveSlotClicked(SaveSlot saveSlot)
+{
+    //disable all buttons
+    DisableMenuButtons();
+    
+    //case - loading game
+    if(isLoadingGame)
     {
-        //disable all buttons
-        DisableMenuButtons();
-        
-        //case - loading game
-        if(isLoadingGame)
-        {
-            Debug.Log("Loading existing game...");
-            DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
-            SaveGameAndLoadSceneLoadGame();
-        }
-
-        // case - new game, but the save slot has data
-        else if(saveSlot.hasData)
-        {
-            
-            Debug.Log("Save slot has data, showing confirmation popup...");
-            confirmationPopupMenu.ActivateMenu(
-                "Starting a New Game with this slot will override the currently saved data. Are you sure?",
-                //function to execute if we selet 'yes'
-                () => {
-                    DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
-                    DataPersistenceManager.instance.NewGame();
-                    SaveGameAndLoadSceneNewGame();
-                },
-                //function to execute if we select 'cancel'
-                () => {
-                    this.ActivateMenu(isLoadingGame);
-                }
-            );
-        }
-        // case - new game, and the save slot has no data
-        else
-        {
-            Debug.Log("Starting NEW game in slot: " + saveSlot.GetProfileId());
-            DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
-            DataPersistenceManager.instance.NewGame();
-            SaveGameAndLoadSceneNewGame();
-        }
+        Debug.Log("Loading existing game...");
+        DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
+        LoadSceneLoadGame(); // Changed from SaveGameAndLoadSceneLoadGame()
     }
+
+    // case - new game, but the save slot has data
+    else if(saveSlot.hasData)
+    {
+        Debug.Log("Save slot has data, showing confirmation popup...");
+        confirmationPopupMenu.ActivateMenu(
+            "Starting a New Game with this slot will override the currently saved data. Are you sure?",
+            //function to execute if we select 'yes'
+            () => {
+                DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
+                DataPersistenceManager.instance.NewGame();
+                LoadSceneNewGame(); // Changed from SaveGameAndLoadSceneNewGame()
+            },
+            //function to execute if we select 'cancel'
+            () => {
+                this.ActivateMenu(isLoadingGame);
+            }
+        );
+    }
+    // case - new game, and the save slot has no data
+    else
+    {
+        Debug.Log("Starting NEW game in slot: " + saveSlot.GetProfileId());
+        DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
+        DataPersistenceManager.instance.NewGame();
+        LoadSceneNewGame(); // Changed from SaveGameAndLoadSceneNewGame()
+    }
+}
 
 
     public void OnClearClicked(SaveSlot saveSlot)

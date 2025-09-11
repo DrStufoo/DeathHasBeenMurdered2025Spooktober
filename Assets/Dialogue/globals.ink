@@ -1,4 +1,7 @@
 EXTERNAL playEmote(emoteName)
+EXTERNAL loadScene(sceneName)
+EXTERNAL loadSceneImmediate(sceneName)
+EXTERNAL saveGame()
 
 //Achievement Variables
     VAR achievement_thief = false

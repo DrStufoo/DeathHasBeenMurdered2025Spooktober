@@ -11,5 +11,4 @@ It's a Lucky Cat.
 ...An old friend gave it you.
 You remember your companion and smile.
 You feel a little better.
-~goToMWNEpilogue = true
 ->END
