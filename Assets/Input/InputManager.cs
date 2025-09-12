@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
     private bool jumpPressed = false;
     private bool interactPressed = false;
     private bool submitPressed = false;
+    private bool skipPressed = false;
 
     private static InputManager instance;
 
@@ -80,6 +81,18 @@ public class InputManager : MonoBehaviour
         } 
     }
 
+    public void SkipPressed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            skipPressed = true;
+        }
+        else if (context.canceled)
+        {
+            skipPressed = false;
+        } 
+    }
+
     public Vector2 GetMoveDirection() 
     {
         return moveDirection;
@@ -107,6 +120,13 @@ public class InputManager : MonoBehaviour
     {
         bool result = submitPressed;
         submitPressed = false;
+        return result;
+    }
+
+    public bool GetSkipPressed() 
+    {
+        bool result = skipPressed;
+        skipPressed = false;
         return result;
     }
 

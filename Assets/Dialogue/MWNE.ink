@@ -63,6 +63,7 @@ Not very often I get to see a friendly face...
 (Banish you.)
 (Yeah, that's right, I'll just banish you.)
 (Enjoy the main menu, dipshit)
+~loadScene("MainMenu")
 *[Wait no please]
     I don't care
     ->END

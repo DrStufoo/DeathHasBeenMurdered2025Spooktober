@@ -255,7 +255,7 @@ public static DialogueManager GetInstance()
         foreach (char letter in line.ToCharArray())
         {
             //if the submit button is pressed, finish the whole string of text right away
-            if (InputManager.GetInstance().GetSubmitPressed())
+        if (InputManager.GetInstance().GetSubmitPressed() || Input.GetKeyDown(KeyCode.C))
             {
                 dialogueText.maxVisibleCharacters = line.Length;
                 break;

@@ -63,6 +63,34 @@ public class DataPersistenceManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    //Added according to claude
+    private bool ShouldSaveScene(string sceneName)
+    {
+        // List of scenes that should NOT be saved
+        string[] excludedScenes = {
+            "MainMenu",
+            "Epilogue",
+            "CharacterSelection",
+            
+            // Add more scene names as needed
+        };
+
+        foreach (string excludedScene in excludedScenes)
+        {
+            if (sceneName.Equals(excludedScene, System.StringComparison.OrdinalIgnoreCase))
+            {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
+
+
+
+
+
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("OnSceneLoaded Called");
@@ -157,8 +185,8 @@ public class DataPersistenceManager : MonoBehaviour
 
             //update the current scene in our data
             Scene scene = SceneManager.GetActiveScene();
-            // DON'T save this for certain scenes, like our main menu ^^
-            if (!scene.name.Equals("MainMenu") && this.gameData != null)
+            // Only save scenes that are actual game scenes
+            if (ShouldSaveScene(scene.name))
             {
                 gameData.currentSceneName = scene.name;
             }
@@ -200,7 +228,9 @@ public class DataPersistenceManager : MonoBehaviour
 
     public bool HasGameData()
     {
-        return gameData != null;
+        // Check if we have game data AND if it contains a valid saved scene
+        return gameData != null && ShouldSaveScene(gameData.currentSceneName);
+
     }
 
     public Dictionary<string, GameData> GetAllProfilesGameData()

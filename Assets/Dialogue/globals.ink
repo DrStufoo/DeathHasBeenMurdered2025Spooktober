@@ -31,6 +31,15 @@ EXTERNAL saveGame()
         VAR hasSouvenir6 = false
         VAR hasSouvenir7 = false
         VAR hasSouvenir8 = false
+        
+        VAR hasSpokenSouvenir1 = false
+        VAR hasSpokenSouvenir2 = false
+        VAR hasSpokenSouvenir3 = false
+        VAR hasSpokenSouvenir4 = false
+        VAR hasSpokenSouvenir5 = false
+        VAR hasSpokenSouvenir6 = false
+        VAR hasSpokenSouvenir7 = false
+        VAR hasSpokenSouvenir8 = false
     
 //CSharp Variables
     VAR activateGameObject = false

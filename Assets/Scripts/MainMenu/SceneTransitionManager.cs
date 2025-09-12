@@ -36,11 +36,10 @@ public class SceneTransitionManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Only play "Start" if we came here via a transition
         if (cameFromTransition && playStartTransitionOnSceneLoad && transitionAnimator != null)
         {
             StartCoroutine(PlayStartTransition());
-            cameFromTransition = false; // Reset after playing
+            cameFromTransition = false;
         }
     }
 
@@ -48,6 +47,33 @@ public class SceneTransitionManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         transitionAnimator?.SetTrigger("Start");
+    }
+
+    // ADD THESE STATIC METHODS FOR EASY ACCESS FROM ANYWHERE
+    public static void LoadScene(string sceneName)
+    {
+        if (instance != null)
+        {
+            instance.LoadSceneWithTransition(sceneName);
+        }
+        else
+        {
+            Debug.LogError("SceneTransitionManager instance not found!");
+            SceneManager.LoadScene(sceneName);
+        }
+    }
+
+    public static void LoadSceneNoTransition(string sceneName)
+    {
+        if (instance != null)
+        {
+            instance.LoadSceneImmediate(sceneName);
+        }
+        else
+        {
+            Debug.LogError("SceneTransitionManager instance not found!");
+            SceneManager.LoadScene(sceneName);
+        }
     }
 
     public void LoadSceneWithTransition(string sceneName)
@@ -63,24 +89,15 @@ public class SceneTransitionManager : MonoBehaviour
 
     private IEnumerator TransitionToScene(string sceneName)
     {
-        // Play end transition
         if (transitionAnimator != null)
         {
             Debug.Log("Am setting the End Trigger!");
             transitionAnimator.SetTrigger("End");
         }
 
-        // Wait for transition
         yield return new WaitForSeconds(transitionDuration);
-
-        // Save game before loading
         DataPersistenceManager.instance?.SaveGame();
-
-        // Mark that the next scene load came from a transition
         cameFromTransition = true;
-
-        // Load the new scene
         SceneManager.LoadScene(sceneName);
     }
 }
- 

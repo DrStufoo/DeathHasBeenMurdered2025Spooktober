@@ -22,8 +22,6 @@ Not today.
 After all this time alone...
 
 ~playEmote("fadeIntoBarkeepApproaching")
-A stranger approaches.
-*[I am ready.]
-So you are...
-~ loadScene("Bar_Undertaker")
+A stranger approaches...
+~ loadScene("Bar_MWNE")
 ->END

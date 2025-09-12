@@ -1,11 +1,18 @@
 INCLUDE globals.ink
-#portrait:blank #layout:cg #audio:beep_1
+#portrait:MITW #layout:left #audio:beep_1 #speaker:???
 
 ->main
 
 === main ===
-~activateGameObject = false
+
+(Press Space to Continue Dialogue)
+(Press Space while typing to skip typing)
+(Press WASD and Space to select a choice)
+(Got it?)
+(Too bad)
+(Enjoy the game!)
 ~playEmote("default")
+#layout:cg
 …
 Long ago, there was a man…
 A brilliant scientist, the likes of which humanity has never seen.
@@ -13,8 +20,7 @@ Not merely a scientist, but an ambitious inventor.
 His skills would have helped countless people in the medical industry.
 …But no.
 He was determined to save lives with a more…
-Direct approach.
-~playEmote("fadeIntoLab")
+<color=\#FF0000>Direct Approach...</color>
 And so… He began his work.
 Months he hid, beneath the ground, toiling away day and night…
 He invented a device.
@@ -65,7 +71,7 @@ The elegant Barkeep spends his time in his bar.
 Waiting to serve tired travelers.
 He's a simple man, doing simple good.
 ~playEmote("fadeIntoBlackFromBarInDistance")
-but while the Barkeep simply bides his time...
+But while the Barkeep simply bides his time...
 ~playEmote("fadeIntoMarauderOverRaiders")
 The Marauder has a mission.
 A purpose.
@@ -77,7 +83,6 @@ Or perhaps he will meet a fate...
 Worse than death.
 ...
 ~ loadScene("MainMenu")
-*[I am ready]
 ...
 ...
 ->END

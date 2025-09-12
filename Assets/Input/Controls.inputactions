@@ -9,7 +9,7 @@
                     "name": "jump",
                     "type": "Button",
                     "id": "b64f28e5-6f0c-4370-9f80-2a9a33c0fe95",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -27,7 +27,7 @@
                     "name": "interact",
                     "type": "Button",
                     "id": "ea3a0e61-c665-4f6d-8816-e9ded7c03c37",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -36,7 +36,16 @@
                     "name": "submit",
                     "type": "Button",
                     "id": "5bb69b73-57ad-4641-8a8a-d98e53ab29a6",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "skip",
+                    "type": "Button",
+                    "id": "f5fcd21e-4ccc-4a88-8a96-34730792e7d5",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -167,7 +176,7 @@
                 {
                     "name": "",
                     "id": "5e7c69e4-cc4f-40b9-9448-0660917b54a9",
-                    "path": "<Keyboard>/i",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -183,6 +192,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a1552494-89ed-4246-ae09-16deee27417d",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "skip",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -72,6 +72,7 @@ Heh...
     (Banish you.)
     (Yeah, I'll just banish you.)
     (Enjoy purgatory, dipshit.)
+    ~loadScene("MainMenu")
     ...
     ->END
 
@@ -261,7 +262,7 @@ VAR indifference = 0
                 ...Not a very subtle person, are ya? #sprite:undertaker_handsoncounter
                 ...Eh, no matter.
                 ->Info
-    ++[I don't care]
+    **[I don't care]
         ...Okay. #sprite:undertaker_handsoncounter
         ~indifference = indifference + 1
         ->Info
@@ -453,4 +454,6 @@ What do I owe ya? #sprite:undertaker_neutral
             ***[Bye]
             ->nextScene
 === nextScene ===
+    ...
+    ~loadScene("Undertaker_Ending")
     ->END
