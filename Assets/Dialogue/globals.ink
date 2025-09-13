@@ -15,6 +15,16 @@ EXTERNAL saveGame()
     
 //Currency Variables
     VAR goldAmount = 0
+//Marauder Variables
+    VAR killCount = 0
+
+    VAR hasKilledEverybody = false
+    
+    VAR hasKilledNobody = true
+    
+    VAR hasKilledUndertaker = false
+    
+    VAR hasKilledScientist = false
 
 //Barkeep Conditionals
     VAR hasLooked = false
@@ -43,3 +53,7 @@ EXTERNAL saveGame()
     
 //CSharp Variables
     VAR activateGameObject = false
+    
+    
+//ThrowAway Vars
+        VAR hasDrankUndertakersDrink = false

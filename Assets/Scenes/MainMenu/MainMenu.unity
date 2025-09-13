@@ -10981,7 +10981,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3275463245979678679, guid: 699e36429131d9b4d9ab4d8231520502, type: 3}
       propertyPath: transitionDuration
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3656992301521248217, guid: 699e36429131d9b4d9ab4d8231520502, type: 3}
       propertyPath: m_Name
