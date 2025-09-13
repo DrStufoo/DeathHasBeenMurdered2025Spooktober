@@ -171,6 +171,14 @@ PrefabInstance:
       propertyPath: transitionDuration
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5007141487007735621, guid: f9f2fb4803425b041adc41faf8602e14, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5136947563348611892, guid: f9f2fb4803425b041adc41faf8602e14, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5773439623626148816, guid: f9f2fb4803425b041adc41faf8602e14, type: 3}
       propertyPath: m_Name
       value: EpilogueScene
@@ -219,6 +227,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -8.867
       objectReference: {fileID: 0}
+    - target: {fileID: 7999289287975291851, guid: f9f2fb4803425b041adc41faf8602e14, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8427947174382960797, guid: f9f2fb4803425b041adc41faf8602e14, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.7013462
@@ -257,6 +269,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8427947174382960797, guid: f9f2fb4803425b041adc41faf8602e14, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090819082615568714, guid: f9f2fb4803425b041adc41faf8602e14, type: 3}
+      propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

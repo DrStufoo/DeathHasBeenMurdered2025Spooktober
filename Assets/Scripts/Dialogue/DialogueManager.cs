@@ -19,12 +19,16 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
 
     [SerializeField] private GameObject dialoguePanel;
 
-        [SerializeField] private GameObject continueIcon;
+    [SerializeField] private GameObject continueIcon;
 
     [SerializeField] private TextMeshProUGUI dialogueText;
 
     [SerializeField] private TextMeshProUGUI displayNameText;
 
+    [Header("Memory Notice")]
+    [SerializeField] private GameObject memoryNoticePanel;
+    [SerializeField] private TextMeshProUGUI memoryNoticeText;
+    [SerializeField] private Animator memoryNoticeAnimator;
 
     [SerializeField] private Animator spriteAnimator;
     [SerializeField] private Animator portraitAnimator;
@@ -90,15 +94,18 @@ public static DialogueManager GetInstance()
     return instance;
 }
 
+
     private void Start()
     {
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
 
-        //get the kayout animator
+        // Hide memory notice at start
+        if (memoryNoticePanel != null)
+        memoryNoticePanel.SetActive(false);
+        
         layoutAnimator = dialoguePanel.GetComponent<Animator>();
 
-        //get all of the choices text
         choicesText = new TextMeshProUGUI[choices.Length];
         int index = 0;
         foreach (GameObject choice in choices)
@@ -109,6 +116,34 @@ public static DialogueManager GetInstance()
 
         InitializeAudioInfoDictionary();
     }
+
+public void ShowMemoryNotice(string characterName)
+{
+    Debug.Log("ShowMemoryNotice called with: " + characterName);
+    
+    if (memoryNoticePanel != null && memoryNoticeText != null)
+    {
+        Debug.Log("Setting text and activating panel");
+        memoryNoticeText.text = characterName + " will remember that.";
+        memoryNoticePanel.SetActive(true);
+        
+        if (memoryNoticeAnimator != null)
+        {
+            Debug.Log("Triggering Show animation");
+            memoryNoticeAnimator.SetTrigger("Show");
+        }
+        else
+        {
+            Debug.LogWarning("memoryNoticeAnimator is null!");
+        }
+    }
+    else
+    {
+        Debug.LogWarning("memoryNoticePanel or memoryNoticeText is null!");
+    }
+}
+
+
 
     private void InitializeAudioInfoDictionary()
     {
@@ -158,6 +193,15 @@ public static DialogueManager GetInstance()
         }
     }
 
+    // ADD THIS METHOD: Called by Animation Event
+    public void HideMemoryNotice()
+    {
+        if (memoryNoticePanel != null)
+        {
+            memoryNoticePanel.SetActive(false);
+        }
+    }
+
     private void Update()
     {
         //return right away if dialogue isn't playing :)
@@ -165,10 +209,10 @@ public static DialogueManager GetInstance()
         {
             return;
         }
-
-        //handle continuing to the next line in the dialogue when submit is presssed
-        if (currentStory.currentChoices.Count == 0
-            &&canContinueToNextLine && InputManager.GetInstance().GetSubmitPressed())
+    
+        //handle continuing to the next line when mouse is clicked anywhere
+        if (currentStory.currentChoices.Count == 0 
+            && canContinueToNextLine && Input.GetMouseButtonDown(1))
         {
             ContinueStory();
         }
@@ -206,7 +250,7 @@ public static DialogueManager GetInstance()
         SetCurrentAudioInfo(defaultAudioInfo.id);
     }
 
-    private void ContinueStory()
+    public void ContinueStory()
     {
     
         if (currentStory.canContinue)
@@ -255,12 +299,13 @@ public static DialogueManager GetInstance()
         //display each letter one at a time
         foreach (char letter in line.ToCharArray())
         {
-            //if the submit button is pressed, finish the whole string of text right away
-        if (InputManager.GetInstance().GetSubmitPressed() || Input.GetKeyDown(KeyCode.C))
-            {
-                dialogueText.maxVisibleCharacters = line.Length;
-                break;
-            }
+
+        //if mouse is held down, finish the whole string of text right away
+        if (Input.GetMouseButton(0)) // Changed from GetMouseButtonDown to GetMouseButton
+        {
+            dialogueText.maxVisibleCharacters = line.Length;
+            break;
+        }
             
         //check for rich txt tag, if found, add it without waiting
         if (letter == '<'|| isAddingRichTextTag)
@@ -285,8 +330,14 @@ public static DialogueManager GetInstance()
         //actions to take after the entire line has finished
         continueIcon.SetActive(true);
          DisplayChoices();
-
         canContinueToNextLine = true;
+
+        // Enable continue button (add this if using Option A above)
+        if (dialogueText.GetComponent<Button>() != null)
+        {
+            dialogueText.GetComponent<Button>().interactable = true;
+        }
+ 
     }
 
     private void PlayDialogueSound(int currentDisplayedChracterCount, char currentCharacter)
@@ -416,16 +467,6 @@ public static DialogueManager GetInstance()
         {
             choices[i].gameObject.SetActive(false);
         }
-
-        StartCoroutine(SelectFirstChoice());
-    }
-
-    private IEnumerator SelectFirstChoice()
-    {
-        //weird crap, idk man 
-        EventSystem.current.SetSelectedGameObject(null);
-        yield return new WaitForEndOfFrame();
-        EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
     }
 
     public void MakeChoice(int choiceIndex)
@@ -433,7 +474,6 @@ public static DialogueManager GetInstance()
         if (canContinueToNextLine)
         {
         currentStory.ChooseChoiceIndex(choiceIndex);
-        InputManager.GetInstance().RegisterSubmitPressed();
         ContinueStory();
         }
     }

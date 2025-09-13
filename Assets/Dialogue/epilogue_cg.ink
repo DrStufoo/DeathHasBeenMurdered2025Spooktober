@@ -5,8 +5,8 @@ INCLUDE globals.ink
 
 === main ===
 
-(Press Space to Continue Dialogue)
-(Press Space while typing to skip typing)
+(Click on things to Interact with them)
+(Click on things to Skip typing)
 (Press WASD and Space to select a choice)
 (Got it?)
 (Too bad)

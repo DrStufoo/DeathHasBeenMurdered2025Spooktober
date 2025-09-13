@@ -17,6 +17,11 @@ public class InkExternalFunctions
             }
             Debug.Log("Playing emote: " + emoteName);
         });
+        
+       // ADD THIS: Memory notice function
+        story.BindExternalFunction("showMemoryNotice", (string characterName) => {
+            DialogueManager.GetInstance().ShowMemoryNotice(characterName);
+        });
 
         // Scene loading functions using the new manager
         story.BindExternalFunction("loadScene", (string sceneName) => {
@@ -63,5 +68,6 @@ public class InkExternalFunctions
         story.UnbindExternalFunction("loadScene");
         story.UnbindExternalFunction("loadSceneImmediate");
         story.UnbindExternalFunction("saveGame");
+        story.UnbindExternalFunction("showMemoryNotice"); // ADD THIS LINE
     }
 }

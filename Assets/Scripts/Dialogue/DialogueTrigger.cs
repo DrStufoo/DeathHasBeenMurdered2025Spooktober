@@ -25,7 +25,7 @@ public class DialogueTrigger : MonoBehaviour
         if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
             visualCue.SetActive(true);
-            if (InputManager.GetInstance().GetInteractPressed())
+            if (Input.GetMouseButtonDown(0))
             {
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON, emoteAnimator);
             }

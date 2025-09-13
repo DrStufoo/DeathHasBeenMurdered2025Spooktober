@@ -12,6 +12,7 @@ There's an unconscious Morticion to tend to.
 ...So go do that.
 *[Drink the Stale beverage (Bad Idea)]
     (You drink the old beverage)
+    ~showMemoryNotice("The Developer")
     ...
     (It's horrible)
     (Of course it's horrible)
