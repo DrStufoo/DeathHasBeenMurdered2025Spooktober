@@ -5820,9 +5820,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c409592f7a246ec4ea891712a13d6fab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionAnim: {fileID: 0}
-  nextScene: MainMenu
-  transitionTimer: 5
 --- !u!4 &1392304453
 Transform:
   m_ObjectHideFlags: 0

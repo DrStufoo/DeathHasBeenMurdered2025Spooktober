@@ -3523,7 +3523,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43f9382e0986d1468ef2c2a07fb4cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingOrder: 1000
 --- !u!212 &691763524
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3647,9 +3646,9 @@ Canvas:
   m_GameObject: {fileID: 706372154}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 519420031}
-  m_PlaneDistance: 10
+  m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -8235,7 +8234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 43.00003, y: -348.0046}
+  m_AnchoredPosition: {x: 18, y: -16}
   m_SizeDelta: {x: 805.95, y: 464.37}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1722216067
@@ -8323,7 +8322,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 305.63983, z: -335.11957, w: -96.28428}
+  m_margin: {x: 26.78053, y: 1.0626769, z: 194.21924, w: 341.8244}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

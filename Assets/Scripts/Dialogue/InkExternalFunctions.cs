@@ -69,5 +69,7 @@ public class InkExternalFunctions
         story.UnbindExternalFunction("loadSceneImmediate");
         story.UnbindExternalFunction("saveGame");
         story.UnbindExternalFunction("showMemoryNotice"); // ADD THIS LINE
+
+        
     }
 }

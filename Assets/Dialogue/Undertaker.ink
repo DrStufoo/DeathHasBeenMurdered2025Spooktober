@@ -1,6 +1,7 @@
 INCLUDE globals.ink
 #layout:left #speaker:Undertaker #sprite:undertaker_handsoncounter #audio:undertaker # #portrait:undertaker_neutral
 ...
+    ~showMemoryNotice("The Undertaker")
 ...Hey there stranger.  #sprite:undertaker_neutral
 Bet you don't get a lot of gents blowing through here... #sprite:undertaker_handsoncounter
 Heh...

@@ -1,3 +1,5 @@
+EXTERNAL ToggleObjects(activate, deactivate)
+
 EXTERNAL playEmote(emoteName)
 EXTERNAL loadScene(sceneName)
 EXTERNAL loadSceneImmediate(sceneName)
