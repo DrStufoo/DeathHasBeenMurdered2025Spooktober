@@ -13,11 +13,7 @@ Deep in the wasteland, hidden within a bar...
 Is an Undertaker, drinking away his problems.
 This Undertaker has alleged connections...
 ...With the Scientist who started it all.
-
 Find the Undertaker.
-
 Make him talk.
-
-~loadScene("Marauder_Bar_Undertaker")
-...
+~showOnlyGroup("UndertakerSleeping")
 ->END

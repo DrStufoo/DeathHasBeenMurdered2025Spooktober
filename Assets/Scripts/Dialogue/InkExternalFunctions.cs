@@ -60,6 +60,26 @@ public class InkExternalFunctions
                 Debug.LogError("DataPersistenceManager instance not found!");
             }
         });
+
+        // Optional: Add this if you want to switch between groups easily
+        story.BindExternalFunction("showOnlyGroup", (string groupName) => {
+            if (string.IsNullOrEmpty(groupName))
+            {
+                Debug.LogWarning("showOnlyGroup called with empty group name");
+                return;
+            }
+            
+            if (SceneGroupManager.instance != null)
+            {
+                SceneGroupManager.instance.ShowOnlyGroup(groupName);
+            }
+            else
+            {
+                Debug.LogError("SceneGroupManager instance not found!");
+            }
+        });
+
+        
     }
 
     public void Unbind(Story story)
@@ -68,8 +88,8 @@ public class InkExternalFunctions
         story.UnbindExternalFunction("loadScene");
         story.UnbindExternalFunction("loadSceneImmediate");
         story.UnbindExternalFunction("saveGame");
-        story.UnbindExternalFunction("showMemoryNotice"); // ADD THIS LINE
+        story.UnbindExternalFunction("showMemoryNotice"); 
 
-        
+        story.UnbindExternalFunction("showOnlyGroup");
     }
 }

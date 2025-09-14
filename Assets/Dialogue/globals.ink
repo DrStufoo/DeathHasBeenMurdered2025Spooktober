@@ -1,10 +1,10 @@
-EXTERNAL ToggleObjects(activate, deactivate)
-
 EXTERNAL playEmote(emoteName)
 EXTERNAL loadScene(sceneName)
 EXTERNAL loadSceneImmediate(sceneName)
 EXTERNAL saveGame()
 EXTERNAL showMemoryNotice(characterName)
+
+EXTERNAL showOnlyGroup(groupName)
 
 //Achievement Variables
     VAR achievement_thief = false
@@ -28,6 +28,10 @@ EXTERNAL showMemoryNotice(characterName)
     VAR hasKilledUndertaker = false
     
     VAR hasKilledScientist = false
+    
+    VAR isRaiding = false
+    
+    VAR traveledWithUndertaker = false
 
 //Barkeep Conditionals
     VAR hasLooked = false
