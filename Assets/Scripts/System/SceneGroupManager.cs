@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class GameObjectGroup
 public class SceneGroupManager : MonoBehaviour
 {
     [SerializeField] private GameObjectGroup[] gameObjectGroups;
+    [SerializeField] private Animator transitionAnimator; // Assign your transition animator here
+    [SerializeField] private float transitionDuration = 1f; // Should match your scene transition duration
     
     public static SceneGroupManager instance;
 
@@ -76,8 +79,14 @@ public class SceneGroupManager : MonoBehaviour
         Debug.Log("Available groups: " + string.Join(", ", groupDictionary.Keys));
     }
 
-    // Bonus: Switch to one group and hide all others
+    // Show group with smooth transition
     public void ShowOnlyGroup(string groupName)
+    {
+        StartCoroutine(TransitionToGroup(groupName));
+    }
+
+    // Internal instant method for switching during transition
+    private void ShowOnlyGroupInstant(string groupName)
     {
         // First, deactivate all groups
         foreach (var group in gameObjectGroups)
@@ -90,5 +99,33 @@ public class SceneGroupManager : MonoBehaviour
         
         // Then activate the specific group
         ActivateGroup(groupName);
+    }
+
+    private IEnumerator TransitionToGroup(string groupName)
+    {
+        // Disable dialogue interactions during transition
+        DialogueManager.GetInstance().SetInteractionEnabled(false);
+
+        // Fade to black
+        if (transitionAnimator != null)
+        {
+            transitionAnimator.SetTrigger("End");
+        }
+
+        // Wait for fade to complete
+        yield return new WaitForSeconds(transitionDuration);
+
+        // Switch groups instantly while screen is black
+        ShowOnlyGroupInstant(groupName);
+
+        // Fade from black
+        if (transitionAnimator != null)
+        {
+            transitionAnimator.SetTrigger("Start");
+        }
+
+        // Wait for fade in to complete, then re-enable interactions
+        yield return new WaitForSeconds(transitionDuration - 2f); // Enable interactions 0.5 seconds early
+        DialogueManager.GetInstance().SetInteractionEnabled(true);
     }
 }

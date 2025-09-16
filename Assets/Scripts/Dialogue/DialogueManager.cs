@@ -33,6 +33,9 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
     [SerializeField] private Animator spriteAnimator;
     [SerializeField] private Animator portraitAnimator;
 
+    // Add this property near the top of your DialogueManager class:
+    public bool interactionsEnabled = true;
+
     private Animator layoutAnimator;
 
     [Header("Choices UI")]
@@ -193,6 +196,11 @@ public void ShowMemoryNotice(string characterName)
         }
     }
 
+    public void SetInteractionEnabled(bool enabled)
+    {
+     interactionsEnabled = enabled;
+    }
+
     // ADD THIS METHOD: Called by Animation Event
     public void HideMemoryNotice()
     {
@@ -204,12 +212,12 @@ public void ShowMemoryNotice(string characterName)
 
     private void Update()
     {
-        //return right away if dialogue isn't playing :)
-        if(!dialogueIsPlaying)
+        //return right away if dialogue isn't playing or interactions are disabled
+        if(!dialogueIsPlaying || !interactionsEnabled)
         {
             return;
         }
-    
+
         //handle continuing to the next line when mouse is clicked anywhere
         if (currentStory.currentChoices.Count == 0 
             && canContinueToNextLine && Input.GetMouseButtonDown(1))

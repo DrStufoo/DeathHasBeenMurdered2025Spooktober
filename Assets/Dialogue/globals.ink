@@ -5,7 +5,6 @@ EXTERNAL saveGame()
 EXTERNAL showMemoryNotice(characterName)
 
 EXTERNAL showOnlyGroup(groupName)
-
 //Achievement Variables
     VAR achievement_thief = false
 
@@ -38,7 +37,7 @@ EXTERNAL showOnlyGroup(groupName)
     VAR hasTalkedToBarkeepOnce = false
     VAR hasSung = false
     VAR noSaid = 0
-    
+
     //Souevinirs
         VAR hasSouvenir1 = true
         VAR hasSouvenir2 = false

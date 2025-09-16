@@ -421,7 +421,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Marauder_Bar
+          m_StringArgument: BarFirst
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &141395344
@@ -2112,8 +2112,8 @@ RectTransform:
   - {fileID: 1478510041}
   - {fileID: 1696458840}
   - {fileID: 1360244015}
-  - {fileID: 101980366}
   - {fileID: 1196482204}
+  - {fileID: 101980366}
   m_Father: {fileID: 1412570231}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3040,7 +3040,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Epilogue_Barkeep
+          m_StringArgument: Undertaker
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1066945702
@@ -4550,6 +4550,7 @@ MonoBehaviour:
   memoryNoticeAnimator: {fileID: 0}
   spriteAnimator: {fileID: 0}
   portraitAnimator: {fileID: 1560259074}
+  interactionsEnabled: 1
   choices:
   - {fileID: 0}
   - {fileID: 0}

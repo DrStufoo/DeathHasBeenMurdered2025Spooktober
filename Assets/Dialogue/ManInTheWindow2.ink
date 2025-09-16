@@ -1,0 +1,9 @@
+INCLUDE globals.ink
+#layout:left #portrait:MITW #audio:beep_1 #speaker:???
+...
+->main
+=== main ===
+Don't...
+...
+...Don't think about it.
+->END

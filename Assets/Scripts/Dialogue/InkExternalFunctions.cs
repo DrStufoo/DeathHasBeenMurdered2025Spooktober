@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using Ink.Runtime;
 
@@ -61,7 +62,7 @@ public class InkExternalFunctions
             }
         });
 
-        // Optional: Add this if you want to switch between groups easily
+        // Group switching with transition
         story.BindExternalFunction("showOnlyGroup", (string groupName) => {
             if (string.IsNullOrEmpty(groupName))
             {
@@ -78,8 +79,6 @@ public class InkExternalFunctions
                 Debug.LogError("SceneGroupManager instance not found!");
             }
         });
-
-        
     }
 
     public void Unbind(Story story)
@@ -89,7 +88,6 @@ public class InkExternalFunctions
         story.UnbindExternalFunction("loadSceneImmediate");
         story.UnbindExternalFunction("saveGame");
         story.UnbindExternalFunction("showMemoryNotice"); 
-
         story.UnbindExternalFunction("showOnlyGroup");
     }
 }
