@@ -3,6 +3,7 @@ INCLUDE globals.ink
 ->main
 === main ===
 …
+~ CurrentCharacter = 1
 Far from what's left of civilization...
 Hidden by the wasteland...
 ~playEmote("fadeIntoBarInDistance")

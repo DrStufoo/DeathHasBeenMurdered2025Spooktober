@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!95 &421905286 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3666645053742259286, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+  m_PrefabInstance: {fileID: 1965049628}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1965049628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127,6 +132,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 899133658698161865, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_text
+      value: 'Barkeep Will Remember that... '
+      objectReference: {fileID: 0}
+    - target: {fileID: 899133658698161865, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_margin.x
+      value: -328.05875
+      objectReference: {fileID: 0}
+    - target: {fileID: 899133658698161865, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 1593835519
+      objectReference: {fileID: 0}
     - target: {fileID: 1199695900623145936, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: gameObjectGroups.Array.data[1].groupName
       value: SoldierServe
@@ -175,9 +192,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3126013169996797820, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: spriteAnimator
+      value: 
+      objectReference: {fileID: 421905286}
     - target: {fileID: 4352018298657638597, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_Name
       value: SoldierServe
+      objectReference: {fileID: 0}
+    - target: {fileID: 4352018298657638597, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066287022932439419, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7095509330160633381, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7214411803590720033, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_Name

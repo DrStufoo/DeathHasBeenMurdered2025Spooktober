@@ -6,14 +6,13 @@ using UnityEngine;
 public class GameObjectGroup
 {
     public string groupName;
-    public GameObject groupObject;  // The empty GameObject that contains everything
+    public GameObject groupObject;
 }
 
 public class SceneGroupManager : MonoBehaviour
 {
     [SerializeField] private GameObjectGroup[] gameObjectGroups;
-    [SerializeField] private Animator transitionAnimator; // Assign your transition animator here
-    [SerializeField] private float transitionDuration = 1f; // Should match your scene transition duration
+    [SerializeField] private float transitionDuration = 1f;
     
     public static SceneGroupManager instance;
 
@@ -21,14 +20,15 @@ public class SceneGroupManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        instance = this;
+        InitializeGroups();
+    }
+
+    private void OnDestroy()
+    {
+        if (instance == this)
         {
-            instance = this;
-            InitializeGroups();
-        }
-        else
-        {
-            Destroy(gameObject);
+            instance = null;
         }
     }
 
@@ -79,16 +79,13 @@ public class SceneGroupManager : MonoBehaviour
         Debug.Log("Available groups: " + string.Join(", ", groupDictionary.Keys));
     }
 
-    // Show group with smooth transition
     public void ShowOnlyGroup(string groupName)
     {
         StartCoroutine(TransitionToGroup(groupName));
     }
 
-    // Internal instant method for switching during transition
     private void ShowOnlyGroupInstant(string groupName)
     {
-        // First, deactivate all groups
         foreach (var group in gameObjectGroups)
         {
             if (group.groupObject != null)
@@ -97,25 +94,33 @@ public class SceneGroupManager : MonoBehaviour
             }
         }
         
-        // Then activate the specific group
         ActivateGroup(groupName);
     }
 
     private IEnumerator TransitionToGroup(string groupName)
     {
-        // Disable dialogue interactions during transition
         DialogueManager.GetInstance().SetInteractionEnabled(false);
+
+        // Get the animator from the persistent SceneTransitionManager
+        Animator transitionAnimator = null;
+        if (SceneTransitionManager.instance != null)
+        {
+            // We need to add a getter for the animator in SceneTransitionManager
+            transitionAnimator = SceneTransitionManager.instance.GetTransitionAnimator();
+        }
 
         // Fade to black
         if (transitionAnimator != null)
         {
             transitionAnimator.SetTrigger("End");
         }
+        else
+        {
+            Debug.LogWarning("No transition animator found!");
+        }
 
-        // Wait for fade to complete
         yield return new WaitForSeconds(transitionDuration);
 
-        // Switch groups instantly while screen is black
         ShowOnlyGroupInstant(groupName);
 
         // Fade from black
@@ -124,8 +129,7 @@ public class SceneGroupManager : MonoBehaviour
             transitionAnimator.SetTrigger("Start");
         }
 
-        // Wait for fade in to complete, then re-enable interactions
-        yield return new WaitForSeconds(transitionDuration - 2f); // Enable interactions 0.5 seconds early
+        yield return new WaitForSeconds(transitionDuration - 2f);
         DialogueManager.GetInstance().SetInteractionEnabled(true);
     }
 }

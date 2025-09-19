@@ -4,36 +4,50 @@ INCLUDE globals.ink
 ->main
 === main ===
 He's asleep.
+...Bloody alcoholic.
+
+You need information from him.
+Or maybe...<color=\#FF0000>Off</color> of him?
+Who's to say we can't pull the knowledge of his corpse?
+Your call...
 ->Choice
 === Choice ===
 What will you do?
 *[Interrogate Him]
-    ->Talking
     You decide to wake him up, sparing some blood.
     (Your Valiance has increased!)
+    ~notification("Your Valiance is {valiance}!")
     (To check your Morality Stats, press "Escape")
+    **[Alright]
+    ->Talking
 
 *[Pit-Pocket Him]
-    ->Dossier
     You decide to Pit-Pocket him.
-    (You try not to wake him)
+    No blood shed, no friendships made.
+    ~notification("Your Valiance was not affect by this...")
+    (To check your morality stats, press "Escape")
+    **[Alright]
+    ~notification("You found a dossier!")
     ...
-    (You've gained a Dossier!)
-
-*["Neutralize Him"]
+    You can work with this...
     ->Dossier
+*[Strangle him]
     You decide to strike first.
     Ask questions later.
     ...
+    ~notification("You're Sadism and Kill-Count has increased...")
     ~hasKilledNobody = false
     ~killCount = killCount + 1
-    He's not dead, but he's close.
+    He's not dead...
+    ...But he certainly wishes he was.
     You decide to loot his body.
     ...
-    (You've gained a Dossier!)
-    
+    ~notification("You found a dossier!")
+    **[Alright]
+    You can work with this...
+    ->Dossier
 === Dossier ===
-    This should have activated and deactivated these things.
+    ...
     ~showOnlyGroup("Dossier")
     ->END
 

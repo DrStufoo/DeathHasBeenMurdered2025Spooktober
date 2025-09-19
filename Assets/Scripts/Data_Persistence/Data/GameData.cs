@@ -12,6 +12,12 @@ public class GameData
     public int sadism = 0;
     public int valiance = 0;
 
+    // Character tracking
+    public int currentCharacter = 0;
+    public int barkeep_LevelsCompleted = 0;
+    public int barkeep_TotalLevels = 5;
+    public int marauder_LevelsCompleted = 0;
+    public int marauder_TotalLevels = 7;
     public string currentSceneName;
 
     public string globalVariablesStateJson;
@@ -28,27 +34,27 @@ public class GameData
         this.insanity = 0;
         this.sadism = 0;
         this.valiance = 0;
+    
+        this.currentCharacter = 0;
+        this.barkeep_LevelsCompleted = 0;
+        this.barkeep_TotalLevels = 5;
+        this.marauder_LevelsCompleted = 0;
+        this.marauder_TotalLevels = 7;
     }
-
-    //TO-DO Create an int variable to base completion on :D
    
-    //public int GetPercentageComplete()
-    //{
-    //    int totalCollected = 0;
-    //    foreach (bool collcted in coinsCollected.Values)
-    //        {
-    //           if (collected)
-    //            {
-    //                totalCollected++;
-    //            }
-    //        }
-        
-        //ensure we don't divide by 0 when calculating the percentage
-       // int percentageCompleted = -1;
-       // if (coinsCollected.Count != 0)
-       // {
-       //     percentageCompleted =(totalCollected * 100 / coinsCollected.Count);
-       // }
-       // return percentageCompleted;
-    //}
+    public int GetPercentageComplete()
+    {
+        if (currentCharacter == 1)
+        {
+            if (barkeep_TotalLevels == 0) return 0;
+            return (barkeep_LevelsCompleted * 100 / barkeep_TotalLevels);
+        }
+        else if (currentCharacter == 2)
+        {
+            if (marauder_TotalLevels == 0) return 0;
+            return (marauder_LevelsCompleted * 100 / marauder_TotalLevels);
+        }
+        return 0;
+    }
 }
+

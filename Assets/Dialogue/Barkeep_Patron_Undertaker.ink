@@ -1,7 +1,11 @@
 INCLUDE globals.ink
-#layout:left #speaker:Undertaker #sprite:undertaker_handsoncounter #audio:undertaker # #portrait:undertaker_neutral
+#layout:left #speaker:Undertaker #sprite:undertaker_handsoncounter #audio:undertaker # #portrait:undertaker
 ...
-    ~showMemoryNotice("The Undertaker")
+~notification("The Undertaker has arrived...")
+
+~Barkeep_LevelsCompleted = 1
+
+
 ...Hey there stranger.  #sprite:undertaker_neutral
 Bet you don't get a lot of gents blowing through here... #sprite:undertaker_handsoncounter
 Heh...
@@ -381,6 +385,13 @@ What would you suggest I do?  #sprite:undertaker_neutral
     Do you know how HARD IT IS. 
     TO GET RID OF DEAD MEN.
     THAT ARE STILL ALIVE? #sprite:undertaker_neutral
+    
+    Like, just a few weeks ago.
+    Some sick little girl with a bow...
+    ...Threw herself off a building!
+    DO YOU KNOW WHAT HAPPENS TO A BODY.
+    AFTER IT PLUMMETS A HUNDRED FEET?
+    IT DOESN'T DIE!
     IT'S...
     ...#sprite:undertaker_handsoncounter
     ...Shove it all to 'ell. #sprite:undertaker_hand_on_head

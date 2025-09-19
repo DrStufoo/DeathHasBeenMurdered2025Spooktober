@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using Ink.Runtime;
 
@@ -19,9 +18,9 @@ public class InkExternalFunctions
             Debug.Log("Playing emote: " + emoteName);
         });
         
-       // ADD THIS: Memory notice function
-        story.BindExternalFunction("showMemoryNotice", (string characterName) => {
-            DialogueManager.GetInstance().ShowMemoryNotice(characterName);
+        // Notification function
+        story.BindExternalFunction("notification", (string message) => {
+            DialogueManager.GetInstance().ShowNotification(message);
         });
 
         // Scene loading functions using the new manager
@@ -62,7 +61,7 @@ public class InkExternalFunctions
             }
         });
 
-        // Group switching with transition
+        // UPDATED: Group switching with transition
         story.BindExternalFunction("showOnlyGroup", (string groupName) => {
             if (string.IsNullOrEmpty(groupName))
             {
@@ -70,13 +69,15 @@ public class InkExternalFunctions
                 return;
             }
             
-            if (SceneGroupManager.instance != null)
+            // Find the SceneGroupManager in the current scene
+           SceneGroupManager sceneGroupManager = UnityEngine.Object.FindAnyObjectByType<SceneGroupManager>();
+            if (sceneGroupManager != null)
             {
-                SceneGroupManager.instance.ShowOnlyGroup(groupName);
+                sceneGroupManager.ShowOnlyGroup(groupName);
             }
             else
             {
-                Debug.LogError("SceneGroupManager instance not found!");
+                Debug.LogError("SceneGroupManager not found in current scene!");
             }
         });
     }
@@ -87,7 +88,7 @@ public class InkExternalFunctions
         story.UnbindExternalFunction("loadScene");
         story.UnbindExternalFunction("loadSceneImmediate");
         story.UnbindExternalFunction("saveGame");
-        story.UnbindExternalFunction("showMemoryNotice"); 
+        story.UnbindExternalFunction("notification");
         story.UnbindExternalFunction("showOnlyGroup");
     }
 }

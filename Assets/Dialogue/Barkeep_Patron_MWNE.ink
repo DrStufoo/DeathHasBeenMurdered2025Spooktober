@@ -1,11 +1,11 @@
 INCLUDE globals.ink
-#layout:left #speaker:The Man With No Eyes #sprite:MWNE_neutral #audio:beep_1 # #portrait:MWNEPortrait
-...
+#layout:left #speaker:The Man With No Eyes #sprite:MWNE_neutral #audio:beep_1
+... #portrait:marauder
 ->Intro
 === Intro ===
 ...Is someone there?
 *[I'm here]
-
+        ~notification("You have revealed yourself...")
         Oh, thank goodness! #speaker:The Man With No Eyes
         It's good to see another face! :D
             ***[Doesn't look like you see much of anything...]
@@ -82,25 +82,25 @@ INCLUDE globals.ink
                     
 === Drink ===
 *[Whiskey]
-    Oh um...
-    That's a bit strong for me.
+    Oh um... #sprite:MWNE_sad
+    That's a bit strong for me. #sprite:MWNE_neutral
     Could I have just a small shot...
-    ...Please?
+    ...Please? #sprite:MWNE_smiling
     **[Good enough for me...] 
     ->Drinking
 *[Wine]
-    Oh, wine?
-    ...That's really nice.
+    Oh, wine? #sprite:MWNE_sad
+    ...That's really nice. #sprite:MWNE_smiling
     Could I just have a small glass?
-    ...Please?
+    ...Please? #sprite:MWNE_sad
     **[Alright]   
     ->Drinking
     
 *[Water]
-    Oh, you have water here? :0
-    I'll um... 
+    Oh, you have water here? :0 #sprite:MWNE_smiling
+    I'll um...  #sprite:MWNE_sad
     Have one...
-    ...Please?
+    ...Please? #sprite:MWNE_smiling
     **[Good choice choice] 
     ->Drinking
 

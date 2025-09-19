@@ -2,9 +2,17 @@ EXTERNAL playEmote(emoteName)
 EXTERNAL loadScene(sceneName)
 EXTERNAL loadSceneImmediate(sceneName)
 EXTERNAL saveGame()
-EXTERNAL showMemoryNotice(characterName)
-
+EXTERNAL notification(characterName)
 EXTERNAL showOnlyGroup(groupName)
+
+
+//Progression Variables
+    VAR CurrentCharacter = 0
+    VAR Barkeep_LevelsCompleted = 0
+    VAR Barkeep_TotalLevels = 5
+    VAR Marauder_LevelsCompleted = 0  
+    VAR Marauder_TotalLevels = 7
+    
 //Achievement Variables
     VAR achievement_thief = false
 

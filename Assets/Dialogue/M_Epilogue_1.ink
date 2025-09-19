@@ -3,6 +3,7 @@ INCLUDE globals.ink
 ->main
 === main ===
 ...
+~ CurrentCharacter = 2
 For decades, you've been trying to reclaim your death.
 For years, you've been tracking an Undertaker.
 For months, you've been getting closer and closer.

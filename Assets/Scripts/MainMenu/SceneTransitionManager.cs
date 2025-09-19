@@ -100,4 +100,10 @@ public class SceneTransitionManager : MonoBehaviour
         cameFromTransition = true;
         SceneManager.LoadScene(sceneName);
     }
+
+    public Animator GetTransitionAnimator() 
+    {
+        return transitionAnimator;
+    }
+
 }

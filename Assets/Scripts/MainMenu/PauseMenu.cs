@@ -9,29 +9,50 @@ using TMPro;
 public class PauseMenu : Menu
 {
     [Header("Components")]
-
     [SerializeField] private Button saveQuitButton;
     [SerializeField] private Button backToGameButton;
+
+    // UPDATED METHOD
+    public void SaveQuitButton()
+    {
+        // Save the game
+        if (DataPersistenceManager.instance != null)
+        {
+            DataPersistenceManager.instance.SaveGame();
+        }
+        
+        // Resume time before loading scene
+        Time.timeScale = 1f;
+        
+        // Load main menu with transition
+        if (SceneTransitionManager.instance != null)
+        {
+            SceneTransitionManager.instance.LoadSceneWithTransition("MainMenu");
+        }
+        else
+        {
+            // Fallback if no transition manager
+            SceneManager.LoadScene("MainMenu");
+        }
+    }
 
     public void ActivateMenu(string displayText, UnityAction confirmAction, UnityAction cancelAction)
     {
         this.gameObject.SetActive(true);
 
-
-        //removes any existing listeners just to make sure there aren't any previous ones hanging around
-        //note - this only removes listeners added through code
+        // Remove listeners
         saveQuitButton.onClick.RemoveAllListeners();
         backToGameButton.onClick.RemoveAllListeners();
 
-        //assign the onClick listeners
+        // Assign the onClick listeners
         backToGameButton.onClick.AddListener(() =>{
             DeactivateMenu();
             confirmAction();
         });
+        
+        // USE THE NEW METHOD HERE
         saveQuitButton.onClick.AddListener(() =>{
-            DeactivateMenu();
-            SceneManager.LoadSceneAsync("MainMenu"); 
-            confirmAction();
+            SaveQuitButton();
         });    
     }
 

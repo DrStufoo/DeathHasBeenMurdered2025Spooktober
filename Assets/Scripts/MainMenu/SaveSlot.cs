@@ -46,7 +46,7 @@ public class SaveSlot : MonoBehaviour
             clearButton.gameObject.SetActive(true);
 
             //TO-DO Use this to get completed percentage :D
-            //percentageCompleteText.text = data.GetPercentageComplete() + "% COMPLETE";
+            percentageCompleteText.text = data.GetPercentageComplete() + "% COMPLETE";
             valianceText.text = "Valiance: " + data.valiance;
         }
     }

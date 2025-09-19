@@ -120,29 +120,17 @@ public static DialogueManager GetInstance()
         InitializeAudioInfoDictionary();
     }
 
-public void ShowMemoryNotice(string characterName)
+public void ShowNotification(string message)
 {
-    Debug.Log("ShowMemoryNotice called with: " + characterName);
-    
     if (memoryNoticePanel != null && memoryNoticeText != null)
     {
-        Debug.Log("Setting text and activating panel");
-        memoryNoticeText.text = characterName + " will remember that.";
+        memoryNoticeText.text = message;
         memoryNoticePanel.SetActive(true);
         
         if (memoryNoticeAnimator != null)
         {
-            Debug.Log("Triggering Show animation");
             memoryNoticeAnimator.SetTrigger("Show");
         }
-        else
-        {
-            Debug.LogWarning("memoryNoticeAnimator is null!");
-        }
-    }
-    else
-    {
-        Debug.LogWarning("memoryNoticePanel or memoryNoticeText is null!");
     }
 }
 
