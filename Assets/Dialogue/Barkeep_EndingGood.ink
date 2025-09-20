@@ -3,13 +3,13 @@ INCLUDE globals.ink
 ->main
 === main ===
 And so, our story ends...
-~playEmote("fadeIntoBarInDistance")
-
 You gained a total of {valiance} Valiance!
 You also gained a total of {sadism} Sadism!
 
-And so, the Barkeep adopted the child.
-And, in the wasteland, lived the Barkeep and the Girl.
+~playEmote("fadeIntoBarkeepWithGirl")
+And thus, the Barkeep joined the child.
+For the first time an eternity, he stepped foot out out of his lonely bar.
+And, in the wasteland, were the Barkeep and the Girl.
 
 Together for days.
 Together for Weeks.
@@ -18,15 +18,7 @@ Together for Years.
 
 But... 
 Never alone.
-
-~playEmote("fadeIntoBlackFromBarInDistance")
-
-(Congratulations!)
-(You have finished the Barkeep's route)
-(Thank you so much for playing :D )
-(If you haven't yet, check out the Marauder's route, for several ndings)
-(And A C T I O N ! )
-(Bye)
-
+...
+...
 ~loadScene("MainMenu")
 ->END

@@ -152,6 +152,14 @@ PrefabInstance:
       propertyPath: inkJSON
       value: 
       objectReference: {fileID: 4900000, guid: 5af35d56e0804614481ebce6f77b6bda, type: 3}
+    - target: {fileID: 2237732457285458918, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237732457285458918, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.02
+      objectReference: {fileID: 0}
     - target: {fileID: 2244554503770853481, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 475.99054
@@ -192,6 +200,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2583441788848412080, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3126013169996797820, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: spriteAnimator
       value: 
@@ -204,6 +216,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5882558143682784601, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2855909287889138777, guid: d89af9fbcf36e6c41b0263f139126309, type: 3}
     - target: {fileID: 6066287022932439419, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_IsActive
       value: 1

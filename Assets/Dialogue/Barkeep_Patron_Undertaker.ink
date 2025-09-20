@@ -11,7 +11,6 @@ Bet you don't get a lot of gents blowing through here... #sprite:undertaker_hand
 Heh...
 
 *[Can I get you a drink?]
-    ->End
     Love one...  #sprite:undertaker_neutral
     **[What'll it be?]
     Eh... I'm not sure...   #sprite:undertaker_adjust1

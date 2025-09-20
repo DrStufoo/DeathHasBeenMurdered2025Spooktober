@@ -428,6 +428,8 @@ public void ShowNotification(string message)
                     break;
                 case LAYOUT_TAG:
                     layoutAnimator.Play(tagValue);
+                    // Force TextMeshPro to update
+                    StartCoroutine(ForceTextUpdate());
                     break;
                 case AUDIO_TAG:
                     SetCurrentAudioInfo(tagValue);
@@ -438,6 +440,21 @@ public void ShowNotification(string message)
             }
         }
     }
+
+    private IEnumerator ForceTextUpdate()
+    {
+        yield return null; // Wait one frame
+        
+        // Store current text
+        string currentText = dialogueText.text;
+        
+        // Force complete refresh
+        dialogueText.enabled = false;
+        dialogueText.enabled = true;
+        dialogueText.SetText(currentText);
+        dialogueText.ForceMeshUpdate();
+    }
+
 
     private void DisplayChoices()
     {

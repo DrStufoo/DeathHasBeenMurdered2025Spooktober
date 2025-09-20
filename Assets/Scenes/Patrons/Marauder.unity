@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 2237732457285458918, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.905
+      objectReference: {fileID: 0}
     - target: {fileID: 2244554503770853481, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 475.99054
@@ -202,6 +206,10 @@ PrefabInstance:
     - target: {fileID: 7214411803590720033, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_Name
       value: Marauder
+      objectReference: {fileID: 0}
+    - target: {fileID: 7214411803590720033, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8419956471939533236, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_Name

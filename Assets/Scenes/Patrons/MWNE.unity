@@ -766,6 +766,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3097180174794576568, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: inkJSON
+      value: 
+      objectReference: {fileID: 4900000, guid: e388a8bb05ba69c47b677c5eec970dfd, type: 3}
     - target: {fileID: 3126013169996797820, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: spriteAnimator
       value: 

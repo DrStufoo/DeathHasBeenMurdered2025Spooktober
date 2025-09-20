@@ -1,5 +1,5 @@
 INCLUDE globals.ink
-#layout:left #speaker:Little Girl #sprite:MWNE_neutral #audio:beep_1 # #portrait:default
+#layout:left #speaker:Little Girl #sprite:girl_neutral1 #audio:beep_1 # #portrait:default
 ...
 ->TooLow
 
@@ -26,7 +26,7 @@ What's your name? :)
     Barkeep?
     That's a silly name!
     I'll call you...
-    Jack. :D
+    Mister! :D
     **[Alright]
         ->Main
         
@@ -38,7 +38,7 @@ What's your name? :)
     You don't remember your name? :0
     That's sad...
     I'll call you...
-    Jack. :D
+    Mister! :D
     **[Alright]
         ->Main
         
