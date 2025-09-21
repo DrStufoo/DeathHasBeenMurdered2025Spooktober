@@ -6,15 +6,10 @@ INCLUDE globals.ink
 === main ===
 (Right-Click to Continue Dialogue)
 (Left-Click to Skip typing)
-(Press W+D and Space to select a choice)
+(Press buttons to choose them)
 (Got it?)
-*[Yes]
-    (Wonderful)
-    (Enjoy the game!)
-    ->actual
-*[No]
-    (Too bad)
-    (Enjoy the game!)
+(Too bad)
+(Enjoy the game!)
     ->actual
 === actual ===    
 ~playEmote("default")

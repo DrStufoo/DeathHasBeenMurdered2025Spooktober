@@ -4,10 +4,9 @@ INCLUDE globals.ink
 ->TooLow
 
 === TooLow ===
-...
 Egh!
 ...
-...Hello?
+...Hello? 
 *[Can I... Help you?]
     Eh!
     ...
@@ -18,6 +17,11 @@ Egh!
         ***[...]
         ->Intro
 *[Ignore]
+    ...
+    (You ignore her)
+    ~notification("The Girl has been ignored")
+    ...
+    ...
     ->TooLow
 === Intro ===
 I'm Phaelum.

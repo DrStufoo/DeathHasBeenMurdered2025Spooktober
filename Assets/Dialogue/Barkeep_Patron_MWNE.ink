@@ -1,6 +1,6 @@
 INCLUDE globals.ink
 #layout:left #speaker:The Man With No Eyes #sprite:MWNE_neutral #audio:beep_1
-... #portrait:marauder
+... #portrait:mwne
 ->Intro
 === Intro ===
 ...Hello?  #sprite:MWNE_pointing
@@ -487,19 +487,17 @@ What do you think? #sprite:MWNE_neutral
 (Yeah, that's right, I'll just banish you.)
 (Enjoy the main menu, dipshit)
 ~loadScene("MainMenu")
+->END
 
-*[Wait no please]
-    I don't care
-    ->END
 
 === End ===
     Thanks for the drink... #sprite:MWNE_pointing_happy
     Here, take this.
     I know, it's not much, but... #sprite:MWNE_pointing
     It's was always a lot of fun for me.#sprite:MWNE_pointing_happy
-    *[Good-Bye]
-    (You Have Gained a Souvenir: Rube Cube!) #sprite:default
+    I'll see ya around...
+    (You Gained: Rube Cube!) #sprite:default
     ~hasSouvenir3 = true
-    **[View Playthrough]
+    ...
     ~loadScene("Soldier")
     ->END

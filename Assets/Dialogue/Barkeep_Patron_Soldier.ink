@@ -227,10 +227,7 @@ Do you really think so? #sprite:soldier_curious
     Next time someone gives you trouble, you'll be ready! >:D #sprite:soldier_angry
     ~notification("You gained a souvenir: Questionable Explosive")
     ~hasSouvenir4 = true
-    ...I'll be seeing you...
-        *[Bye] #sprite:default
-        (The Soldier is gone)
+    ...I'll be seeing you...  #sprite:default
         ...
-        **[Continue the game]
         ~loadScene("Marauder")
         ->END

@@ -445,11 +445,9 @@ What do I owe ya? #sprite:undertaker_neutral
     ~hasSouvenir2 = true
     I'll be seeing ya around, then. #sprite:undertaker_leaving #speaker:undertaker
     ...Maybe. #sprite:default
-    **[Bye]
-    (You're Valiance has increased!)
-    ~valiance = valiance + 1
-        ***[View Playthrough]
-        ->nextScene
+    ...
+    ~loadScene("MWNE")
+    ->END
 *[What do you have?]
     On me? #sprite:undertaker_handsoncounter
     ...Not much. #sprite:undertaker_neutral
@@ -463,9 +461,6 @@ What do I owe ya? #sprite:undertaker_neutral
         Appreciate it, mate. #sprite:undertaker_adjust1
         I'll be seeing you around. #sprite:undertaker_leaving
         Try to stay in one piece. #default
-            ***[Bye]
-            ->nextScene
-=== nextScene ===
-    ...
-    ~loadScene("MWNE")
-    ->END
+        ...
+        ~loadScene("MWNE")
+        ->END

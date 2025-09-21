@@ -26,7 +26,6 @@ But.
 This one seems...
 ~playEmote("fadeIntoMarauderOverRaiders")
 ...Familiar?
-
-*[Continue]
+...
 ~ showOnlyGroup("MarauderServe")
 ->END
