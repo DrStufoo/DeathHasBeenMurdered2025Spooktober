@@ -1,22 +1,30 @@
 INCLUDE globals.ink
-#layout:right #portrait:Undertaker #audio:beep_1 #speaker:Undertaker
-...
-->Handoff
+#layout:left #portrait:Undertaker #audio:undertaker #speaker:The Undertaker
 
-=== Handoff ===
-Do you have it?
-*[Yes]
-    ->Guide
-*[Give me the info first]
-    No.
-    ->Handoff
-=== Guide ===
-Oh, it's beautiful...
-...Now for my end of the bargain.
-I know where he is.
-Or at least, was...
-But he doesn't deal kindly with visitors...
-*[I'll be fine]
-~traveledWithUndertaker = true
-~loadScene("Laboratory")
-->END
+So...
+...Do you have it?
+
+*[(Give him the necklace)]
+    Oh, it's beautiful...
+    The wasteland will be far safer with those...
+    ...Undesirables out of the way.
+    Good work.
+    
+    ...Now for my end of the bargain.
+    
+    The location of the Scientist...
+    I know where he is.
+    I used to uh.
+    "Dispose" of his soiled Test Subjects.
+    I'll get you to his door-step.
+    Be careful though.
+    He doesn't deal very kindly with visitors...
+    **[I'll be fine]
+        Good enough for me...
+        Let's get going.
+        This is gonna take a uh.
+        LONG time.
+        ...
+        ~traveledWithUndertaker = true
+        ~loadScene("Laboratory")
+        ->END

@@ -1,38 +1,112 @@
 INCLUDE globals.ink
 #portrait:blank #layout:cg #audio:beep_1
-...
-->Branch
-
-
-=== Branch ===
+(...)
+~playEmote("MarauderOverRaiders")
 {isRaiding:->Heist|->Discovery}
-
 === Heist ===
-~playEmote("MarauderOverRaiders")
-You've finally found the Raider Camp.
-There's gotta be something here valuable...
-Sneak into the Leader's tent.
-Don't worry, they're all drunk anyway.
-~showOnlyGroup("HeistPlan")
-->END
 
+(After...)
+
+(...Some difficulty)
+
+(You've found the Raider camp)
+
+(The midnight hour is close at hand)
+
+(They're probably drunk)
+
+(Easiest sabotage you'll ever rig...)
+
+(...Unless)
+
+(You didn't WANT to be a genocidal maniac)
+
+(You could just sneak in, and steal the necklace)
+
+(Spare some blood)
+
+(What will you do?)
+
+*[Burn it all down]
+
+    (You decide to scorch these hooligans)
+    
+    (Sneak behind the camp)
+    
+    (Find something...)
+    
+    (Flammable)
+    
+    (...)
+        ~showOnlyGroup("Burn")
+        ->END
+    
+*[Steal the necklace]
+    ~notification("The fates will remember this...")
+    (You decide to merely steal the necklace)
+    
+    (Sparing some blood)
+    
+    (Sneak into the Leader's tent)
+    
+    (Try not to get caught...)
+    
+    (...)
+        ~showOnlyGroup("Heist")
+        ->END
+        
 === Discovery ===
-~playEmote("MarauderOverRaiders")
-ALERT!
-While travelling to the Scientist alleged location, you've come into contact with a band of Raiders...
-Raiders are dangerous, thieving hooligans.
-You could try to sneak away...
-Or you could rid the wasteland of these maggots once and for all.
-For the good of the people, of course.
-What will you do?
+<color=\#FF0000>WARNING:</color>
+
+(While tracking the Scientist's alleged location...)
+
+(You've found a camp of Raiders)
+
+(Raiders are dangerous, thieving hooligans)
+
+(It's the dead of night...)
+
+(They're probably drunk...)
+
+(You COULD try to sneak away)
+
+(Or...)
+
+(...You could rid the wasteland of these addicts)
+
+(Once and for all)
+
+(For the good of the people, of course...)
+
+(What will you do?)
+
+*[Burn it all down]
+
+    (You decide to scorch these hooligans)
+    
+    (...Sneak behind the camp)
+    
+    (Try to find something...)
+    
+    (Flammable)
+    
+    (...)
+        ~showOnlyGroup("Burn")
+        ->END
+    
 *[Sneak away]
-    You decide to sneak away...
-    ...Luckily you aren't spotted.
-    You can continue on to the Laboratory, unscathed.
-    ~loadScene("Laboratory")
-    ->END
-*[Infiltrate the camp]
-    You decide to do the world a favor and rid the world of these rats.
-    There's gotta be something here flammable...
-    ~showOnlyGroup("Burn")
-    ->END
+    ~notification("The fates will remember this...")
+    (You decide to sneak away)
+    
+    (No blood shed, no blood spared)
+    
+    (Luckily enough, you don't get caught...)
+    
+    (And can continue to the Scientist)
+    
+    (Now get a move-on...)
+    
+    (...)
+        ~hasKilledEverybody = false
+        ~loadScene("Laboratory")
+        ->END

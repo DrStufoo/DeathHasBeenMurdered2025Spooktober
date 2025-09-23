@@ -1,7 +1,5 @@
 INCLUDE globals.ink
 #portrait:blank #layout:cg #audio:beep_1
-->main
-=== main ===
 ...
 ~ CurrentCharacter = 2
 For decades, you've been trying to reclaim your death.

@@ -1,22 +1,51 @@
 INCLUDE globals.ink
 #portrait:blank #layout:cg #audio:beep_1
-...
-It's been a long time since you've been here last.
-Not that it matters.
-->Branch
+
+(...)
+
+(You've no unfinished business)
+
+(No relatives, friends...)
+
+(Nothing but resolve)
+
+(And fatigue...)
+
+(Just...)
+
+(Find the nearest bar)
+
+(Get yourself a pint...)
+
+(...And get out of there)
+
+    ->Branch
+
 === Branch ===
 ...
-{killCount = 0:-> innocent|->neutral}
+{killCount == 0:
+    -> innocent
+    ->END
+  - else:
+    -> neutral
+}
+
 === innocent ===
-...
-~showOnlyGroup("BarkeepPleased")
-->END
+{sadism == 0:
+    ...
+    ~showOnlyGroup("BarkeepPleased")
+    ->END
+  - else:
+    -> neutral
+}
+
 === neutral ===
-{hasKilledEverybody:-> murderer|}
-...
-~showOnlyGroup("BarkeepNeutral")
-->END
-=== murderer ===
-...
-~showOnlyGroup("BarkeepHorrified")
-->END
+{hasKilledEverybody:
+    ...
+    ~showOnlyGroup("BarkeepHorrified")
+    ->END
+
+  - else:
+    ~showOnlyGroup("BarkeepNeutral")
+    ->END
+}

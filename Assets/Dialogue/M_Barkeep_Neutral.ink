@@ -1,18 +1,34 @@
 INCLUDE globals.ink
 #portrait:blank #speaker:Barkeep #layout:cg #audio:beep_1
 ...
-->main
-=== main ===
-...You look tired, friend.
-What did you do?
+*[Hey, Lloyd]
+    ...
+    **[Slow tonight, isn't it? Heh...]
+    ...
+    Yes.
+    It is, Mr. Torrence.
+    
+    What'll it be?
+        ->DrinkChoice
 
-    *[What I had to]
-    Mm. I see.
-    Are you sure?
-        **[Yes]
-        Well...
-        Good luck.
-        ***[Won't need it]
+=== DrinkChoice ===
+*[Bourbon]
+    ...
+    (He pours you a glass)
+    (You slowly sip it)
+    
+    
+    
+    What brings you out her
+    
+    Really?
+    Didn't expect ya to be...
+    ...Clean?
+    Hm.
+    
+    Perhaps there is hope.
+    Good luck, stranger.
+        **[Won't need it]
         Bloody 'ell...
         ~loadScene("Limbo")
         ->END

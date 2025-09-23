@@ -42,13 +42,19 @@ public class SceneTransitionManager : MonoBehaviour
             cameFromTransition = false;
         }
     }
-
+    
     private IEnumerator PlayStartTransition()
     {
         yield return new WaitForSeconds(0.1f);
         transitionAnimator?.SetTrigger("Start");
+        
+        // Re-enable interactions after scene transition completes
+        yield return new WaitForSeconds(transitionDuration - 0.5f); // Enable interactions 0.5 seconds early
+        if (DialogueManager.GetInstance() != null)
+        {
+            DialogueManager.GetInstance().SetInteractionEnabled(true);
+        }
     }
-
     // ADD THESE STATIC METHODS FOR EASY ACCESS FROM ANYWHERE
     public static void LoadScene(string sceneName)
     {
@@ -87,8 +93,15 @@ public class SceneTransitionManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+
     private IEnumerator TransitionToScene(string sceneName)
     {
+        // Disable dialogue interactions during scene transition
+        if (DialogueManager.GetInstance() != null)
+        {
+            DialogueManager.GetInstance().SetInteractionEnabled(false);
+        }
+
         if (transitionAnimator != null)
         {
             Debug.Log("Am setting the End Trigger!");

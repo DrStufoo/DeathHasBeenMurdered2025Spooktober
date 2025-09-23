@@ -1,47 +1,31 @@
 INCLUDE globals.ink
 #portrait:blank #layout:cg #audio:beep_1
-...
 
-{hasKilledScientist:->Solo| ->Scientist}
+(So...)
 
-=== Solo ===
-So... Here at last.
-After YEARS, you've deciphered the Scientist's mad ramblimbs...
-And here you are.
+(Here at last)
 
-Find Life.
-Kill her.
-->Branch
+(The Scientist has opened the Gateway)
 
+(He's refused to join you)
 
-=== Scientist ===
-So... Here at last.
-The Scientist has again opened the Gateway.
+(...Coward)
 
-He didn't go with you.
-...Coward.
-No matter.
+(...)
 
-Find Life.
-Kill her.
-->Branch
+(You step through the gateway...)
 
-=== Branch ===
-...
-{killCount = 0:-> innocent|->neutral}
+(...)
 
-=== innocent ===
-...
-~showOnlyGroup("Ending1")
-->END
+(Time is strange here)
 
-=== neutral ===
-{hasKilledEverybody:-> murderer|...}
-~showOnlyGroup("Ending2")
-->END
+(Doesn't matter)
 
+(You set out to find Life)
 
-=== murderer ===
-...
-~showOnlyGroup("Ending3")
+(...)
+
+(She finds you)
+
+~showOnlyGroup("Neutral")
 ->END

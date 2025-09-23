@@ -17,6 +17,9 @@ EXTERNAL showOnlyGroup(groupName)
     VAR achievement_thief = false
 
 //Ending Variables
+    VAR goodEnding = false
+    VAR neutralEnding = false
+    VAR badEnding = false
 
 //Moral Variables
     VAR insanity = 0
@@ -29,8 +32,6 @@ EXTERNAL showOnlyGroup(groupName)
     VAR killCount = 0
 
     VAR hasKilledEverybody = false
-    
-    VAR hasKilledNobody = true
     
     VAR hasKilledUndertaker = false
     
@@ -71,3 +72,5 @@ EXTERNAL showOnlyGroup(groupName)
     
 //ThrowAway Vars
         VAR hasDrankUndertakersDrink = false
+        VAR hasFoundGas = false
+        VAR hasFoundDirt = false

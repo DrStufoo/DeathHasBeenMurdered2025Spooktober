@@ -216,6 +216,9 @@ public void ShowNotification(string message)
 
     public void EnterDialogueMode(TextAsset inkJSON, Animator emoteAnimator)
     {
+        // Reset memory notice before starting dialogue
+        ResetMemoryNoticeAnimation();
+     
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
@@ -231,9 +234,25 @@ public void ShowNotification(string message)
         ContinueStory();
     }
 
+    private void ResetMemoryNoticeAnimation()
+    {
+        if (memoryNoticePanel != null && memoryNoticeAnimator != null)
+        {
+            // Force the panel to be inactive
+            memoryNoticePanel.SetActive(false);
+            
+            // Reset the animator to its default state
+            memoryNoticeAnimator.Rebind();
+            memoryNoticeAnimator.Update(0f);
+        }
+    }
+
     private IEnumerator ExitDialogueMode()
     {
         yield return new WaitForSeconds(0.2f);
+
+        // Reset memory notice when exiting dialogue
+        ResetMemoryNoticeAnimation();
 
         dialogueVariables.StopListening(currentStory);
         inkExternalFunctions.Unbind(currentStory);

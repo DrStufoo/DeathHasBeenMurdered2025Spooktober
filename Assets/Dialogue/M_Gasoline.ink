@@ -1,34 +1,31 @@
 INCLUDE globals.ink
-#portrait:blank #speaker:Gasoline #layout:cg #audio:beep_1
+#speaker:Gasoline #layout:cg #audio:beep_1 #sprite:gasoline
+{hasFoundGas:->Ready |->First}
+=== First ===
 
-->main
-
-=== main ===
 ...
+
 It's a can of gasoline.
 
-Time to wreck some stuff up.
+This will do perfectly...
+    ->Ready
 
-->Burn
+=== Ready ===
+Are you ready to strike?
 
-=== Burn ===
-They're all dead.
-You've burned them all.
-~killCount = killCount + 1
-~hasKilledNobody = false
-{isRaiding: ->EndHeist|->End}
+*[Yes]
+    (Excellent)
+    
+    (Now...)
+    
+    (Let's paint the wasteland <color=\#FF0000>RED</color>)
+    
+    (...)
+        ~showOnlyGroup("Burned")
+        ->END
 
-=== EndHeist ===
-You sift through the bone and ash.
-Shining is the Golden Artifact you've searched for.
-Was it worth it?
-~loadScene("UndertakerMeetup")
-->END
-
-=== End ===
-...
-You can now continue to your journey in peace.
-...
-...Was it worth it
-~loadScene("Laboratory")
-->END
+*[Not yet]
+    ...
+    Hm.
+    ~hasFoundGas = true
+    ->END

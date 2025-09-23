@@ -1,0 +1,6 @@
+INCLUDE globals.ink
+ #speaker:Door #layout:cg #audio:beep_1
+...
+It's a worn door.
+Can't go back now...
+->END
