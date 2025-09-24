@@ -118,13 +118,13 @@ ARE you? #sprite:life_scared
     ....What. #sprite:life_curious
     What did you do? #sprite:life_sad
     **[(Demonstrate)]
-        (You lash at Life, as you have to so many others) #sprite:life_shocked
+        (You lash at Life, as you have to so many others) #sprite:life_scared
         (Your aim is true)
         (She will not survive this)
         ...
-        (C O U G H) #sprite:life_sad
+        (C O U G H) #sprite:life_terrified
         ...
-        ...I'm coming, brother.
+        ...I'm coming, brother. #life_sad
         ~badEnding = true
         ~showOnlyGroup("Ending")
         ->END

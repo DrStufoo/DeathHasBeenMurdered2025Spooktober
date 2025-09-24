@@ -27,6 +27,7 @@ public class DialogueTrigger : MonoBehaviour
                 // Only show visual cue if interactions are enabled
                 if (DialogueManager.GetInstance().interactionsEnabled)
                 {
+                    //AudioManager.instance.PlayOneShot(FMODEvents.instance.onHover, this.transform.position);
                     visualCue.SetActive(true);
                     if (Input.GetMouseButtonDown(0))
                     {

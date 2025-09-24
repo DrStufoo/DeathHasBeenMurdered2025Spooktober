@@ -1,19 +1,19 @@
 INCLUDE globals.ink
-#portrait:blank #layout:left #audio:beep_1 #speaker:The Scientist
+#portrait:blank #layout:left #audio:beep_1 #speaker:The Scientist #sprite:scientist_neutral2
 ...
-Not often I get company...
+Not often I get company... #sprite:scientist_neutral1
 {hasKilledScientist:
-    Wait.
-    ...
-    You look like you've seen a ghost...
-    ...Have I seen you before?
-    ...
-    Agh, forget it.
-    What do you want?
-        ->main
-  - else: ..
-        But let's cut the niceties.
-        What do you want.
+    Wait. #sprite:scientist_neutral1
+    ... #sprite:scientist_drama1
+    You look like you've seen a ghost... #sprite:scientist_drama2
+    ...Have I seen you before? #sprite:scientist_drama3
+    ... #sprite:scientist_drama2
+    Agh, forget it. #sprite:scientist_neutral1
+    What do you want? #sprite:scientist_neutral2
+        ->main 
+  - else: ...
+        But let's cut the niceties. #sprite:scientist_neutral2
+        What do you want. #sprite:scientist_neutral3
         ->main
         }
 
@@ -21,56 +21,56 @@ Not often I get company...
 === main ===
 *[I want to kill life]
 (You tell him of your journey) #speaker:???
-(Of all the things you've done)
-(And your goal...)
-(...)
+(Of all the things you've done) #sprite:scientist_neutral2
+(And your goal...)  
+(...) #sprite:scientist_neutral1
 (The murder of life)
 
-... #speaker:The Scientist
-So...
-You want to kill Life?
-Hah!
-Bloody idiot...
+... #speaker:The Scientist #sprite:scientist_neutral2
+So...  
+You want to kill Life? #sprite:scientist_drama1
+Hah! #sprite:scientist_drama3
+Bloody idiot... #sprite:scientist_drama2
 ~notification("Idiot")
-Heh...
+Heh... #sprite:scientist_neutral1
 Have you any idea what that even means?
-Hah...
+Hah... #sprite:scientist_neutral2
 
 **[I'm serious]
-    Oh, I'm sure you are.
-    So was I.
-    I murdered Death himself.
+    Oh, I'm sure you are. #sprite:scientist_neutral2
+    So was I. #sprite:scientist_neutral1
+    I murdered Death himself. #sprite:scientist_neutral3
     I saved every single person ever...
-    Granted immortality to every man, beast, and creature.
+    Granted immortality to every man, beast, and creature. #sprite:scientist_neutral2
     
     I created my personal paradise.
-    And within a year...
-    ...It turned into my personal hell.
+    And within a year... #sprite:scientist_drama1
+    ...It turned into my personal hell. #sprite:scientist_drama2
     
-    ...
+    ... #sprite:scientist_neutral2
     
-    ...Ludicrous.
-    Humans, that is.
-    They're...
-    ...LUDICROUS.
-    A bunch of self-righteous lunatics.
+    ...Ludicrous. #sprite:scientist_neutral1
+    Humans, that is. #sprite:scientist_neutral2
+    They're... #sprite:scientist_neutral1
+    ...LUDICROUS. #sprite:scientist_neutral3
+    A bunch of self-righteous lunatics. 
     
-    We were all fools.
-    Death was never an obstacle...
-    It was a mercy.
+    We were all fools. #sprite:scientist_neutral1
+    Death was never an obstacle... #sprite:scientist_neutral2
+    It was a mercy. 
     
-    My point being...
-    ...Man should never interfere with the higher order.
+    My point being... #sprite:scientist_drama1
+    ...Man should never interfere with the higher order. #sprite:scientist_drinking
     Of all people, I should know.
     
-    How's the tea?
+    How's the tea? #sprite:scientist_neutral2
         ***[It's good tea]
-            Of course it is.
+            Of course it is. #sprite:scientist_neutral3
             ~notification("This tea is pretty nice")
             It's lovely tea.
-            Herbal delight.
+            Herbal delight. #sprite:scientist_neutral2
             
-            (...) #speaker:???
+            (...) #speaker:??? 
             (Focus)
                ****[I need to find Life]
                 ->Find
@@ -78,54 +78,55 @@ Hah...
         ***[I need to find Life]
             ->Find
 === Find ===
-Arghhhh... #speaker:The Scientist
+Arghhhh... #speaker:The Scientist #sprite:scientist_neutral1
 
-No. 
-You don't.
-Do yourself a favor...
-...And forget about it.
-If you just...
-...cAn'T LiVe wItH yOurSelF.
-Then do us all a favor...
-And throw yourself off a building.
-Capiche?
+No.  #sprite:scientist_neutral2
+You don't. #sprite:scientist_neutral1
+Do yourself a favor... #sprite:scientist_neutral2
+...And forget about it. #sprite:scientist_neutral3
+If you just... #sprite:scientist_drama1
+...cAn'T LiVe wItH yOurSelF. #sprite:scientist_drama3
+Then do us all a favor... #sprite:scientist_drama2
+And throw yourself off a building. #sprite:scientist_drama1
+Capiche? #sprite:scientist_drama3
 
 *[That's not an option]
-    Son of a...
-    YES.
-    IT IS.
-    What's wrong with you?
-    Can't you see?
-    We're all doomed.
-    All of us.
+    Son of a... #sprite:scientist_drama1
+    YES. #sprite:scientist_neutral1
+    IT IS. 
+    What's wrong with you? #sprite:scientist_neutral2
+    Can't you see? #sprite:scientist_neutral3
+    We're all doomed. 
+    All of us. #sprite:scientist_neutral1
     You can do nothing.
-    You are nothing.
-    So do us ALL a favor.
-    AND FORGET ABOUT IT.
+    You are nothing. #sprite:scientist_neutral2
+    So do us ALL a favor. #sprite:scientist_neutral3
+    AND FORGET ABOUT IT. #sprite:scientist_drama1
         **[I can't]
-            For @*!^'$ sake...
-            ...
-            How long...
-            ...Have you been searching?
+            For @*!^'$ sake... #sprite:scientist_drama3
+            ... #sprite:scientist_drama1
+            How long... #sprite:scientist_neutral1
+            ...Have you been searching? #sprite:scientist_neutral2
                 ***[As long as I can remember]
-                Hm.
-                You've resolve...
-                ...Rare these days.
-                ...
-                (Sigh)
-                Alright.
-                ...Fine.
-                If you want to poke a bear...
-                ...Who am I to deny you a stick?
+                Hm. #sprite:scientist_neutral2
+                You've resolve... #sprite:scientist_neutral1
+                ...Rare these days. #sprite:scientist_neutral3
+                ... 
+                (Sigh) #sprite:scientist_neutral2
+                Alright. #sprite:scientist_neutral1
+                ...Fine. 
+                If you want to poke a bear... #sprite:scientist_drama1
+                ...Who am I to deny you a stick? #sprite:scientist_drama3
                 
-                Ergh...
-                Okay.
-                I'll get you inside Limbo.
-                ...It will take about a week to prepare the gateway.
-                Resolve any unfinished business.
-                Meet back here in 10 days.
+                Ergh... #sprite:scientist_drama2
+                Okay. #sprite:scientist_neutra2
+                I'll get you inside Limbo. #sprite:scientist_neutral3
+                It won't be instant...
+                Give me a week prepare the gateway. #sprite:scientist_neutral2
+                Resolve any unfinished business. #sprite:scientist_neutral1
+                Meet back here in 10 days. #sprite:scientist_neutral2
                     ****[...Thank you]
-                    ...
-                    ...Don't.
+                    ... #sprite:scientist_drama1
+                    ...Don't. #sprite:scientist:drinking
                     ~loadScene("BarSecond")
                     ->END

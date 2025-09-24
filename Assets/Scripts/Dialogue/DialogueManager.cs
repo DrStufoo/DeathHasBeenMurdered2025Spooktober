@@ -8,6 +8,12 @@ using UnityEngine.EventSystems;
 
 public class DialogueManager : MonoBehaviour, IDataPersistence
 {
+
+    [Header("Text Wobble")]
+    [SerializeField] private bool enableTextWobble = true;
+    [SerializeField] private float wobbleIntensity = 2f;
+    [SerializeField] private float wobbleSpeed = 5f;
+
     [Header("Params")]
     [SerializeField] private float typingSpeed = 0.04f;
 
@@ -65,6 +71,7 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
     private bool canContinueToNextLine = false;
 
     private Coroutine displayLineCoroutine;
+    private Coroutine wobbleCoroutine; // ADD THIS LINE
 
     private static DialogueManager instance;
 
@@ -251,6 +258,13 @@ public void ShowNotification(string message)
     {
         yield return new WaitForSeconds(0.2f);
 
+        // Stop wobble when exiting dialogue
+        if (wobbleCoroutine != null)
+        {
+            StopCoroutine(wobbleCoroutine);
+            wobbleCoroutine = null;
+        }
+
         // Reset memory notice when exiting dialogue
         ResetMemoryNoticeAnimation();
 
@@ -297,8 +311,14 @@ public void ShowNotification(string message)
     }
 
  
-    private IEnumerator DisplayLine(string line)
+private IEnumerator DisplayLine(string line)
     {
+    // STOP ANY EXISTING WOBBLE FIRST
+    if (wobbleCoroutine != null)
+    {
+        StopCoroutine(wobbleCoroutine);
+        wobbleCoroutine = null;
+    }
     //set the text to the full line, but set the visible characters to 0
     dialogueText.text = line;
     dialogueText.maxVisibleCharacters = 0;
@@ -342,6 +362,14 @@ public void ShowNotification(string message)
 
         }
 
+        // START WOBBLE EFFECT AFTER TYPING IS COMPLETE
+        if (enableTextWobble)
+        {
+            if (wobbleCoroutine != null)
+                StopCoroutine(wobbleCoroutine);
+            wobbleCoroutine = StartCoroutine(WobbleText());
+        }
+
         //actions to take after the entire line has finished
         continueIcon.SetActive(true);
          DisplayChoices();
@@ -354,6 +382,58 @@ public void ShowNotification(string message)
         }
  
     }
+
+
+
+
+
+    private IEnumerator WobbleText()
+    {
+        while (dialogueIsPlaying && enableTextWobble)
+        {
+            dialogueText.ForceMeshUpdate();
+            var textInfo = dialogueText.textInfo;
+            
+            // Store original positions temporarily each frame
+            Vector3[][] frameOriginals = new Vector3[textInfo.meshInfo.Length][];
+            for (int i = 0; i < textInfo.meshInfo.Length; i++)
+            {
+                frameOriginals[i] = new Vector3[textInfo.meshInfo[i].vertices.Length];
+                System.Array.Copy(textInfo.meshInfo[i].vertices, frameOriginals[i], textInfo.meshInfo[i].vertices.Length);
+            }
+            
+            // Apply wobble as offset from current frame's original positions
+            for (int i = 0; i < textInfo.characterCount; i++)
+            {
+                var charInfo = textInfo.characterInfo[i];
+                int materialIndex = charInfo.materialReferenceIndex;
+                int vertexIndex = charInfo.vertexIndex;
+                
+                Vector3[] vertices = textInfo.meshInfo[materialIndex].vertices;
+                
+                // Calculate wobble offset
+                float wobbleX = Mathf.Sin(Time.time * wobbleSpeed + i) * wobbleIntensity;
+                float wobbleY = Mathf.Cos(Time.time * wobbleSpeed + i * 0.7f) * wobbleIntensity;
+                Vector3 wobbleOffset = new Vector3(wobbleX, wobbleY, 0);
+                
+                // Apply wobble to all 4 vertices of this character from this frame's original position
+                for (int j = 0; j < 4; j++)
+                {
+                    vertices[vertexIndex + j] = frameOriginals[materialIndex][vertexIndex + j] + wobbleOffset;
+                }
+            }
+            
+            // Update the mesh
+            for (int i = 0; i < textInfo.meshInfo.Length; i++)
+            {
+                textInfo.meshInfo[i].mesh.vertices = textInfo.meshInfo[i].vertices;
+                dialogueText.UpdateGeometry(textInfo.meshInfo[i].mesh, i);
+            }
+            
+            yield return null;
+        }
+    }
+
 
     private void PlayDialogueSound(int currentDisplayedChracterCount, char currentCharacter)
     {
