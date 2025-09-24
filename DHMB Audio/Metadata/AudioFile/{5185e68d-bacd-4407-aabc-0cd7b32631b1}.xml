@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{5185e68d-bacd-4407-aabc-0cd7b32631b1}">
+		<property name="assetPath">
+			<value>Ambience/lluvia-relajante-rain-110792.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>759.01387755102041</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{08cf3b11-2243-4795-a693-c442afc60c18}</destination>
+		</relationship>
+	</object>
+</objects>

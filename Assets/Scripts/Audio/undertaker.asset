@@ -13,10 +13,19 @@ MonoBehaviour:
   m_Name: undertaker
   m_EditorClassIdentifier: 
   id: undertaker
-  dialogueTypingSoundClips:
-  - {fileID: 8300000, guid: ac658e9860db87340afb62948a9ff502, type: 3}
-  - {fileID: 8300000, guid: 708bb3ea51670ce4bb231e3052301d90, type: 3}
-  - {fileID: 8300000, guid: 8e05a8376812b884d8682ab959d5bbdc, type: 3}
+  dialogueTypingSoundEvents:
+  - Guid:
+      Data1: -1421264278
+      Data2: 1219678144
+      Data3: -1457566277
+      Data4: -1885491830
+    Path: event:/TypingSounds/default1
+  - Guid:
+      Data1: 1065240809
+      Data2: 1295978998
+      Data3: 736821948
+      Data4: 1765042157
+    Path: event:/TypingSounds/default2
   frequencyLevel: 2
   minPitch: 0.8
   maxPitch: 1.9

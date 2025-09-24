@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 [System.Serializable]
 public class GameObjectGroup
@@ -22,6 +24,12 @@ public class SceneGroupManager : MonoBehaviour
     {
         instance = this;
         InitializeGroups();
+    }
+
+    private void Start()
+    {
+        // Play music for currently active groups at scene start
+        PlayMusicForActiveGroups();
     }
 
     private void OnDestroy()
@@ -105,23 +113,27 @@ public class SceneGroupManager : MonoBehaviour
         Animator transitionAnimator = null;
         if (SceneTransitionManager.instance != null)
         {
-            // We need to add a getter for the animator in SceneTransitionManager
             transitionAnimator = SceneTransitionManager.instance.GetTransitionAnimator();
         }
 
-        // Fade to black
+        // Fade to black AND start fading out music
         if (transitionAnimator != null)
         {
             transitionAnimator.SetTrigger("End");
         }
-        else
-        {
-            Debug.LogWarning("No transition animator found!");
-        }
-
+        
+        // Get the new group's music before switching
+        EventReference newMusic = GetGroupMusic(groupName);
+        
         yield return new WaitForSeconds(transitionDuration);
 
         ShowOnlyGroupInstant(groupName);
+        
+        // Start new music during the black screen
+        if (!newMusic.IsNull)
+        {
+            AudioManager.instance.PlaySceneMusic(newMusic, transitionDuration);
+        }
 
         // Fade from black
         if (transitionAnimator != null)
@@ -131,5 +143,38 @@ public class SceneGroupManager : MonoBehaviour
 
         yield return new WaitForSeconds(transitionDuration - 2f);
         DialogueManager.GetInstance().SetInteractionEnabled(true);
+    }
+
+    // Add this helper method to get music for a group:
+    private EventReference GetGroupMusic(string groupName)
+    {
+        if (groupDictionary.TryGetValue(groupName, out GameObject groupObject))
+        {
+            GroupMusicManager musicManager = groupObject.GetComponent<GroupMusicManager>();
+            if (musicManager != null)
+            {
+                return musicManager.GetGroupMusic();
+            }
+        }
+        
+        return new EventReference(); // Return empty if no music found
+    }
+
+    // ADD THIS NEW METHOD:
+    private void PlayMusicForActiveGroups()
+    {
+        foreach (var group in gameObjectGroups)
+        {
+            if (group.groupObject != null && group.groupObject.activeInHierarchy)
+            {
+                GroupMusicManager musicManager = group.groupObject.GetComponent<GroupMusicManager>();
+                if (musicManager != null)
+                {
+                    Debug.Log("Starting music for active group: " + group.groupName);
+                    musicManager.PlayGroupMusic();
+                    break; // Only play music for the first active group found
+                }
+            }
+        }
     }
 }

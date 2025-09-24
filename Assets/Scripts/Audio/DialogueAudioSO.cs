@@ -1,12 +1,13 @@
+
 using UnityEngine;
+using FMODUnity;
 
 [CreateAssetMenu(fileName = "DialogueAudioInfo", menuName = "ScriptableObjects/DialogueAudioInfoSO", order = 1)]
-
 public class DialogueAudioInfoSO : ScriptableObject
 {
     public string id;
 
-    public AudioClip[] dialogueTypingSoundClips;
+    public EventReference[] dialogueTypingSoundEvents;
     [Range(1, 5)]
     public int frequencyLevel = 2;
     [Range(-3, 3)]

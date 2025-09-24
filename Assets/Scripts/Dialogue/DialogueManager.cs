@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
+using FMODUnity;
+using FMOD.Studio;
 
 public class DialogueManager : MonoBehaviour, IDataPersistence
 {
@@ -62,7 +64,7 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
 
     private Dictionary<string, DialogueAudioInfoSO> audioInfoDictionary;
 
-    private AudioSource audioSource;
+    private FMOD.Studio.EventInstance currentTypingSound;
 
     private Story currentStory;
 
@@ -88,21 +90,21 @@ public class DialogueManager : MonoBehaviour, IDataPersistence
     private void Awake()
     {
         if (instance != null)
-    {
-        Debug.LogWarning("Found more than one Dialogue Manager in the Scene!");
-    }
+        {
+            Debug.LogWarning("Found more than one Dialogue Manager in the Scene!");
+        }
         instance = this;
 
         inkExternalFunctions = new InkExternalFunctions();
-
-        audioSource = this.gameObject.AddComponent<AudioSource>();
+        // Remove: audioSource = this.gameObject.AddComponent<AudioSource>();
         currentAudioInfo = defaultAudioInfo;
     }
 
-public static DialogueManager GetInstance()
-{
-    return instance;
-}
+
+    public static DialogueManager GetInstance()
+    {
+        return instance;
+    }
 
 
     private void Start()
@@ -158,6 +160,9 @@ public void ShowNotification(string message)
         {
             // now we can create a new DialogueVariables object that's being initialized based on any loaded data
             dialogueVariables = new DialogueVariables(loadGlobalsJSON, data.globalVariablesStateJson);
+            
+            this.typingSpeed = data.typingSpeed;
+            this.wobbleIntensity = data.wobbleIntensity;
         }
 
     public void SaveData(GameData data)
@@ -165,6 +170,9 @@ public void ShowNotification(string message)
             // when we save the game, we get the current global state from our dialogue variables and then save that to our data
             string globalStateJson = dialogueVariables.GetGlobalVariablesStateJson();
             data.globalVariablesStateJson = globalStateJson;
+
+           data.typingSpeed = this.typingSpeed;
+           data.wobbleIntensity = this.wobbleIntensity;
         }
         
     public Ink.Runtime.Object GetVariableState(string variableName)
@@ -207,11 +215,32 @@ public void ShowNotification(string message)
 
     private void Update()
     {
+    
+
         //return right away if dialogue isn't playing or interactions are disabled
         if(!dialogueIsPlaying || !interactionsEnabled)
         {
             return;
         }
+        // Instant skip typing effect with left click
+        if (Input.GetMouseButtonDown(0) && !canContinueToNextLine && displayLineCoroutine != null)
+        {
+            StopCoroutine(displayLineCoroutine);
+            dialogueText.maxVisibleCharacters = dialogueText.text.Length;
+            
+            // Start wobble if enabled
+            if (enableTextWobble)  // Add this condition check
+            {
+                if (wobbleCoroutine != null)
+                    StopCoroutine(wobbleCoroutine);
+                wobbleCoroutine = StartCoroutine(WobbleText());
+            }
+            
+            continueIcon.SetActive(true);
+            DisplayChoices();
+            canContinueToNextLine = true;
+        }
+
 
         //handle continuing to the next line when mouse is clicked anywhere
         if (currentStory.currentChoices.Count == 0 
@@ -435,61 +464,38 @@ private IEnumerator DisplayLine(string line)
     }
 
 
-    private void PlayDialogueSound(int currentDisplayedChracterCount, char currentCharacter)
+   private void PlayDialogueSound(int currentDisplayedCharacterCount, char currentCharacter)
+{
+    EventReference[] dialogueTypingSoundEvents = currentAudioInfo.dialogueTypingSoundEvents;
+    int frequencyLevel = currentAudioInfo.frequencyLevel;
+    float minPitch = currentAudioInfo.minPitch;
+    float maxPitch = currentAudioInfo.maxPitch;
+    bool stopAudioSource = currentAudioInfo.stopAudioSource;
+
+    if (currentDisplayedCharacterCount % frequencyLevel == 0)
     {
-        //set variables for the below based on our congif
-        AudioClip[] dialogueTypingSoundClips = currentAudioInfo.dialogueTypingSoundClips;
-        int frequencyLevel = currentAudioInfo.frequencyLevel;
-        float minPitch = currentAudioInfo.minPitch;
-        float maxPitch = currentAudioInfo.maxPitch;
-        bool stopAudioSource = currentAudioInfo.stopAudioSource;
-
-        if (currentDisplayedChracterCount % frequencyLevel == 0)
+        if (stopAudioSource)
         {
-            if (stopAudioSource)
-            {
-                audioSource.Stop();
-            }
-            AudioClip soundClip = null;
-            //create predictable audio from hashcode
-            if (makePredictable)
-            {
-                int hashCode = currentCharacter.GetHashCode();
-                //sound clip
-                int predictableIndex = hashCode % dialogueTypingSoundClips.Length;
-                soundClip = dialogueTypingSoundClips[predictableIndex];
-                //pitch
-                int minPitchInt = (int) (minPitch * 100);
-                int maxPitchInt  = (int) (maxPitch * 100);
-                int pitchRangeInt = maxPitchInt - minPitchInt;
-                //cannot divide by 0, so if there is no range then skip the selection
-                if(pitchRangeInt != 0)
-                {
-                    int predictiblePitchInt = (hashCode % pitchRangeInt) + minPitchInt;
-                    float predictiblePitch = predictiblePitchInt / 100f;
-                    audioSource.pitch = predictiblePitch;
-                }
-                else
-                {
-                    audioSource.pitch = minPitch;
-                }
-
-
-            }
-            //otherwise, randomize the audio
-            else
-            {
-            //sound clip
-            int randomIndex = Random.Range(0, dialogueTypingSoundClips.Length);
-            soundClip = dialogueTypingSoundClips[randomIndex];
-            //pitch
-            audioSource.pitch = Random.Range(minPitch, maxPitch);
-            }
-
-            //play sound
-            audioSource.PlayOneShot(soundClip);
+            // Stop previous sound
+            currentTypingSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            currentTypingSound.release();
         }
+
+        // Random event selection
+        int randomIndex = Random.Range(0, dialogueTypingSoundEvents.Length);
+        EventReference selectedEvent = dialogueTypingSoundEvents[randomIndex];
+        
+        // Create and configure the event
+        currentTypingSound = AudioManager.instance.CreateInstance(selectedEvent);
+        
+        // Random pitch
+        float randomPitch = Random.Range(minPitch, maxPitch);
+        currentTypingSound.setParameterByName("pitch", randomPitch);
+        
+        // Play the sound
+        currentTypingSound.start();
     }
+}
 
     private void HideChoices()
     {
@@ -589,4 +595,28 @@ private IEnumerator DisplayLine(string line)
         ContinueStory();
         }
     }
+
+    public void SetTypingSpeed(float newSpeed)
+    {
+        this.typingSpeed = Mathf.Clamp(newSpeed, 0.01f, 1.0f);
+    }
+
+    // NEW: Public method to get current typing speed
+    public float GetTypingSpeed()
+    {
+        return this.typingSpeed;
+    }
+
+        public void SetWobbleIntensity(float newIntensity)
+        {
+            this.wobbleIntensity = Mathf.Clamp(newIntensity, 0f, 100f);
+            Debug.Log("Wobble intensity set to: " + this.wobbleIntensity); // Add this line
+        }
+
+
+        public float GetWobbleIntensity()
+        {
+            return this.wobbleIntensity;
+        }
+
 }

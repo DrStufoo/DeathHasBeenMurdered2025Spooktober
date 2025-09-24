@@ -135,18 +135,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -110.86
       objectReference: {fileID: 0}
-    - target: {fileID: 899133658698161865, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
-      propertyPath: m_text
-      value: 'Barkeep Will Remember that... '
-      objectReference: {fileID: 0}
-    - target: {fileID: 899133658698161865, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
-      propertyPath: m_margin.x
-      value: -328.05875
-      objectReference: {fileID: 0}
-    - target: {fileID: 899133658698161865, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 1593835519
-      objectReference: {fileID: 0}
     - target: {fileID: 1199695900623145936, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: gameObjectGroups.Array.data[1].groupName
       value: SoldierServe

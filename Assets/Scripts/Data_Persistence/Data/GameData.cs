@@ -20,6 +20,10 @@ public class GameData
     public int marauder_TotalLevels = 7;
     public string currentSceneName;
 
+    public float typingSpeed = 0.04f;
+
+    public float wobbleIntensity = 2f;
+
     public string globalVariablesStateJson;
     //The values defined here will be the default
     //the game starts with when there's no data to load
@@ -40,6 +44,10 @@ public class GameData
         this.barkeep_TotalLevels = 5;
         this.marauder_LevelsCompleted = 0;
         this.marauder_TotalLevels = 7;
+
+        this.typingSpeed = 0.04f; // Default typing speed
+
+        this.wobbleIntensity = 2f; // Default wobble intensity
     }
    
     public int GetPercentageComplete()

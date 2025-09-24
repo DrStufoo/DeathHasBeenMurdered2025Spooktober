@@ -685,7 +685,7 @@ MonoBehaviour:
   sourceProjectPath: ../DHMB Audio/DHMB Audio.fspro
   sourceBankPath: ../DHMB Audio/Build
   sourceBankPathUnformatted: 
-  BankRefreshCooldown: 5
+  BankRefreshCooldown: 1
   ShowBankRefreshWindow: 1
   AutomaticEventLoading: 1
   BankLoadType: 0

@@ -11,10 +11,6 @@ public class FMODEvents : MonoBehaviour
     [field: Header("On Hover SFX")]
     [field: SerializeField] public EventReference onHover{ get; private set;}
 
-    [field: Header("Music")]
-    [field: SerializeField] public EventReference music{ get; private set;}
-
-
     public static FMODEvents instance {get; private set;}
 
     private void Awake()
