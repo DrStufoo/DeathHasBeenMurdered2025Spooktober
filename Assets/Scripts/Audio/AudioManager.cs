@@ -9,16 +9,15 @@ public class AudioManager : MonoBehaviour
     private List<EventInstance> eventInstances;
 
     private EventInstance ambienceEventInstance;
-
     private EventInstance musicEventInstance;
 
-    // Add these fields to your existing AudioManager class:
+    // Music and ambience system fields
     private EventInstance currentSceneMusicInstance;
+    private EventInstance currentSceneAmbienceInstance;
     private bool isFadingMusic = false;
+    private bool isFadingAmbience = false;
     
     public static AudioManager instance {get; private set;}
-
-    
 
     private void Awake()
     {
@@ -31,8 +30,19 @@ public class AudioManager : MonoBehaviour
         eventInstances = new List<EventInstance>();
     }
 
-    // Replace your music methods in SceneGroupManager with these clean versions:
+    public void PlayOneShot(EventReference sound, Vector3 worldPos)
+    {
+        RuntimeManager.PlayOneShot(sound, worldPos);
+    }
 
+    public EventInstance CreateInstance (EventReference eventReference)
+    {
+        EventInstance eventInstance = RuntimeManager.CreateInstance(eventReference);
+        eventInstances.Add(eventInstance);
+        return eventInstance;
+    }
+
+    // Music system methods
     public void PlaySceneMusic(EventReference musicEvent, float fadeTime = 1f)
     {
         if (isFadingMusic) return;
@@ -59,7 +69,35 @@ public class AudioManager : MonoBehaviour
         isFadingMusic = false;
     }
 
-    private System.Collections.IEnumerator FadeOut(EventInstance musicInstance, float fadeTime)
+    // Ambience system methods
+    public void PlaySceneAmbience(EventReference ambienceEvent, float fadeTime = 1f)
+    {
+        if (isFadingAmbience) return;
+        StartCoroutine(FadeToNewAmbience(ambienceEvent, fadeTime));
+    }
+
+    private System.Collections.IEnumerator FadeToNewAmbience(EventReference newAmbience, float fadeTime)
+    {
+        isFadingAmbience = true;
+        
+        // Fade out current ambience if it exists
+        if (currentSceneAmbienceInstance.isValid())
+        {
+            yield return StartCoroutine(FadeOut(currentSceneAmbienceInstance, fadeTime));
+            currentSceneAmbienceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            currentSceneAmbienceInstance.release();
+        }
+        
+        // Start new ambience and fade in
+        currentSceneAmbienceInstance = CreateInstance(newAmbience);
+        currentSceneAmbienceInstance.start();
+        yield return StartCoroutine(FadeIn(currentSceneAmbienceInstance, fadeTime));
+        
+        isFadingAmbience = false;
+    }
+
+    // Shared fade methods
+    private System.Collections.IEnumerator FadeOut(EventInstance audioInstance, float fadeTime)
     {
         float elapsed = 0f;
         
@@ -67,40 +105,27 @@ public class AudioManager : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float volume = Mathf.Lerp(1f, 0f, elapsed / fadeTime);
-            musicInstance.setParameterByName("volume", volume);
+            audioInstance.setParameterByName("volume", volume);
             yield return null;
         }
         
-        musicInstance.setParameterByName("volume", 0f);
+        audioInstance.setParameterByName("volume", 0f);
     }
 
-    private System.Collections.IEnumerator FadeIn(EventInstance musicInstance, float fadeTime)
+    private System.Collections.IEnumerator FadeIn(EventInstance audioInstance, float fadeTime)
     {
         float elapsed = 0f;
-        musicInstance.setParameterByName("volume", 0f);
+        audioInstance.setParameterByName("volume", 0f);
         
         while (elapsed < fadeTime)
         {
             elapsed += Time.deltaTime;
             float volume = Mathf.Lerp(0f, 1f, elapsed / fadeTime);
-            musicInstance.setParameterByName("volume", volume);
+            audioInstance.setParameterByName("volume", volume);
             yield return null;
         }
         
-        musicInstance.setParameterByName("volume", 1f);
-    }
-
-
-        public void PlayOneShot(EventReference sound, Vector3 worldPos)
-        {
-            RuntimeManager.PlayOneShot(sound, worldPos);
-        }
-
-    public EventInstance CreateInstance (EventReference eventReference)
-    {
-        EventInstance eventInstance = RuntimeManager.CreateInstance(eventReference);
-        eventInstances.Add(eventInstance);
-        return eventInstance;
+        audioInstance.setParameterByName("volume", 1f);
     }
 
     private void CleanUp()
@@ -112,6 +137,13 @@ public class AudioManager : MonoBehaviour
             currentSceneMusicInstance.release();
         }
         
+        // Stop scene ambience
+        if (currentSceneAmbienceInstance.isValid())
+        {
+            currentSceneAmbienceInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            currentSceneAmbienceInstance.release();
+        }
+        
         // Existing cleanup code
         foreach (EventInstance eventInstance in eventInstances)
         {
@@ -120,10 +152,8 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-
     private void OnDestroy()
     {
         CleanUp();
     }
-
 }

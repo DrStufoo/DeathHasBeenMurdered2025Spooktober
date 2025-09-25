@@ -4380,6 +4380,13 @@ MonoBehaviour:
       Data4: -913393652
     Path: event:/Music/BarMusic
   fadeTime: 5
+  groupAmbience:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &5192072340266923290
 GameObject:
   m_ObjectHideFlags: 0
@@ -8932,13 +8939,43 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8427947174382960797, guid: f9f2fb4803425b041adc41faf8602e14, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3740506919247969273}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5773439623626148816, guid: f9f2fb4803425b041adc41faf8602e14, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7175754175071622430}
   m_SourcePrefab: {fileID: 100100000, guid: f9f2fb4803425b041adc41faf8602e14, type: 3}
 --- !u!1 &6066287022932439419 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5773439623626148816, guid: f9f2fb4803425b041adc41faf8602e14, type: 3}
   m_PrefabInstance: {fileID: 301925169437735595}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7175754175071622430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6066287022932439419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21a216cefedad545b040b3f0534d9c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupMusic:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  fadeTime: 3
+  groupAmbience:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!4 &8126378405660686902 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8427947174382960797, guid: f9f2fb4803425b041adc41faf8602e14, type: 3}

@@ -201,7 +201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4352018298657638597, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5882558143682784601, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_Sprite
@@ -209,7 +209,7 @@ PrefabInstance:
       objectReference: {fileID: -2855909287889138777, guid: d89af9fbcf36e6c41b0263f139126309, type: 3}
     - target: {fileID: 6066287022932439419, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7095509330160633381, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_IsActive
@@ -250,8 +250,43 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4352018298657638597, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1965049630}
   m_SourcePrefab: {fileID: 100100000, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+--- !u!1 &1965049629 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4352018298657638597, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+  m_PrefabInstance: {fileID: 1965049628}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1965049630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965049629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21a216cefedad545b040b3f0534d9c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupMusic:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  fadeTime: 1
+  groupAmbience:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.03.00">
-	<object class="AudioFile" id="{4de00e31-e52a-4e5d-9a7c-ea5cbfbfc44a}">
+	<object class="AudioFile" id="{50ee7514-b08c-4db8-83d3-500e9c3d0c8e}">
 		<property name="assetPath">
-			<value>whoosh-bamboo-389752.mp3</value>
+			<value>Music/guitarCalm.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
 		</property>
 		<property name="frequencyInKHz">
-			<value>48</value>
+			<value>44.0999985</value>
 		</property>
 		<property name="channelCount">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<property name="length">
-			<value>6.024</value>
+			<value>89.417142857142863</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{08cf3b11-2243-4795-a693-c442afc60c18}</destination>

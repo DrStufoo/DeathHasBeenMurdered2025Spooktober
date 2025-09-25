@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.03.00">
-	<object class="AudioFile" id="{de48182b-6588-4297-9559-8c3d8c9ca402}">
+	<object class="AudioFile" id="{5be989d1-192c-44ee-b8c0-8d45fe2151d4}">
 		<property name="assetPath">
-			<value>simple-whoosh-382724.mp3</value>
+			<value>Music/jazzy.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
@@ -11,7 +14,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>0.57469387755102042</value>
+			<value>89.495510204081626</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{08cf3b11-2243-4795-a693-c442afc60c18}</destination>

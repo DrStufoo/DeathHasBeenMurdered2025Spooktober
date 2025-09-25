@@ -281,12 +281,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groupMusic:
     Guid:
-      Data1: -1267132121
-      Data2: 1235321788
-      Data3: 1066385284
-      Data4: -913393652
-    Path: event:/Music/BarMusic
-  fadeTime: 3
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  fadeTime: 1
+  groupAmbience:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &158022562
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +509,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 373032580}
+  - component: {fileID: 373032581}
   m_Layer: 0
   m_Name: ScientistAtWork
   m_TagString: Untagged
@@ -525,6 +533,33 @@ Transform:
   - {fileID: 2848198455969751451}
   m_Father: {fileID: 646297559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &373032581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373032579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21a216cefedad545b040b3f0534d9c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupMusic:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  fadeTime: 1
+  groupAmbience:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1001 &646297558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1028,6 +1063,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1048786297}
+  - component: {fileID: 1048786298}
   m_Layer: 0
   m_Name: ScientistTalk
   m_TagString: Untagged
@@ -1055,6 +1091,33 @@ Transform:
   - {fileID: 825482537}
   m_Father: {fileID: 646297559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1048786298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048786296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21a216cefedad545b040b3f0534d9c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupMusic:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  fadeTime: 1
+  groupAmbience:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &1286686810
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,6 +1214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1288957452}
+  - component: {fileID: 1288957453}
   m_Layer: 0
   m_Name: ScientistDead
   m_TagString: Untagged
@@ -1175,6 +1239,33 @@ Transform:
   - {fileID: 25168226}
   m_Father: {fileID: 646297559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1288957453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288957451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21a216cefedad545b040b3f0534d9c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupMusic:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  fadeTime: 1
+  groupAmbience:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1001 &1322443931
 PrefabInstance:
   m_ObjectHideFlags: 0

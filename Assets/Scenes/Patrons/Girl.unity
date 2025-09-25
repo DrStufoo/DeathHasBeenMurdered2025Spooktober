@@ -513,6 +513,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 897645563}
+  - component: {fileID: 897645564}
   m_Layer: 0
   m_Name: BarkeepEndingGood
   m_TagString: Untagged
@@ -537,6 +538,33 @@ Transform:
   - {fileID: 1109693100}
   m_Father: {fileID: 1506471382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &897645564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897645562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21a216cefedad545b040b3f0534d9c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupMusic:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  fadeTime: 1
+  groupAmbience:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &1109693099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,13 +1332,48 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2244554503770853481, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1904181019}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4352018298657638597, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1506471384}
   m_SourcePrefab: {fileID: 100100000, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
 --- !u!4 &1506471382 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2244554503770853481, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
   m_PrefabInstance: {fileID: 1506471381}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1506471383 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4352018298657638597, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+  m_PrefabInstance: {fileID: 1506471381}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1506471384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506471383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21a216cefedad545b040b3f0534d9c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupMusic:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  fadeTime: 1
+  groupAmbience:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &1904181018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,6 +1383,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1904181019}
+  - component: {fileID: 1904181020}
   m_Layer: 0
   m_Name: BarkeepEndingBad
   m_TagString: Untagged
@@ -1344,6 +1408,33 @@ Transform:
   - {fileID: 322529602}
   m_Father: {fileID: 1506471382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1904181020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904181018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21a216cefedad545b040b3f0534d9c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupMusic:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  fadeTime: 1
+  groupAmbience:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

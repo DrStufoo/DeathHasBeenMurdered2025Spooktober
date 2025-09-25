@@ -682,8 +682,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../DHMB Audio/DHMB Audio.fspro
-  sourceBankPath: ../DHMB Audio/Build
+  sourceProjectPath: DHMB Audio/DHMB Audio.fspro
+  sourceBankPath: DHMB Audio/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 1
   ShowBankRefreshWindow: 1

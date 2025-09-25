@@ -5,7 +5,7 @@
 			<value>mouseMoving</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>0</value>
 		</property>
 		<relationship name="folder">
 			<destination>{78372246-6dad-4d21-8ab7-303a5bab8777}</destination>
@@ -95,15 +95,9 @@
 		<property name="length">
 			<value>1.4000000000000001</value>
 		</property>
-		<property name="name" />
 		<property name="pitch">
 			<value>-12</value>
 		</property>
-		<relationship name="sounds">
-			<destination>{5af778df-ee03-4b8c-9aea-f2f03a0f6ee4}</destination>
-			<destination>{94475fd4-a937-4e98-bf58-2824321f63b3}</destination>
-			<destination>{ed2b255b-375b-4cc9-ae06-a8bc28eda25e}</destination>
-		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{421d5583-2403-4d8a-871e-e40a24eeaf09}">
 		<property name="name">
@@ -140,21 +134,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{35836510-80ee-4717-91af-14c7e778ea93}" />
 	<object class="MixerBusFader" id="{a200b7f8-ff04-4c19-9dfc-4dad1811d8d2}" />
-	<object class="SingleSound" id="{5af778df-ee03-4b8c-9aea-f2f03a0f6ee4}">
-		<relationship name="audioFile">
-			<destination>{4de00e31-e52a-4e5d-9a7c-ea5cbfbfc44a}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{94475fd4-a937-4e98-bf58-2824321f63b3}">
-		<relationship name="audioFile">
-			<destination>{de48182b-6588-4297-9559-8c3d8c9ca402}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{ed2b255b-375b-4cc9-ae06-a8bc28eda25e}">
-		<relationship name="audioFile">
-			<destination>{7574b811-a2d9-40c8-b5c7-9ba5c10a7c82}</destination>
-		</relationship>
-	</object>
 	<object class="MixerBusEffectChain" id="{8319172c-1fcb-4b92-b95f-e339ae7f3863}">
 		<relationship name="effects">
 			<destination>{976647bd-750d-45a4-b085-9550b6041625}</destination>

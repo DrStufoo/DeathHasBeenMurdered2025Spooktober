@@ -524,6 +524,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 600821866}
+  - component: {fileID: 600821867}
   m_Layer: 0
   m_Name: Dossier
   m_TagString: Untagged
@@ -549,6 +550,33 @@ Transform:
   - {fileID: 1846610505}
   m_Father: {fileID: 1690128842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &600821867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600821865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21a216cefedad545b040b3f0534d9c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupMusic:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  fadeTime: 1
+  groupAmbience:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &722285676
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,6 +967,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1027221693}
+  - component: {fileID: 1027221694}
   m_Layer: 0
   m_Name: UndertakerTalking
   m_TagString: Untagged
@@ -963,6 +992,33 @@ Transform:
   - {fileID: 1621880921}
   m_Father: {fileID: 1690128842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1027221694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027221692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21a216cefedad545b040b3f0534d9c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupMusic:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  fadeTime: 1
+  groupAmbience:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1001 &1309109740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1288,6 +1344,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1514062376}
+  - component: {fileID: 1514062377}
   m_Layer: 0
   m_Name: UndertakerSleeping
   m_TagString: Untagged
@@ -1313,6 +1370,33 @@ Transform:
   - {fileID: 722285677}
   m_Father: {fileID: 1690128842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1514062377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514062375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21a216cefedad545b040b3f0534d9c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupMusic:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  fadeTime: 1
+  groupAmbience:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1001 &1617774951
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2338,7 +2422,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8427947174382960797, guid: f9f2fb4803425b041adc41faf8602e14, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1697169417}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5773439623626148816, guid: f9f2fb4803425b041adc41faf8602e14, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1918579103}
   m_SourcePrefab: {fileID: 100100000, guid: f9f2fb4803425b041adc41faf8602e14, type: 3}
 --- !u!4 &1918579101 stripped
 Transform:
@@ -2350,6 +2437,33 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5773439623626148816, guid: f9f2fb4803425b041adc41faf8602e14, type: 3}
   m_PrefabInstance: {fileID: 1918579100}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1918579103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918579102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21a216cefedad545b040b3f0534d9c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupMusic:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  fadeTime: 1
+  groupAmbience:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!95 &2001956242 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6390341852574379080, guid: 7e4242728ddbf6b4d91b1fc66483f99e, type: 3}

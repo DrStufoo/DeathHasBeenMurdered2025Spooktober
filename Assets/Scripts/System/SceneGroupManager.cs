@@ -28,7 +28,7 @@ public class SceneGroupManager : MonoBehaviour
 
     private void Start()
     {
-        // Play music for currently active groups at scene start
+        // Play audio for currently active groups at scene start
         PlayMusicForActiveGroups();
     }
 
@@ -50,8 +50,6 @@ public class SceneGroupManager : MonoBehaviour
                 groupDictionary[group.groupName] = group.groupObject;
             }
         }
-        
-        Debug.Log($"Initialized {groupDictionary.Count} GameObject groups");
     }
 
     public void ActivateGroup(string groupName)
@@ -59,7 +57,6 @@ public class SceneGroupManager : MonoBehaviour
         if (groupDictionary.TryGetValue(groupName, out GameObject groupObject))
         {
             groupObject.SetActive(true);
-            Debug.Log($"Activated group: {groupName}");
         }
         else
         {
@@ -73,7 +70,6 @@ public class SceneGroupManager : MonoBehaviour
         if (groupDictionary.TryGetValue(groupName, out GameObject groupObject))
         {
             groupObject.SetActive(false);
-            Debug.Log($"Deactivated group: {groupName}");
         }
         else
         {
@@ -116,23 +112,28 @@ public class SceneGroupManager : MonoBehaviour
             transitionAnimator = SceneTransitionManager.instance.GetTransitionAnimator();
         }
 
-        // Fade to black AND start fading out music
+        // Fade to black
         if (transitionAnimator != null)
         {
             transitionAnimator.SetTrigger("End");
         }
         
-        // Get the new group's music before switching
+        // Get the new group's audio before switching
         EventReference newMusic = GetGroupMusic(groupName);
+        EventReference newAmbience = GetGroupAmbience(groupName);
         
         yield return new WaitForSeconds(transitionDuration);
 
         ShowOnlyGroupInstant(groupName);
         
-        // Start new music during the black screen
+        // Start new audio during the black screen
         if (!newMusic.IsNull)
         {
             AudioManager.instance.PlaySceneMusic(newMusic, transitionDuration);
+        }
+        if (!newAmbience.IsNull)
+        {
+            AudioManager.instance.PlaySceneAmbience(newAmbience, transitionDuration);
         }
 
         // Fade from black
@@ -145,36 +146,48 @@ public class SceneGroupManager : MonoBehaviour
         DialogueManager.GetInstance().SetInteractionEnabled(true);
     }
 
-    // Add this helper method to get music for a group:
-    private EventReference GetGroupMusic(string groupName)
-    {
-        if (groupDictionary.TryGetValue(groupName, out GameObject groupObject))
-        {
-            GroupMusicManager musicManager = groupObject.GetComponent<GroupMusicManager>();
-            if (musicManager != null)
-            {
-                return musicManager.GetGroupMusic();
-            }
-        }
-        
-        return new EventReference(); // Return empty if no music found
-    }
-
-    // ADD THIS NEW METHOD:
     private void PlayMusicForActiveGroups()
     {
         foreach (var group in gameObjectGroups)
         {
             if (group.groupObject != null && group.groupObject.activeInHierarchy)
             {
-                GroupMusicManager musicManager = group.groupObject.GetComponent<GroupMusicManager>();
+                GroupMusicManager musicManager = group.groupObject.GetComponentInChildren<GroupMusicManager>();
                 if (musicManager != null)
                 {
-                    Debug.Log("Starting music for active group: " + group.groupName);
                     musicManager.PlayGroupMusic();
-                    break; // Only play music for the first active group found
+                    musicManager.PlayGroupAmbience();
+                    break; // Only play audio for the first active group found
                 }
             }
         }
+    }
+
+    private EventReference GetGroupMusic(string groupName)
+    {
+        if (groupDictionary.TryGetValue(groupName, out GameObject groupObject))
+        {
+            GroupMusicManager musicManager = groupObject.GetComponentInChildren<GroupMusicManager>();
+            if (musicManager != null)
+            {
+                return musicManager.GetGroupMusic();
+            }
+        }
+        
+        return new EventReference();
+    }
+
+    private EventReference GetGroupAmbience(string groupName)
+    {
+        if (groupDictionary.TryGetValue(groupName, out GameObject groupObject))
+        {
+            GroupMusicManager musicManager = groupObject.GetComponentInChildren<GroupMusicManager>();
+            if (musicManager != null)
+            {
+                return musicManager.GetGroupAmbience();
+            }
+        }
+        
+        return new EventReference();
     }
 }
