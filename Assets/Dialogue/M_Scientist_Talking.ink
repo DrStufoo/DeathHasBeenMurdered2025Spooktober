@@ -1,6 +1,6 @@
 INCLUDE globals.ink
-#portrait:blank #layout:left #audio:beep_1 #speaker:The Scientist #sprite:scientist_neutral2
-...
+... #portrait:blank #layout:left #audio:beep_1 #speaker:The Scientist #sprite:scientist_neutral2
+
 Not often I get company... #sprite:scientist_neutral1
 {hasKilledScientist:
     Wait. #sprite:scientist_neutral1
@@ -127,6 +127,6 @@ Capiche? #sprite:scientist_drama3
                 Meet back here in 10 days. #sprite:scientist_neutral2
                     ****[...Thank you]
                     ... #sprite:scientist_drama1
-                    ...Don't. #sprite:scientist:drinking
+                    ...Don't.  #sprite:scientist_drinking
                     ~loadScene("BarSecond")
                     ->END

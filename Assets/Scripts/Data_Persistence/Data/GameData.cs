@@ -24,6 +24,9 @@ public class GameData
 
     public float wobbleIntensity = 2f;
 
+    public float masterVolume = 1f;
+    public float typingVolume = 1f;
+
     public string globalVariablesStateJson;
     //The values defined here will be the default
     //the game starts with when there's no data to load
@@ -48,6 +51,9 @@ public class GameData
         this.typingSpeed = 0.04f; // Default typing speed
 
         this.wobbleIntensity = 2f; // Default wobble intensity
+
+        this.masterVolume = 1f;
+        this.typingVolume = 1f;
     }
    
     public int GetPercentageComplete()

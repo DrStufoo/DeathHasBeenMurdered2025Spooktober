@@ -1,8 +1,22 @@
-#layout:right #portrait:LuckyCat#audio:beep_1 #speaker:Flower
-...
-It's a Flower.
-...You're not used to seeing this much color.
+#layout:left  #audio:beep_1 #speaker:Flower
+INCLUDE globals.ink
+{hasSpokenSouvenir7: ->TalkTwice| ->TalkOnce}
+=== TalkOnce ===
+It's a beautiful flower...
 ...An old friend gave it you.
-You remember your friend and smile.
-You feel great. =]
+
+You wonder if she ever found her mama.
+...
+...You know she didn't.
+You feel a little uneasy.
+(Your insanity has increased!)
+(Check your morality stats by pressing "Escape"!)
+~insanity = insanity + 1
+~hasSpokenSouvenir7 = true
+->END
+
+=== TalkTwice ===
+It's still a flower.
+...You remember your friend's hopes...
+You begin smiling...
 ->END

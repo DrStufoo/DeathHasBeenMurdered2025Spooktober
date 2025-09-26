@@ -1,8 +1,20 @@
-#layout:right #portrait:LuckyCat#audio:beep_1 #speaker:Grenade
-...
+#layout:left  #audio:beep_1 #speaker:Trustless Grenade
+INCLUDE globals.ink
+{hasSpokenSouvenir3: ->TalkTwice| ->TalkOnce}
+=== TalkOnce ===
 It's a home-made grenade.
-The insignia looks hand-drawn with crayon...
 ...An old friend gave it you.
-You remember your companion and smile.
-You feel a little better. :D
+
+You wonder if she ever forgave herself.
+You calm down a little.
+(Your insanity has decreased!)
+(Check your morality stats by pressing "Escape"!)
+~insanity = insanity - 1
+~hasSpokenSouvenir3 = true
+->END
+
+=== TalkTwice ===
+It's still a grenade.
+...You remember your friend's screams...
+You stop smiling...
 ->END

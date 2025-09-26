@@ -5,8 +5,8 @@ INCLUDE globals.ink
 === innocent ===
 ...
 Hello, there! #sprite:life_wave
-
-I'm Life. #sprite:life_neutral
+I've never seen...
+One of you before. #sprite:life_neutral
 ...What's your name? #sprite:life_curious
 
 *[Tell her]

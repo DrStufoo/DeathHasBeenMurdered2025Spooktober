@@ -5,7 +5,11 @@ INCLUDE globals.ink
 
 ...
 
-It's a can of gasoline.
+You decide to check in this tent.
+
+Within is...
+
+A can of gasoline.
 
 This will do perfectly...
     ->Ready

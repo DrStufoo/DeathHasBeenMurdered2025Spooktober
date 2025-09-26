@@ -29,6 +29,11 @@ public class SceneTransitionManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    public void QuitApplication()
+    {
+        Application.Quit();
+    }
+
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;

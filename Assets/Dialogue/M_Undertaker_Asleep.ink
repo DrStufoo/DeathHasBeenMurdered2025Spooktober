@@ -7,7 +7,7 @@ He's asleep.
 === main ===
 You need information from him.
 Or maybe... <color=\#FF0000>Off</color> him?
-Who's to say we can't pull the knowledge of his corpse?
+Who's to say we can't pull the knowledge off his corpse?
 Your call...
 ->Choice
 === Choice ===

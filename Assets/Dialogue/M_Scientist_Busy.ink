@@ -1,5 +1,5 @@
 INCLUDE globals.ink
-#layout:cg #audio:beep_1
+... #audio:beep_1 #layout:cg
 
 ~playEmote("scientistAtWork")
 

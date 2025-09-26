@@ -250,7 +250,7 @@ PrefabInstance:
     - target: {fileID: 4318546630770613575, guid: 7e4242728ddbf6b4d91b1fc66483f99e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -4216172147336796173, guid: f2227856f09c71e4a9327cf485905bc8, type: 3}
+      objectReference: {fileID: -8527568592950175283, guid: 80e9ea160aa5c294bbfb314985418939, type: 3}
     - target: {fileID: 4318546630770613575, guid: 7e4242728ddbf6b4d91b1fc66483f99e, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -722,9 +722,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 830908093529903707, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 882961243996121096, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1199695900623145936, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: gameObjectGroups.Array.data[1].groupName
       value: MWNEServe
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521913788533822818, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2244554503770853481, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -766,6 +778,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3045630639609693361, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3097180174794576568, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: inkJSON
       value: 
@@ -778,6 +794,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3955663723303823753, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4352018298657638597, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_Name
       value: MWNEServe
@@ -786,13 +806,69 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5144309182209623336, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151976591239231001, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6066287022932439419, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7175754175071622430, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: groupMusic.Path
+      value: event:/Ambience/silence
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175754175071622430, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: groupAmbience.Path
+      value: event:/Music/ethereal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175754175071622430, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: groupMusic.Guid.Data1
+      value: 1647697425
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175754175071622430, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: groupMusic.Guid.Data2
+      value: 1313416684
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175754175071622430, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: groupMusic.Guid.Data3
+      value: 457943173
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175754175071622430, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: groupMusic.Guid.Data4
+      value: 1065582892
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175754175071622430, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: groupAmbience.Guid.Data1
+      value: 1923685652
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175754175071622430, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: groupAmbience.Guid.Data2
+      value: 1160543377
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175754175071622430, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: groupAmbience.Guid.Data3
+      value: 1348013464
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175754175071622430, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: groupAmbience.Guid.Data4
+      value: 583485881
+      objectReference: {fileID: 0}
+    - target: {fileID: 7519048487650195597, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8419956471939533236, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_Name
       value: BarkeepLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139338946751184023, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

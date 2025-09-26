@@ -1,5 +1,5 @@
 INCLUDE globals.ink
-#layout:right #portrait:default #audio:beep_1 #speaker:Undertaker's Drink
+#layout:left #portrait:default #audio:beep_1 #speaker:Undertaker's Drink
 {hasDrankUndertakersDrink: ->Drank| ->notDrank}
 
 === notDrank ===
@@ -12,7 +12,7 @@ There's an unconscious Morticion to tend to.
 ...So go do that.
 *[Drink the Stale beverage (Bad Idea)]
     (You drink the old beverage)
-    ~notification("The Developer will remember that...")
+    ~notification("Idiot")
     ...
     (It's horrible)
     (Of course it's horrible)

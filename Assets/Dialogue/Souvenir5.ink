@@ -1,8 +1,14 @@
-#layout:right#portrait:LuckyCat#audio:beep_1 #speaker:Antidote
-...
+#layout:left  #audio:beep_1 #speaker:Alleged Antidote
+INCLUDE globals.ink
+{hasSpokenSouvenir5: ->TalkTwice| ->TalkOnce}
+=== TalkOnce ===
 It's an antidote.
-Allegedly.
-...An old friend gave it you.
-You remember your companion and smile.
-You feel a little better.
+...An old... Aquantiance gave it you.
+You frown at his memory.
+~hasSpokenSouvenir5 = true
+->END
+
+=== TalkTwice ===
+It's still an antidote.
+It's still making you displeased.
 ->END

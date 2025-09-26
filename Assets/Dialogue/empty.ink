@@ -1,0 +1,6 @@
+#layout:left  #audio:beep_1 #speaker:Empty Window
+...
+It's...
+Quiet, today.
+...Interesting.
+->END

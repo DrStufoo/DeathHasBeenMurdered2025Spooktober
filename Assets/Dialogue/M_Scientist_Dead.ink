@@ -12,6 +12,7 @@ INCLUDE globals.ink
 
 ~notification("The fates will remember this...")
 ~hasKilledScientist = true
+~killCount = killCount + 1
 
 (You look through his pockets...)
 

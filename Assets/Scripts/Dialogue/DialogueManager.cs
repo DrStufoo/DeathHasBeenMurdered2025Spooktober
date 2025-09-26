@@ -10,6 +10,7 @@ using FMOD.Studio;
 
 public class DialogueManager : MonoBehaviour, IDataPersistence
 {
+    private float typingVolume = 1f;
 
     [Header("Text Wobble")]
     [SerializeField] private bool enableTextWobble = true;
@@ -491,6 +492,9 @@ private IEnumerator DisplayLine(string line)
         // Random pitch
         float randomPitch = Random.Range(minPitch, maxPitch);
         currentTypingSound.setParameterByName("pitch", randomPitch);
+
+        currentTypingSound.setParameterByName("typingVolume", typingVolume);
+
         
         // Play the sound
         currentTypingSound.start();
@@ -532,9 +536,8 @@ private IEnumerator DisplayLine(string line)
                     portraitAnimator.Play(tagValue);
                     break;
                 case LAYOUT_TAG:
-                    layoutAnimator.Play(tagValue);
-                    // Force TextMeshPro to update
-                    StartCoroutine(ForceTextUpdate());
+                    // Use coroutine to wait a frame before playing layout animation
+                    StartCoroutine(PlayLayoutAfterFrame(tagValue));
                     break;
                 case AUDIO_TAG:
                     SetCurrentAudioInfo(tagValue);
@@ -544,6 +547,17 @@ private IEnumerator DisplayLine(string line)
                 break;
             }
         }
+    }
+
+    // Add this new coroutine method:
+    private IEnumerator PlayLayoutAfterFrame(string layoutName)
+    {
+        yield return null; // Wait one frame
+        
+        layoutAnimator.Play(layoutName);
+        
+        // Force TextMeshPro to update
+        StartCoroutine(ForceTextUpdate());
     }
 
     private IEnumerator ForceTextUpdate()
@@ -591,10 +605,15 @@ private IEnumerator DisplayLine(string line)
     {
         if (canContinueToNextLine)
         {
-        currentStory.ChooseChoiceIndex(choiceIndex);
-        ContinueStory();
+            currentStory.ChooseChoiceIndex(choiceIndex);
+            
+            // ADD THIS LINE:
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+            
+            ContinueStory();
         }
     }
+
 
     public void SetTypingSpeed(float newSpeed)
     {
@@ -618,5 +637,15 @@ private IEnumerator DisplayLine(string line)
         {
             return this.wobbleIntensity;
         }
+
+    public void SetTypingVolume(float newVolume)
+    {
+        this.typingVolume = Mathf.Clamp01(newVolume);
+    }
+
+    public float GetTypingVolume()
+    {
+        return this.typingVolume;
+    }
 
 }

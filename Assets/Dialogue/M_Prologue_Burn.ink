@@ -1,6 +1,6 @@
 INCLUDE globals.ink
 #layout:cg #audio:beep_1
-~playEmote("fadeIntoMarauderOverRaiders")
+~playEmote("fadeIntoMarauder_burned")
 {isRaiding:->Duty|->Sadism}
 
 === Duty ===

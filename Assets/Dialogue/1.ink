@@ -1,5 +1,6 @@
 INCLUDE globals.ink
-#portrait:MITW #layout:cg #audio:beep_1 #speaker:???
+#portrait:MITW 
+#layout:right  #audio:beep_1 #speaker:???
 
 ->main
 

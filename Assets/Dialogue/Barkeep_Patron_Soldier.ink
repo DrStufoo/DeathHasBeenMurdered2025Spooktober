@@ -211,9 +211,9 @@ Do you really think so? #sprite:soldier_curious
         I need to leave. #sprite:soldier_standing
         ...Thanks for the drink, civilian. #sprite:soldier_angry
         ~notification("The Soldier will remember this")
-        (Your Sadism has increased!)
+        (Your Sadism has increased!) 
         ~sadism = sadism + 1
-        ...
+        ... #sprite:default
         The Soldier is gone.
         Good riddance...
         ***[Continue the game]

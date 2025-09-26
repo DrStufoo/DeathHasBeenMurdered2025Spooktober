@@ -71,6 +71,7 @@ EXTERNAL showOnlyGroup(groupName)
     
     
 //ThrowAway Vars
+        VAR spookyActivate = false
         VAR hasDrankUndertakersDrink = false
         VAR hasFoundGas = false
         VAR hasFoundDirt = false

@@ -228,9 +228,15 @@ public class DataPersistenceManager : MonoBehaviour
 
     public bool HasGameData()
     {
-        // Check if we have game data AND if it contains a valid saved scene
-        return gameData != null && ShouldSaveScene(gameData.currentSceneName);
-
+        // Check if we actually loaded data from a file, not just default data
+        if (gameData == null) return false;
+        
+        // Check if we have a valid profile selected and data was loaded
+        if (string.IsNullOrEmpty(selectedProfileId)) return false;
+        
+        // Check if the save file actually exists
+        Dictionary<string, GameData> allProfiles = dataHandler.LoadAllProfiles();
+        return allProfiles.ContainsKey(selectedProfileId) && allProfiles[selectedProfileId] != null;
     }
 
     public Dictionary<string, GameData> GetAllProfilesGameData()

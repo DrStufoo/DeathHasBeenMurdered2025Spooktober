@@ -1,5 +1,5 @@
 INCLUDE globals.ink
-#layout:right #portrait:LuckyCat#audio:beep_1 #speaker:Lucky Cat
+#layout:left  #audio:beep_1 #speaker:Lucky Cat
 ...
 
 {hasSpokenSouvenir1: ->TalkTwice| ->TalkOnce}

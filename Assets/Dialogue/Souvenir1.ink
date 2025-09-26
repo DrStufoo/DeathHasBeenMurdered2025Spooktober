@@ -1,4 +1,4 @@
-#layout:right #portrait:default#audio:beep_1 #speaker:Mask
+#layout:left  #audio:beep_1 #speaker:Mask
 INCLUDE globals.ink
 {hasSpokenSouvenir2: ->TalkTwice| ->TalkOnce}
 === TalkOnce ===

@@ -1,14 +1,15 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
-public class ForceTMPLayoutUpdate : MonoBehaviour
+public class DialogueLayoutFix : MonoBehaviour
 {
-    public TextMeshProUGUI targetTMP;
-
-    void Update()
+    [SerializeField] private TextMeshProUGUI textComponent;
+    
+    public void ForceTextRefresh()
     {
-        // Force an immediate layout rebuild
-        LayoutRebuilder.ForceRebuildLayoutImmediate(targetTMP.rectTransform);
+        if (textComponent != null)
+        {
+            textComponent.ForceMeshUpdate();
+        }
     }
 }

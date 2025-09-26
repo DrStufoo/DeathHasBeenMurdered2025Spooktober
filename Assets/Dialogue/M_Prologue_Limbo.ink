@@ -3,7 +3,6 @@ INCLUDE globals.ink
 {goodEnding:-> innocent|->neutral}
 
 === innocent ===
-(Show life ending herself)
 
 (...)
 
@@ -25,11 +24,15 @@ INCLUDE globals.ink
 
 (It's over)
 
+~playEmote("black")
+
 (Peace...)
 
 (At last...)
 
 ...
+
+#layout:right
 
 <color=\#FF0000>Congratulations.</color>
 
@@ -92,7 +95,11 @@ INCLUDE globals.ink
 
 (It seems you're trapped...)
 
+
 (In Limbo)
+~playEmote("black")
+
+#layout:right
 
 <color=\#FF0000>Congratulations.</color>
 
@@ -122,9 +129,8 @@ INCLUDE globals.ink
 
     
 === murderer ===
-(show CG of life murdered)
-
 (...)
+~playEmote("fadeIntoBadEnding")
 
 (And so, our story ends)
 
@@ -150,7 +156,11 @@ INCLUDE globals.ink
 
 ...
 
+~playEmote("black")
+
 (But was it worth it?)
+
+#layout:right
 
 <color=\#FF0000>Congratulations.</color>
 

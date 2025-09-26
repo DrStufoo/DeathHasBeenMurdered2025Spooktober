@@ -182,6 +182,7 @@ Simple as that. #sprite:marauder_standing
     I'll be seeing you around, Mr. Barkeep. #sprite:marauder_confused
     Or, hopefully...
     Never again. #sprite:default
+    ~spookyActivate = true
     ...
     ~loadScene("Girl")
     ->END

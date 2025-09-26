@@ -171,13 +171,77 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3097180174794576568, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: inkJSON
+      value: 
+      objectReference: {fileID: 4900000, guid: e388a8bb05ba69c47b677c5eec970dfd, type: 3}
     - target: {fileID: 3126013169996797820, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: spriteAnimator
       value: 
       objectReference: {fileID: 6918423080609306448}
+    - target: {fileID: 4043632244570506392, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8527568592950175283, guid: 80e9ea160aa5c294bbfb314985418939, type: 3}
+    - target: {fileID: 4352018298657638597, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175754175071622430, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: groupMusic.Path
+      value: event:/Music/ethereal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175754175071622430, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: groupAmbience.Path
+      value: event:/Ambience/silence
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175754175071622430, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: groupMusic.Guid.Data1
+      value: 1923685652
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175754175071622430, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: groupMusic.Guid.Data2
+      value: 1160543377
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175754175071622430, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: groupMusic.Guid.Data3
+      value: 1348013464
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175754175071622430, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: groupMusic.Guid.Data4
+      value: 583485881
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175754175071622430, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: groupAmbience.Guid.Data1
+      value: 1647697425
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175754175071622430, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: groupAmbience.Guid.Data2
+      value: 1313416684
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175754175071622430, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: groupAmbience.Guid.Data3
+      value: 457943173
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175754175071622430, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: groupAmbience.Guid.Data4
+      value: 1065582892
+      objectReference: {fileID: 0}
     - target: {fileID: 8419956471939533236, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_Name
       value: BarkeepLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8552565200495538727, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.088733
+      objectReference: {fileID: 0}
+    - target: {fileID: 8552565200495538727, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.185597
+      objectReference: {fileID: 0}
+    - target: {fileID: 8552565200495538727, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.4
       objectReference: {fileID: 0}
     - target: {fileID: 8831917477699569790, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: inkJSON
@@ -215,19 +279,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groupMusic:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1758474220
+      Data2: 1267905657
+      Data3: 1394663102
+      Data4: 69560884
+    Path: event:/Music/jazzy
   fadeTime: 1
   groupAmbience:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -2129194786
+      Data2: 1126313020
+      Data3: 232872116
+      Data4: 336050190
+    Path: event:/Ambience/rainy
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

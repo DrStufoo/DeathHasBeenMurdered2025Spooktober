@@ -150,7 +150,7 @@ Heh...
             I think I'll have...#sprite:undertaker_handsoncounter
             ...A water. #sprite:undertaker_neutral
                 ****[...Are you serious?]
-                    Of course I am, hah!
+                    Of course I'm not, hah!
                     I'll take a uh...
                     Whiskey.
                     *****[Alright]

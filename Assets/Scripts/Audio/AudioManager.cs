@@ -16,6 +16,8 @@ public class AudioManager : MonoBehaviour
     private EventInstance currentSceneAmbienceInstance;
     private bool isFadingMusic = false;
     private bool isFadingAmbience = false;
+
+    private float masterVolume = 1f;
     
     public static AudioManager instance {get; private set;}
 
@@ -155,5 +157,19 @@ public class AudioManager : MonoBehaviour
     private void OnDestroy()
     {
         CleanUp();
+    }
+
+    public void SetMasterVolume(float volume)
+    {
+        masterVolume = Mathf.Clamp01(volume);
+        
+        // Set FMOD master volume
+        FMOD.Studio.Bus masterBus = FMODUnity.RuntimeManager.GetBus("bus:/");
+        masterBus.setVolume(masterVolume);
+    }
+
+    public float GetMasterVolume()
+    {
+        return masterVolume;
     }
 }
