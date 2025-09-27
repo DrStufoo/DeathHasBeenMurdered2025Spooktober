@@ -7,7 +7,9 @@ INCLUDE globals.ink
 === main ===
 (Right-Click to Continue Dialogue)
 (Left-Click to Skip typing)
+(Press "Q" to go a step back)
 (Press buttons to choose them)
+(Enable Auto-Continue in settings)
 (Adjust volume/text settings by pressing "Escape")
 (Got it?)
 (Too bad)

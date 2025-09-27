@@ -11,7 +11,7 @@ public class GameObjectGroup
     public GameObject groupObject;
 }
 
-public class SceneGroupManager : MonoBehaviour
+public class SceneGroupManager : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private GameObjectGroup[] gameObjectGroups;
     [SerializeField] private float transitionDuration = 1f;
@@ -19,6 +19,9 @@ public class SceneGroupManager : MonoBehaviour
     public static SceneGroupManager instance;
 
     private Dictionary<string, GameObject> groupDictionary;
+
+    private string currentActiveGroup = "";
+
 
     private void Awake()
     {
@@ -28,6 +31,9 @@ public class SceneGroupManager : MonoBehaviour
 
     private void Start()
     {
+        // Detect which group is already active at scene start
+        DetectCurrentActiveGroup();
+
         // Play audio for currently active groups at scene start
         PlayMusicForActiveGroups();
     }
@@ -37,6 +43,18 @@ public class SceneGroupManager : MonoBehaviour
         if (instance == this)
         {
             instance = null;
+        }
+    }
+
+    private void DetectCurrentActiveGroup()
+    {
+        foreach (var group in gameObjectGroups)
+        {
+            if (group.groupObject != null && group.groupObject.activeInHierarchy)
+            {
+                currentActiveGroup = group.groupName;
+                break;
+            }
         }
     }
 
@@ -89,17 +107,20 @@ public class SceneGroupManager : MonoBehaviour
     }
 
     private void ShowOnlyGroupInstant(string groupName)
-    {
-        foreach (var group in gameObjectGroups)
         {
-            if (group.groupObject != null)
+            foreach (var group in gameObjectGroups)
             {
-                group.groupObject.SetActive(false);
+                if (group.groupObject != null)
+                {
+                    group.groupObject.SetActive(false);
+                }
             }
+            
+            ActivateGroup(groupName);
+            currentActiveGroup = groupName;
         }
-        
-        ActivateGroup(groupName);
-    }
+
+
 
     private IEnumerator TransitionToGroup(string groupName)
     {
@@ -124,7 +145,7 @@ public class SceneGroupManager : MonoBehaviour
         
         yield return new WaitForSeconds(transitionDuration);
 
-        ShowOnlyGroupInstant(groupName);
+        ShowOnlyGroupInstant(groupName); // This now properly sets currentActiveGroup
         
         // Start new audio during the black screen
         if (!newMusic.IsNull)
@@ -142,7 +163,7 @@ public class SceneGroupManager : MonoBehaviour
             transitionAnimator.SetTrigger("Start");
         }
 
-        yield return new WaitForSeconds(transitionDuration - 2f);
+        yield return new WaitForSeconds(transitionDuration - 2);
         DialogueManager.GetInstance().SetInteractionEnabled(true);
     }
 
@@ -190,4 +211,24 @@ public class SceneGroupManager : MonoBehaviour
         
         return new EventReference();
     }
+
+
+
+    public void LoadData(GameData data)
+    {
+        // If we have a saved group and it exists in this scene
+        if (!string.IsNullOrEmpty(data.currentActiveGroup) && 
+            groupDictionary.ContainsKey(data.currentActiveGroup))
+        {
+            ShowOnlyGroupInstant(data.currentActiveGroup);
+        }
+        // Otherwise keep whatever group was already active (detected in Start)
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.currentActiveGroup = currentActiveGroup;
+    }
 }
+
+

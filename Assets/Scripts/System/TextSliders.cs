@@ -8,6 +8,9 @@ public class TypingSpeedController : MonoBehaviour
     [SerializeField] private Slider wobbleIntensitySlider;
     [SerializeField] private Slider masterVolumeSlider;
     [SerializeField] private Slider typingVolumeSlider;
+
+    [SerializeField] private Slider autoContinueDelaySlider;
+    [SerializeField] private Toggle autoContinueToggle;
     
     private void Start()
     {
@@ -15,6 +18,9 @@ public class TypingSpeedController : MonoBehaviour
         SetupWobbleIntensitySlider();
         SetupMasterVolumeSlider();
         SetupTypingVolumeSlider();
+
+        SetupAutoContinueDelaySlider();
+        SetupAutoContinueToggle();
     }
     
     private void SetupSlider()
@@ -148,4 +154,58 @@ public class TypingSpeedController : MonoBehaviour
         
         UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
     }
+private void SetupAutoContinueDelaySlider()
+{
+    if (autoContinueDelaySlider == null) return;
+    
+    autoContinueDelaySlider.minValue = 0.5f;
+    autoContinueDelaySlider.maxValue = 10f;
+    
+    if (DialogueManager.GetInstance() != null)
+    {
+        autoContinueDelaySlider.value = DialogueManager.GetInstance().GetAutoContinueDelay();
+    }
+    else
+    {
+        autoContinueDelaySlider.value = 3f; // Default delay
+    }
+    
+    autoContinueDelaySlider.onValueChanged.AddListener(OnAutoContinueDelayChanged);
+}
+
+private void OnAutoContinueDelayChanged(float sliderValue)
+{
+    if (DialogueManager.GetInstance() != null)
+    {
+        DialogueManager.GetInstance().SetAutoContinueDelay(sliderValue);
+    }
+    
+    UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+}
+
+private void SetupAutoContinueToggle()
+{
+    if (autoContinueToggle == null) return;
+    
+    if (DialogueManager.GetInstance() != null)
+    {
+        autoContinueToggle.isOn = DialogueManager.GetInstance().GetAutoContinueEnabled();
+    }
+    else
+    {
+        autoContinueToggle.isOn = false; // Default disabled
+    }
+    
+    autoContinueToggle.onValueChanged.AddListener(OnAutoContinueToggleChanged);
+}
+
+private void OnAutoContinueToggleChanged(bool isEnabled)
+{
+    if (DialogueManager.GetInstance() != null)
+    {
+        DialogueManager.GetInstance().SetAutoContinueEnabled(isEnabled);
+    }
+    
+    UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+}
 }

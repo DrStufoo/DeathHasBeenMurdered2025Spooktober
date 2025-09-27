@@ -8,9 +8,45 @@ using UnityEngine.EventSystems;
 using FMODUnity;
 using FMOD.Studio;
 
+
+[System.Serializable]
+public class DialogueSnapshot
+{
+    public string storyStateJson;
+    public string displayedText;
+    public string speakerName;
+    public bool hadChoices;
+    public string[] choiceTexts;
+    
+    public DialogueSnapshot(string storyState, string text, string speaker, bool choices, string[] choiceTexts)
+    {
+        storyStateJson = storyState;
+        displayedText = text;
+        speakerName = speaker;
+        hadChoices = choices;
+        this.choiceTexts = choiceTexts;
+    }
+}
+
+
+
 public class DialogueManager : MonoBehaviour, IDataPersistence
 {
     private float typingVolume = 1f;
+
+        
+    [Header("Auto-Continue")]
+    [SerializeField] private bool autoContinueEnabled = false;
+    [SerializeField] private float autoContinueDelay = 3f;
+    
+    private Coroutine autoContinueCoroutine;
+
+    [Header("Dialogue History")]
+    [SerializeField] private int maxHistorySize = 20;
+    
+    private List<DialogueSnapshot> dialogueHistory = new List<DialogueSnapshot>();
+    private bool canGoBack = false;
+
 
     [Header("Text Wobble")]
     [SerializeField] private bool enableTextWobble = true;
@@ -215,61 +251,81 @@ public void ShowNotification(string message)
     }
 
     private void Update()
+{
+    // Return right away if dialogue isn't playing or interactions are disabled
+    if(!dialogueIsPlaying || !interactionsEnabled)
     {
+        return;
+    }
     
-
-        //return right away if dialogue isn't playing or interactions are disabled
-        if(!dialogueIsPlaying || !interactionsEnabled)
+    // Handle going back with Q key
+    if (Input.GetKeyDown(KeyCode.Q) && canGoBack && dialogueHistory.Count > 0)
+    {
+        StopAutoContinueTimer(); // Stop timer when going back
+        GoBackOneLine();
+        return;
+    }
+    
+    // Instant skip typing effect with left click
+    if (Input.GetMouseButtonDown(0) && !canContinueToNextLine && displayLineCoroutine != null)
+    {
+        StopAutoContinueTimer(); // Stop timer on interaction
+        StopCoroutine(displayLineCoroutine);
+        dialogueText.maxVisibleCharacters = dialogueText.text.Length;
+        
+        // Start wobble if enabled
+        if (enableTextWobble)
         {
-            return;
+            if (wobbleCoroutine != null)
+                StopCoroutine(wobbleCoroutine);
+            wobbleCoroutine = StartCoroutine(WobbleText());
         }
-        // Instant skip typing effect with left click
-        if (Input.GetMouseButtonDown(0) && !canContinueToNextLine && displayLineCoroutine != null)
+        
+        continueIcon.SetActive(true);
+        DisplayChoices();
+        canContinueToNextLine = true;
+        
+        // Restart auto-continue timer if no choices
+        if (autoContinueEnabled && currentStory.currentChoices.Count == 0)
         {
-            StopCoroutine(displayLineCoroutine);
-            dialogueText.maxVisibleCharacters = dialogueText.text.Length;
-            
-            // Start wobble if enabled
-            if (enableTextWobble)  // Add this condition check
-            {
-                if (wobbleCoroutine != null)
-                    StopCoroutine(wobbleCoroutine);
-                wobbleCoroutine = StartCoroutine(WobbleText());
-            }
-            
-            continueIcon.SetActive(true);
-            DisplayChoices();
-            canContinueToNextLine = true;
-        }
-
-
-        //handle continuing to the next line when mouse is clicked anywhere
-        if (currentStory.currentChoices.Count == 0 
-            && canContinueToNextLine && Input.GetMouseButtonDown(1))
-        {
-            ContinueStory();
+            StartAutoContinueTimer();
         }
     }
 
-    public void EnterDialogueMode(TextAsset inkJSON, Animator emoteAnimator)
+    // Handle continuing to the next line when mouse is clicked anywhere
+    if (currentStory.currentChoices.Count == 0 
+        && canContinueToNextLine && Input.GetMouseButtonDown(1))
     {
-        // Reset memory notice before starting dialogue
-        ResetMemoryNoticeAnimation();
-     
-        currentStory = new Story(inkJSON.text);
-        dialogueIsPlaying = true;
-        dialoguePanel.SetActive(true);
-
-        dialogueVariables.StartListening(currentStory);
-        inkExternalFunctions.Bind(currentStory, emoteAnimator);
-
-        //reset portrait, layout, and speaker
-        displayNameText.text = "???";
-        portraitAnimator.Play("default");
-        layoutAnimator.Play("right");
-
+        StopAutoContinueTimer(); // Stop timer on manual continue
         ContinueStory();
     }
+}
+
+
+public void EnterDialogueMode(TextAsset inkJSON, Animator emoteAnimator)
+{
+    // Reset memory notice before starting dialogue
+    ResetMemoryNoticeAnimation();
+    
+    // Reset dialogue history for new conversation
+    dialogueHistory.Clear();
+    canGoBack = false;
+ 
+    currentStory = new Story(inkJSON.text);
+    dialogueIsPlaying = true;
+    dialoguePanel.SetActive(true);
+
+    dialogueVariables.StartListening(currentStory);
+    inkExternalFunctions.Bind(currentStory, emoteAnimator);
+
+    // Reset portrait, layout, and speaker
+    displayNameText.text = "???";
+    portraitAnimator.Play("default");
+    layoutAnimator.Play("right");
+
+    ContinueStory();
+}
+
 
     private void ResetMemoryNoticeAnimation()
     {
@@ -287,6 +343,8 @@ public void ShowNotification(string message)
     private IEnumerator ExitDialogueMode()
     {
         yield return new WaitForSeconds(0.2f);
+
+        StopAutoContinueTimer();
 
         // Stop wobble when exiting dialogue
         if (wobbleCoroutine != null)
@@ -311,33 +369,37 @@ public void ShowNotification(string message)
 
     public void ContinueStory()
     {
-    
         if (currentStory.canContinue)
         {
+            // Save current state before continuing (if we have displayed text)
+            if (!string.IsNullOrEmpty(dialogueText.text))
+            {
+                SaveDialogueSnapshot();
+            }
+            
             if (displayLineCoroutine != null)
             {
                 StopCoroutine(displayLineCoroutine);
             }
 
             string nextLine = currentStory.Continue();
-            //handle case where the last line is an external function
+            // Handle case where the last line is an external function
             if (nextLine.Equals("") && !currentStory.canContinue)
             {
                 StartCoroutine(ExitDialogueMode());
             }
             else
             {
-            //handle tags
-            HandleTags(currentStory.currentTags);
-            //set text for the current dialogue line
-            displayLineCoroutine = StartCoroutine(DisplayLine(nextLine));                
+                // Handle tags
+                HandleTags(currentStory.currentTags);
+                // Set text for the current dialogue line
+                displayLineCoroutine = StartCoroutine(DisplayLine(nextLine));                
             }
         }
-        
         else
-           {
-              StartCoroutine(ExitDialogueMode());
-           }
+        {
+            StartCoroutine(ExitDialogueMode());
+        }
     }
 
  
@@ -409,6 +471,12 @@ private IEnumerator DisplayLine(string line)
         if (dialogueText.GetComponent<Button>() != null)
         {
             dialogueText.GetComponent<Button>().interactable = true;
+        }
+
+        // START AUTO-CONTINUE TIMER IF ENABLED AND NO CHOICES
+        if (autoContinueEnabled && currentStory.currentChoices.Count == 0)
+        {
+            StartAutoContinueTimer();
         }
  
     }
@@ -605,14 +673,15 @@ private IEnumerator DisplayLine(string line)
     {
         if (canContinueToNextLine)
         {
+            StopAutoContinueTimer(); // Stop timer when choice is made
             currentStory.ChooseChoiceIndex(choiceIndex);
             
-            // ADD THIS LINE:
             UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
             
             ContinueStory();
         }
     }
+
 
 
     public void SetTypingSpeed(float newSpeed)
@@ -647,5 +716,168 @@ private IEnumerator DisplayLine(string line)
     {
         return this.typingVolume;
     }
+
+private void GoBackOneLine()
+{
+    if (dialogueHistory.Count == 0) return;
+    
+    // Get the last snapshot and remove it from history
+    DialogueSnapshot lastSnapshot = dialogueHistory[dialogueHistory.Count - 1];
+    dialogueHistory.RemoveAt(dialogueHistory.Count - 1);
+    
+    // Restore the story state
+    currentStory.state.LoadJson(lastSnapshot.storyStateJson);
+    
+    // Restore dialogue variables
+    dialogueVariables.StopListening(currentStory);
+    dialogueVariables.StartListening(currentStory);
+    
+    // Stop any current coroutines
+    if (displayLineCoroutine != null)
+    {
+        StopCoroutine(displayLineCoroutine);
+    }
+    if (wobbleCoroutine != null)
+    {
+        StopCoroutine(wobbleCoroutine);
+        wobbleCoroutine = null;
+    }
+    
+    // Restore the UI
+    dialogueText.text = lastSnapshot.displayedText;
+    dialogueText.maxVisibleCharacters = lastSnapshot.displayedText.Length;
+    displayNameText.text = lastSnapshot.speakerName;
+    
+    // Start wobble if enabled
+    if (enableTextWobble)
+    {
+        if (wobbleCoroutine != null)
+            StopCoroutine(wobbleCoroutine);
+        wobbleCoroutine = StartCoroutine(WobbleText());
+    }
+    
+    // Show continue icon and restore choices
+    continueIcon.SetActive(true);
+    if (lastSnapshot.hadChoices)
+    {
+        RestoreChoicesFromSnapshot(lastSnapshot);
+    }
+    else
+    {
+        HideChoices();
+    }
+    canContinueToNextLine = true;
+    
+    // Update canGoBack state
+    canGoBack = dialogueHistory.Count > 0;
+    
+    Debug.Log($"Went back one line. History count: {dialogueHistory.Count}");
+}
+
+
+private void SaveDialogueSnapshot()
+{
+    // Save current story state
+    string currentStateJson = currentStory.state.ToJson();
+    string currentText = dialogueText.text;
+    string currentSpeaker = displayNameText.text;
+    
+    // Capture current choices
+    bool hasChoices = currentStory.currentChoices.Count > 0;
+    string[] choiceTexts = new string[currentStory.currentChoices.Count];
+    for (int i = 0; i < currentStory.currentChoices.Count; i++)
+    {
+        choiceTexts[i] = currentStory.currentChoices[i].text;
+    }
+    
+    // Create and add snapshot
+    DialogueSnapshot snapshot = new DialogueSnapshot(currentStateJson, currentText, currentSpeaker, hasChoices, choiceTexts);
+    dialogueHistory.Add(snapshot);
+    
+    // Limit history size
+    if (dialogueHistory.Count > maxHistorySize)
+    {
+        dialogueHistory.RemoveAt(0);
+    }
+    
+    canGoBack = true;
+}
+
+private void RestoreChoicesFromSnapshot(DialogueSnapshot snapshot)
+{
+    // Hide all choices first
+    HideChoices();
+    
+    // Show the choices that were saved
+    for (int i = 0; i < snapshot.choiceTexts.Length && i < choices.Length; i++)
+    {
+        choices[i].gameObject.SetActive(true);
+        choicesText[i].text = snapshot.choiceTexts[i];
+    }
+}
+
+private void StartAutoContinueTimer()
+{
+    // Stop any existing timer
+    if (autoContinueCoroutine != null)
+    {
+        StopCoroutine(autoContinueCoroutine);
+    }
+    
+    autoContinueCoroutine = StartCoroutine(AutoContinueAfterDelay());
+}
+
+private void StopAutoContinueTimer()
+{
+    if (autoContinueCoroutine != null)
+    {
+        StopCoroutine(autoContinueCoroutine);
+        autoContinueCoroutine = null;
+    }
+}
+
+private IEnumerator AutoContinueAfterDelay()
+{
+    yield return new WaitForSeconds(autoContinueDelay);
+    
+    // Only auto-continue if we can still continue and there are no choices
+    if (canContinueToNextLine && currentStory.currentChoices.Count == 0)
+    {
+        ContinueStory();
+    }
+}
+
+public void SetAutoContinueEnabled(bool enabled)
+{
+    autoContinueEnabled = enabled;
+    
+    // If disabling, stop any current timer
+    if (!enabled)
+    {
+        StopAutoContinueTimer();
+    }
+    // If enabling and we're ready to continue, start timer
+    else if (canContinueToNextLine && currentStory.currentChoices.Count == 0)
+    {
+        StartAutoContinueTimer();
+    }
+}
+
+public bool GetAutoContinueEnabled()
+{
+    return autoContinueEnabled;
+}
+
+public void SetAutoContinueDelay(float delay)
+{
+    autoContinueDelay = Mathf.Clamp(delay, 0.5f, 10f); // Reasonable bounds
+}
+
+public float GetAutoContinueDelay()
+{
+    return autoContinueDelay;
+}
+
+
 
 }

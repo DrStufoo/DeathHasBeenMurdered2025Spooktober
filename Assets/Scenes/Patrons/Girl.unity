@@ -3029,7 +3029,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3045630639609693361, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3126013169996797820, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: spriteAnimator

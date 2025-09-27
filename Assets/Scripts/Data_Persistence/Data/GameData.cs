@@ -28,6 +28,9 @@ public class GameData
     public float typingVolume = 1f;
 
     public string globalVariablesStateJson;
+
+    public string currentActiveGroup = "";
+
     //The values defined here will be the default
     //the game starts with when there's no data to load
     public GameData()
@@ -54,6 +57,9 @@ public class GameData
 
         this.masterVolume = 1f;
         this.typingVolume = 1f;
+
+        this.currentActiveGroup = "";
+
     }
    
     public int GetPercentageComplete()
