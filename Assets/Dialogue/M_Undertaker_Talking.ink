@@ -19,7 +19,7 @@ VAR askedWaked = 0
     (You've waited {askedWaked * 5} minutes!)
     ->Wake
 *[Wake him up gently]
-    (He slowly raises his eyes) #speaker:??? #sprite:undertaker_adjust1
+    (He slowly raises his eyes) #speaker:??? #sprite:undertaker_asleep
     Sonnuva... #speaker:The Undertaker #sprite:undertaker_adjust2
     $^@%!!! #sprite:undertaker_angry
     It's <color=\#FF0000>YOU</color>!
@@ -50,7 +50,7 @@ VAR askedWaked = 0
 (But now, we must continue)
 (Good luck, child)
 *[Wake him up gently]
-    (He slowly raises his eyes) #speaker:??? #sprite:undertaker_adjust1
+    (He slowly raises his eyes) #speaker:??? #sprite:undertaker_sleep
     Sonnuva... #speaker:The Undertaker #sprite:undertaker_adjust2
     $^@%!!! #sprite:undertaker_angry
     It's <color=\#FF0000>YOU</color>!
@@ -114,21 +114,23 @@ Ahem... #speaker:The Undertaker #sprite:undertaker_adjust1
         I might know... 
         ...Something. #sprite:undertaker_neutral
             ->Bargain
-    **[Beg him]
+    **[(Beg him)]
         (You tell him it's for good) #speaker:???
         (You'd be doing a service)
         ... #speaker:The Undertaker
         HAHAHAHAH! #sprite:undertaker_drinking
         (He doesn't care) #speaker:??? #sprite:undertaker_adjust1
-        (Of course he doesn't) #sprite:undertaker_adjust2
         ~notification("Idiot")
-            ***[(Threaten him)]
-                (You flash your "firearm")#speaker:???
-                (He reconsiders...) #sprite:undertaker_confused
-                Alright, alright... #speaker:The Undertaker #sprite:undertaker_neutral
-                I might know... 
-                ...Something. #sprite:undertaker_neutral
-                    ->Bargain
+        (Of course he doesn't) #sprite:undertaker_adjust2
+        ->threat
+=== threat ===
+    *[(Threaten him)]
+        (You flash your "firearm")#speaker:???
+        (He reconsiders...) #sprite:undertaker_confused
+        Alright, alright... #speaker:The Undertaker #sprite:undertaker_neutral
+        I might know... 
+        ...Something. #sprite:undertaker_neutral
+            ->Bargain
 
 === Bargain ==
 But... #speaker:The Undertaker #sprite:undertaker_handsoncounter

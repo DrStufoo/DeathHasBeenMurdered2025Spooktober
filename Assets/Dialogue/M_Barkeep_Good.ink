@@ -7,22 +7,32 @@ INCLUDE globals.ink
     ...
     Yes.
     It is, Mr. Torrence.
-    
-    What'll it be?
         ->DrinkChoice
 
 === DrinkChoice ===
-*[...Water]
-    ...Water? 
+...
+...Your hands.
+They're...
+...Clean?
+Hm.
+...
+What can I get for you?
+*[Water]
+    ...
+    HAH!
+    Hahah..
+    Heh.
     Really?
-    Didn't expect ya to be...
-    ...Clean?
+    
+    Didn't expect a man like you to be...
+    Sober.
+    
     Hm.
     
     (He pours you a drink)
     (You chug it quickly)
     
-    Hm.
+    Heh.
     Perhaps there is hope.
     Good luck, stranger.
         **[Won't need it]

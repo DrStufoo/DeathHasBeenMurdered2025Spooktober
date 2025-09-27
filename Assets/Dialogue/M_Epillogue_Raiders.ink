@@ -1,7 +1,7 @@
 INCLUDE globals.ink
 #portrait:blank #layout:cg #audio:beep_1
 (...)
-~playEmote("MarauderOverRaiders")
+~playEmote("fadeIntoMarauderOverRaiders")
 {isRaiding:->Heist|->Discovery}
 === Heist ===
 

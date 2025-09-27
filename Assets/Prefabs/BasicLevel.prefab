@@ -2141,6 +2141,7 @@ GameObject:
   - component: {fileID: 1416904863645937709}
   - component: {fileID: 568685073530311125}
   - component: {fileID: 911962293378358634}
+  - component: {fileID: 3517554441011678398}
   m_Layer: 5
   m_Name: DialoguePanel
   m_TagString: Untagged
@@ -2248,6 +2249,19 @@ MonoBehaviour:
   wobbleSpeed: 5
   wobbleIntensityX: 2
   wobbleIntensityY: 2
+--- !u!114 &3517554441011678398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2583441788848412080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54cef8859e0d4e84f812f2dbaaa7917f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textComponent: {fileID: 3478728493468118369}
 --- !u!1 &2654394693459366411
 GameObject:
   m_ObjectHideFlags: 0
@@ -7952,18 +7966,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7775963659755454446}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.06613634, y: -0, z: -0, w: 0.9978106}
+  m_LocalPosition: {x: 0, y: 0, z: 4.82287}
   m_LocalScale: {x: 0.73083144, y: 0.73083144, z: 0.73083144}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 602395547967491679}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 7.584, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -120.54157, y: 12.541564}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 0, y: 1}
 --- !u!222 &6252912565121566617
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7986,13 +8000,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5636778272129526999, guid: aaf24074d59f3ba45998964b7c314b49, type: 3}
+  m_Sprite: {fileID: 6554736390298987251, guid: 7207fd81cc7a47845a5828f83c081a2e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12758,11 +12772,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4738540830816412768, guid: 699e36429131d9b4d9ab4d8231520502, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -474.30408
+      value: -475.63516
       objectReference: {fileID: 0}
     - target: {fileID: 4738540830816412768, guid: 699e36429131d9b4d9ab4d8231520502, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -108.2901
+      value: -105.91303
       objectReference: {fileID: 0}
     - target: {fileID: 4738540830816412768, guid: 699e36429131d9b4d9ab4d8231520502, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12770,7 +12784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4738540830816412768, guid: 699e36429131d9b4d9ab4d8231520502, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99999356
       objectReference: {fileID: 0}
     - target: {fileID: 4738540830816412768, guid: 699e36429131d9b4d9ab4d8231520502, type: 3}
       propertyPath: m_LocalRotation.x
@@ -12782,7 +12796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4738540830816412768, guid: 699e36429131d9b4d9ab4d8231520502, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.003596383
       objectReference: {fileID: 0}
     - target: {fileID: 4738540830816412768, guid: 699e36429131d9b4d9ab4d8231520502, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -12794,7 +12808,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4738540830816412768, guid: 699e36429131d9b4d9ab4d8231520502, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -0.412
       objectReference: {fileID: 0}
     - target: {fileID: 7810101276942473409, guid: 699e36429131d9b4d9ab4d8231520502, type: 3}
       propertyPath: m_Color.a

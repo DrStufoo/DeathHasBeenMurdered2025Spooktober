@@ -78,7 +78,7 @@ What have you come for? #sprite:life_curious
         This was never meant to happen. 
         Perhaps... #sprite:life_happy
         <color=\#FF0000>You shouldn't have killed my brother</color> #sprite:life_scared
-        (...) #sprite:default
+        (...) #sprite:empty
         (...She's gone) 
         (She can't be gone.)
         (Find her)
@@ -88,7 +88,7 @@ What have you come for? #sprite:life_curious
             ->END
 *[Try to kill her]
     Oop! #sprite:happy
-    (You attempted to lash at her) #sprite:default
+    (You attempted to lash at her) #sprite:empty
     (She just disappeared)
     
     (...)

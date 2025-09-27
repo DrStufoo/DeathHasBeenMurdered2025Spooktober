@@ -391,6 +391,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BarkeepLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 8563699356129606012, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.84
+      objectReference: {fileID: 0}
     - target: {fileID: 8811503511312984976, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_Color.b
       value: 0

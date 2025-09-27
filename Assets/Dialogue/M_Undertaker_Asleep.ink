@@ -22,8 +22,8 @@ What will you do?
     ~showOnlyGroup("UndertakerTalking")
     ->END
 
-*[Pit-Pocket Him]
-    You decide to Pit-Pocket him.
+*[Pick-Pocket Him]
+    You decide to Pick-Pocket him.
     No blood shed, no friendships made...
     ~notification("Your Valiance was not affect by this...")
     (To check your morality stats, press "Escape")

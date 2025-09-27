@@ -194,6 +194,6 @@ Let's get going! #sprite:girl_explain
     ... #sprite:default
     ...
     Good-bye, Mister! :D #sprite:girl_up1
-    ... #sprite:default
+    ... #sprite:empty
         ~showOnlyGroup("BarkeepEndingBad")
         ->END

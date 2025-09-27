@@ -1987,6 +1987,10 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 980083663}
+    - target: {fileID: 522309574467897168, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1114534187524437999, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_Resource
       value: 
@@ -2077,7 +2081,7 @@ PrefabInstance:
       objectReference: {fileID: 78995918}
     - target: {fileID: 3478728493468118369, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4278190335
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 3624919912957234729, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2107,7 +2111,7 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1288957452}
     - targetCorrespondingSourceObject: {fileID: 602395547967491679, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: 980083664}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7903057566917955668, guid: e8ad99198f31346478dd3835b0a89e5e, type: 3}

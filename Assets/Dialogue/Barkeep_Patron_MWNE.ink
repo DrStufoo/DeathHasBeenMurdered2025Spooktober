@@ -496,7 +496,7 @@ What do you think? #sprite:MWNE_neutral
     I know, it's not much, but... #sprite:MWNE_pointing
     It's was always a lot of fun for me.#sprite:MWNE_pointing_happy
     I'll see ya around...
-    (You Gained: Rube Cube!) #sprite:default
+    (You Gained: Rube Cube!) #sprite:empty
     ~hasSouvenir3 = true
     ...
     ~loadScene("Soldier")

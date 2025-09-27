@@ -12,7 +12,9 @@ public class SaveSlot : MonoBehaviour
     [SerializeField] private GameObject hasDataContent;
 
     [SerializeField] private TextMeshProUGUI percentageCompleteText;
-    [SerializeField] private TextMeshProUGUI valianceText;
+    
+    [Header("In Progress Indicator")]
+    [SerializeField] private TextMeshProUGUI inProgressText; // Add this field
 
     [Header("Clear Data Button")]
     [SerializeField] private Button clearButton;
@@ -35,6 +37,10 @@ public class SaveSlot : MonoBehaviour
             noDataContent.SetActive(true);
             hasDataContent.SetActive(false);
             clearButton.gameObject.SetActive(false);
+            
+            // Hide in progress text
+            if (inProgressText != null)
+                inProgressText.gameObject.SetActive(false);
         }
 
         //there is data for this profileId
@@ -44,10 +50,17 @@ public class SaveSlot : MonoBehaviour
             noDataContent.SetActive(false);
             hasDataContent.SetActive(true);
             clearButton.gameObject.SetActive(true);
-
-            //TO-DO Use this to get completed percentage :D
-            percentageCompleteText.text = data.GetPercentageComplete() + "% COMPLETE";
-            valianceText.text = "Valiance: " + data.valiance;
+            
+            // Show "In Progress" if this profile was loaded/used
+            if (inProgressText != null)
+            {
+                bool isCurrentProfile = (profileId == DataPersistenceManager.instance.GetCurrentProfileId());
+                inProgressText.gameObject.SetActive(isCurrentProfile);
+                if (isCurrentProfile)
+                {
+                    inProgressText.text = "In Progress...";
+                }
+            }
         }
     }
 
@@ -61,5 +74,4 @@ public class SaveSlot : MonoBehaviour
         saveSlotButton.interactable = interactable;
         clearButton.interactable = interactable;
     }
-
 }

@@ -8,12 +8,13 @@ INCLUDE globals.ink
 (Right-Click to Continue Dialogue)
 (Left-Click to Skip typing)
 (Press buttons to choose them)
+(Adjust volume/text settings by pressing "Escape")
 (Got it?)
 (Too bad)
 (Enjoy the game!)
     ->actual
 === actual ===    
-~playEmote("default")
+~playEmote("black")
 #layout:cg
 …
 Long ago, there was a man…

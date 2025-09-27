@@ -243,4 +243,9 @@ public class DataPersistenceManager : MonoBehaviour
     {
         return dataHandler.LoadAllProfiles();
     }
+    
+    public string GetCurrentProfileId() 
+    {
+     return selectedProfileId;
+    }
 }

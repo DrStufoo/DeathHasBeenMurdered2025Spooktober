@@ -31,6 +31,7 @@ public class SceneTransitionManager : MonoBehaviour
 
     public void QuitApplication()
     {
+        Debug.Log("Quitting game...");
         Application.Quit();
     }
 

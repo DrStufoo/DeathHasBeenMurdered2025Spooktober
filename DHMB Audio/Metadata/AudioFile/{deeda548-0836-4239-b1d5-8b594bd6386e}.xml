@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{deeda548-0836-4239-b1d5-8b594bd6386e}">
+		<property name="assetPath">
+			<value>Voice type effect 10.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.25</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{08cf3b11-2243-4795-a693-c442afc60c18}</destination>
+		</relationship>
+	</object>
+</objects>

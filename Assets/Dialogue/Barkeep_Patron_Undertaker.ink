@@ -460,7 +460,7 @@ What do I owe ya? #sprite:undertaker_neutral
         **[Alright...]
         Appreciate it, mate. #sprite:undertaker_adjust1
         I'll be seeing you around. #sprite:undertaker_leaving
-        Try to stay in one piece. #default
+        Try to stay in one piece. #empty
         ...
         ~loadScene("MWNE")
         ->END

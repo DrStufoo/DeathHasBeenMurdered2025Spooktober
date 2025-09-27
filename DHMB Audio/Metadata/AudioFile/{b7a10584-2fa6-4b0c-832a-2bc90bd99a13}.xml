@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{b7a10584-2fa6-4b0c-832a-2bc90bd99a13}">
+		<property name="assetPath">
+			<value>undertaker voice 8.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.5480208333333334</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{08cf3b11-2243-4795-a693-c442afc60c18}</destination>
+		</relationship>
+	</object>
+</objects>
