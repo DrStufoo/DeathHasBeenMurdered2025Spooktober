@@ -14,6 +14,7 @@ INCLUDE globals.ink
 === DrinkChoice ===
 *[Bourbon]
     ...
+    ~notification("The Barkeep is indifferent...")
     (He pours you a glass)
     (You slowly sip it)
     #layout:left 

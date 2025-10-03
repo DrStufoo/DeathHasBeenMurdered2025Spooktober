@@ -29,14 +29,11 @@ public class SceneGroupManager : MonoBehaviour, IDataPersistence
         InitializeGroups();
     }
 
-    private void Start()
-    {
-        // Detect which group is already active at scene start
-        DetectCurrentActiveGroup();
-
-        // Play audio for currently active groups at scene start
-        PlayMusicForActiveGroups();
-    }
+private void Start()
+{
+    // Play audio for currently active groups at scene start
+    PlayMusicForActiveGroups();
+}
 
     private void OnDestroy()
     {
@@ -46,17 +43,19 @@ public class SceneGroupManager : MonoBehaviour, IDataPersistence
         }
     }
 
-    private void DetectCurrentActiveGroup()
+
+private void DetectCurrentActiveGroup()
+{
+    foreach (var group in gameObjectGroups)
     {
-        foreach (var group in gameObjectGroups)
+        if (group.groupObject != null && group.groupObject.activeInHierarchy)
         {
-            if (group.groupObject != null && group.groupObject.activeInHierarchy)
-            {
-                currentActiveGroup = group.groupName;
-                break;
-            }
+            currentActiveGroup = group.groupName;
+            Debug.Log($"Detected current active group: {currentActiveGroup}");
+            break;
         }
     }
+}
 
     private void InitializeGroups()
     {
@@ -214,21 +213,55 @@ public class SceneGroupManager : MonoBehaviour, IDataPersistence
 
 
 
-    public void LoadData(GameData data)
+public void LoadData(GameData data)
+{
+    Debug.Log($"=== LoadData called ===");
+    Debug.Log($"Saved group from data: '{data.currentActiveGroup}'");
+    Debug.Log($"Available groups in scene: {string.Join(", ", groupDictionary.Keys)}");
+    
+    // DEBUG THE CONDITION CHECK
+    bool hasValidSavedGroup = !string.IsNullOrEmpty(data.currentActiveGroup);
+    bool groupExistsInScene = groupDictionary.ContainsKey(data.currentActiveGroup);
+    
+    Debug.Log($"Has valid saved group: {hasValidSavedGroup}");
+    Debug.Log($"Group exists in scene: {groupExistsInScene}");
+    Debug.Log($"Both conditions met: {hasValidSavedGroup && groupExistsInScene}");
+    
+    // If we have a saved group and it exists in this scene
+    if (hasValidSavedGroup && groupExistsInScene)
     {
-        // If we have a saved group and it exists in this scene
-        if (!string.IsNullOrEmpty(data.currentActiveGroup) && 
-            groupDictionary.ContainsKey(data.currentActiveGroup))
+        Debug.Log($"CALLING ShowOnlyGroupInstant with: {data.currentActiveGroup}");
+        ShowOnlyGroupInstant(data.currentActiveGroup);
+        Debug.Log($"After loading, currentActiveGroup is: {currentActiveGroup}");
+    }
+    else
+    {
+        Debug.Log($"Condition failed - using DetectCurrentActiveGroup instead");
+        // Only detect current active group if we didn't load a saved one
+        DetectCurrentActiveGroup();
+        Debug.Log($"Detected group: {currentActiveGroup}");
+    }
+    
+    // Debug: Show what's actually active in the scene
+    Debug.Log("=== Current scene state ===");
+    foreach (var group in gameObjectGroups)
+    {
+        if (group.groupObject != null)
         {
-            ShowOnlyGroupInstant(data.currentActiveGroup);
+            Debug.Log($"Group '{group.groupName}': {(group.groupObject.activeInHierarchy ? "ACTIVE" : "inactive")}");
         }
-        // Otherwise keep whatever group was already active (detected in Start)
     }
+    Debug.Log("=== End LoadData ===");
+}
 
-    public void SaveData(GameData data)
-    {
-        data.currentActiveGroup = currentActiveGroup;
-    }
+
+public void SaveData(GameData data)
+{
+    Debug.Log($"=== SaveData called ===");
+    Debug.Log($"Saving currentActiveGroup: '{currentActiveGroup}'");
+    data.currentActiveGroup = currentActiveGroup;
+    Debug.Log("=== End SaveData ===");
+}
 }
 
 

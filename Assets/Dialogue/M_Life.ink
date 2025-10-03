@@ -4,6 +4,7 @@ INCLUDE globals.ink
 
 === innocent ===
 ...
+~notification("Life has found you...")
 Hello, there! #sprite:life_wave
 I've never seen...
 One of you before. #sprite:life_neutral
@@ -62,6 +63,7 @@ One of you before. #sprite:life_neutral
 === neutral ===
 {hasKilledEverybody:-> murderer|...}
 ...
+~notification("Life has found you...")
 Hello, there! #sprite:life_wave
 
 I'm Life.  #sprite:life_neutral
@@ -102,6 +104,7 @@ What have you come for? #sprite:life_curious
     
 === murderer ===
 ...
+~notification("Life has found you...")
 Hello, there! #sprite:life_wave
 
 I'm... #sprite:life_neutral

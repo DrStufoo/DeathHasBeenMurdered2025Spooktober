@@ -21,29 +21,36 @@ public class DialogueTrigger : MonoBehaviour
     }
 
     private void Update()
+{
+    // ADD THIS DEBUG
+    if (playerInRange)
     {
-        if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying)
-            {
-                // Only show visual cue if interactions are enabled
-                if (DialogueManager.GetInstance().interactionsEnabled)
-                {
-                    //AudioManager.instance.PlayOneShot(FMODEvents.instance.onHover, this.transform.position);
-                    visualCue.SetActive(true);
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, emoteAnimator);
-                    }
-                }
-                else
-                {
-                    visualCue.SetActive(false);
-                }
-            }
-            else
-            {
-                visualCue.SetActive(false);
-            }
+        Debug.Log($"Player in range. DialogueIsPlaying: {DialogueManager.GetInstance().dialogueIsPlaying}, InteractionsEnabled: {DialogueManager.GetInstance().interactionsEnabled}");
     }
+
+    if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying)
+    {
+        // Only show visual cue if interactions are enabled
+        if (DialogueManager.GetInstance().interactionsEnabled)
+        {
+            visualCue.SetActive(true);
+            if (Input.GetMouseButtonDown(0))
+            {
+                Debug.Log("Starting dialogue!"); // ADD THIS
+                DialogueManager.GetInstance().EnterDialogueMode(inkJSON, emoteAnimator);
+            }
+        }
+        else
+        {
+            Debug.Log("Interactions disabled - hiding visual cue"); // ADD THIS
+            visualCue.SetActive(false);
+        }
+    }
+    else
+    {
+        visualCue.SetActive(false);
+    }
+}
 
 
     private void OnTriggerEnter2D(Collider2D collider)

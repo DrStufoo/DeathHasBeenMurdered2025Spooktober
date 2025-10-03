@@ -48,7 +48,7 @@ INCLUDE globals.ink
 
 <color=\#FF0000>There are 2 more endings:</color>
 
-<color=\#0000FF>Neutral</color> and <color=\#00FF00>Good</color>
+<color=\#0000FF>Neutral</color> and <color=\#000000>Bad</color>
 
 <color=\#FF0000>Regardless, thank you for playing.</color>
 
@@ -95,9 +95,9 @@ INCLUDE globals.ink
 
 (It seems you're trapped...)
 
-
-(In Limbo)
 ~playEmote("black")
+
+In Limbo...
 
 #layout:right
 
@@ -176,7 +176,7 @@ INCLUDE globals.ink
 
 <color=\#FF0000>There are 2 more endings:</color>
 
-<color=\#FF0000>BAD</color> and <color=\#00FF00>Good</color>
+<color=\#0000FF>Neutral</color> and <color=\#00FF00>Good</color>
 
 <color=\#FF0000>Regardless, thank you for playing.</color>
 

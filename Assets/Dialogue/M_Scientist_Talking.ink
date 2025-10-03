@@ -1,6 +1,5 @@
 INCLUDE globals.ink
 ... #portrait:blank #layout:left #audio:beep_1 #speaker:The Scientist #sprite:scientist_neutral2
-
 Not often I get company... #sprite:scientist_neutral1
 {hasKilledScientist:
     Wait. #sprite:scientist_neutral1
@@ -20,6 +19,7 @@ Not often I get company... #sprite:scientist_neutral1
 
 === main ===
 *[I want to kill life]
+
 (You tell him of your journey) #speaker:???
 (Of all the things you've done) #sprite:scientist_neutral2
 (And your goal...)  
@@ -79,8 +79,8 @@ Hah... #sprite:scientist_neutral2
             ->Find
 === Find ===
 Arghhhh... #speaker:The Scientist #sprite:scientist_neutral1
-
 No.  #sprite:scientist_neutral2
+~notification("Idiot")
 You don't. #sprite:scientist_neutral1
 Do yourself a favor... #sprite:scientist_neutral2
 ...And forget about it. #sprite:scientist_neutral3

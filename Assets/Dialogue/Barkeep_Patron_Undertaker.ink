@@ -64,7 +64,7 @@ Heh...
         What would you suggest?  #sprite:undertaker_adjust1
         ->Drink
     *[...No]
-    ... #sprite:default
+    ... #sprite:empty
     (The Undertaker has left.) 
     (For he has seen everything.)
     ...
@@ -382,16 +382,18 @@ What would you suggest I do?  #sprite:undertaker_neutral
     ...
     Do...
     Do you know how HARD IT IS. 
-    TO GET RID OF DEAD MEN.
-    THAT ARE STILL ALIVE? #sprite:undertaker_neutral
-    
-    Like, just a few weeks ago.
-    Some sick little girl with a bow...
-    ...Threw herself off a building!
-    DO YOU KNOW WHAT HAPPENS TO A BODY.
-    AFTER IT PLUMMETS A HUNDRED FEET?
-    IT DOESN'T DIE!
-    IT'S...
+    TO GET RID OF DEAD MEN.#sprite:undertaker_sad
+    THAT ARE STILL ALIVE!? #sprite:undertaker_angry
+    HAH! #sprite:undertaker_sad
+    Like, just a few weeks ago. #sprite:undertaker_handsoncounter
+    Some sick little girl...  #sprite:undertaker_neutral
+    ...Threw herself off a building!  #sprite:undertaker_hand_on_head
+    DO YOU KNOW WHAT HAPPENS TO A BODY. #sprite:undertaker_adjust1
+    AFTER IT PLUMMETS A HUNDRED FEET? #sprite:undertaker_adjust2
+    IT DOESN'T DIE! #sprite:undertaker_angry
+    The looks of it, she seemed to have a kid!
+    Thank god she didn't see it... #sprite:undertaker_sad
+    IT'S... #sprite:undertaker_angry
     ...#sprite:undertaker_handsoncounter
     ...Shove it all to 'ell. #sprite:undertaker_hand_on_head
     Nobody should have to witness it.

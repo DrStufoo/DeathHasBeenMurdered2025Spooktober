@@ -1,6 +1,6 @@
 INCLUDE globals.ink
 #layout:left #speaker:??? #sprite:undertaker_sleep #audio:undertaker # #portrait:undertaker_neutral
-...  ) 
+(...) 
 (...He still sleeps)
 ->Wake
 VAR askedWaked = 0
@@ -36,6 +36,7 @@ VAR askedWaked = 0
 ... #speaker:???
 (You've...)
 (You've waited an entire hour...)
+~notification("Why...?")
 (And he STILL hasn't budged.)
 (WHAT HAS THIS MAN BEEN DRINKING?)
 (WHAT HAVE <color=\#FF0000>YOU</color> BEEN DRINKING TO WAIT THIS LONG?)

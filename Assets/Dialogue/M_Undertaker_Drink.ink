@@ -3,13 +3,13 @@ INCLUDE globals.ink
 {hasDrankUndertakersDrink: ->Drank| ->notDrank}
 
 === notDrank ===
-...
-It's a very stale drink.
-You wonder how long this drink has been abandoned...
-Doesn't matter.
-There's an unconscious Morticion to tend to.
-...
-...So go do that.
+(...)
+(It's a very stale drink)
+(You wonder how long this drink has been abandoned...)
+(Doesn't matter)
+(There's an unconscious Morticion to tend to)
+(...)
+(...So go do that)
 *[Drink the Stale beverage (Bad Idea)]
     (You drink the old beverage)
     ~notification("Idiot")
@@ -26,8 +26,14 @@ There's an unconscious Morticion to tend to.
     (I'm proud of you)
     ->END
 === Drank ===
-...
-The drink is gone.
-You drank it.
-Why would you do that?
+(...)
+(The drink is gone)
+(You drank it)
+(Why would you do that?)
+~notification("Idiot")
+(Come on man...)
+(Just)
+(...)
+(Why...)
+(Why are you like this?)
 ->END

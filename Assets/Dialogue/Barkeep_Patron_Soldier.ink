@@ -1,5 +1,6 @@
 INCLUDE globals.ink
 #layout:left #speaker:Soldier #sprite:soldier_standing #audio:beep_1 # #portrait:soldier
+~notification("The Soldier has arrived...")
 Sargeant Nescio, at attention. #sprite:soldier_salute
 *[...At ease?]
     ->Intro

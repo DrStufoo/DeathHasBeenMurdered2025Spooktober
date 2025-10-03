@@ -3,8 +3,9 @@ INCLUDE globals.ink
 ...
 ~ CurrentCharacter = 2
 For decades, you've been trying to reclaim your death.
-For years, you've been tracking an Undertaker.
-For months, you've been getting closer and closer.
+For years, you've been stalking leads.
+For months, you've been tracking an Undertaker.
+For weeks, you've been getting closer and closer.
 And today...
 You've found him.
 

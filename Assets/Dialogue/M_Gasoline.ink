@@ -1,21 +1,19 @@
 INCLUDE globals.ink
 #speaker:Gasoline #layout:cg #audio:beep_1 #sprite:gasoline
-{hasFoundGas:->Ready |->First}
-=== First ===
+(...)
+->main
+=== main ===
+(You decide to check in this tent)
 
-...
+(Within is...)
 
-You decide to check in this tent.
+(A can of gasoline!)
 
-Within is...
-
-A can of gasoline.
-
-This will do perfectly...
+(This will do perfectly...)
     ->Ready
 
 === Ready ===
-Are you ready to strike?
+(Are you ready to strike?)
 
 *[Yes]
     (Excellent)
@@ -29,7 +27,6 @@ Are you ready to strike?
         ->END
 
 *[Not yet]
-    ...
-    Hm.
-    ~hasFoundGas = true
+    (...)
+    (Hm)
     ->END

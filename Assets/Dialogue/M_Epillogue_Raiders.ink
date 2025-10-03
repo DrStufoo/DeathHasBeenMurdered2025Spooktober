@@ -31,6 +31,8 @@ INCLUDE globals.ink
 
     (You decide to scorch these hooligans)
     
+    ~notification("Your sadism has increased...")
+    ~sadism = sadism + 1
     (Sneak behind the camp)
     
     (Find something...)
@@ -42,7 +44,8 @@ INCLUDE globals.ink
         ->END
     
 *[Steal the necklace]
-    ~notification("The fates will remember this...")
+    ~notification("Your valiance has increased...")
+    ~valiance = valiance + 1
     (You decide to merely steal the necklace)
     
     (Sparing some blood)

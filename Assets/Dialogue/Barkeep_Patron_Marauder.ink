@@ -1,6 +1,8 @@
 INCLUDE globals.ink
-#layout:left #speaker:Marauder #sprite:marauder_standing #audio:beep_1 #portrait:marauder
+... #layout:left #speaker:Marauder #sprite:marauder_standing #audio:beep_1 #portrait:marauder
+~notification("The Marauder has arrived...")
 Heheh... 
+
 What's wrong, partner? #sprite:marauder_confused
 Cat got your tongue? #sprite:marauder_scared
 Heh... #sprite:marauder_crossed_arms

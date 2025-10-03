@@ -9,6 +9,7 @@ Erm... #sprite:girl_up3
 ...
 Aha! #sprite:girl_up4
 ...Hello, there! #sprite:girl_neutral1
+~notification("The Little Girl has arrived...")
 I'm Phaelum. #sprite:girl_happy
 What's your name? :) #sprite:girl_neutral1
 *[...Barkeep is fine.]

@@ -56,10 +56,18 @@ public DialogueVariables(TextAsset loadGlobalsJSON, string globalStateJson)
         //only maintain variables that were initialized from the globals ink file
         if (variables.ContainsKey(name))
         {
+            // Clamp insanity to prevent negative values
+            if (name == "insanity" && value is Ink.Runtime.IntValue intValue)
+            {
+                int clampedValue = Mathf.Max(0, intValue.value);
+                value = new Ink.Runtime.IntValue(clampedValue);
+            }
+            
             variables.Remove(name);
             variables.Add(name, value);
         }
     }
+
 
     private void VariablesToStory(Story story)
     {

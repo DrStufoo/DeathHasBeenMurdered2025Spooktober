@@ -1,9 +1,9 @@
 INCLUDE globals.ink
-#layout:left #speaker:The Man With No Eyes #sprite:MWNE_neutral #audio:beep_1
-... #portrait:mwne
+... #layout:left #speaker:The Man With No Eyes #sprite:MWNE_neutral #audio:beep_1
 ->Intro
 === Intro ===
 ...Hello?  #sprite:MWNE_pointing
+~notification("The Man With No Eyes has arrived...")
 Is someone there?
 *[I'm here]
         ~notification("You have revealed yourself...")

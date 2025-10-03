@@ -1,9 +1,7 @@
 INCLUDE globals.ink
-#portrait:blank #layout:cg #audio:beep_1
+#layout:cg #audio:beep_1
 
-~playEmote("fadeIntoMarauderOverRaiders")
-(Show the CG of Scientist Dead)
-
+~playEmote("fadeIntoScientistDead")
 (He's...)
 
 (He's dead)
@@ -16,9 +14,17 @@ INCLUDE globals.ink
 
 (You look through his pockets...)
 
-(There's a journal)
+(His lab...)
 
-(...It has the secrets of the Scientist within)
+(His notes...)
+
+(Journals...)
+
+(You find every secret of the Scientist)
+
+(...)
+
+(With no way to decipher them)
 
 (You try to decipher them)
 
@@ -38,32 +44,39 @@ INCLUDE globals.ink
 
 (...You never understand how he did it.)
 
-(...)
 
-(You've killed your only lead)
+~playEmote("black")
 
-(Your hope is gone)
+(...) #layout:left #speaker:??? 
 
-(You have nothing)
+You've Failed
 
-(You can only wait until your body turns into a corpse)
+You've killed your only lead
 
-(Or perhaps a pile of blood)
+Your hope is gone
 
-(You've cast yourself into your own personal Limbo)
+You have nothing
 
-(...)
+You can only wait until your body turns into a corpse
 
-(Was it worth it?)
+Or perhaps a pile of blood
 
-<color=\#FF0000>...</color> #audio:undertaker
+You've cast yourself into your own personal Limbo
 
-<color=\#FF0000>You've Failed.</color>
+...
 
-<color=\#FF0000>Pick up from your last save.</color>
+Absolutely unacceptable...
 
-<color=\#FF0000>Try not to kill your only hope...</color>
+(Sigh)
 
-<color=\#FF0000>...</color>
-    ~loadScene("MainMenu")
+Fine
+
+I'll grant you mercy
+
+Go again
+
+...Try not to kill your only hope.
+
+...
+    ~showOnlyGroup("ScientistAtWork2")
     ->END
